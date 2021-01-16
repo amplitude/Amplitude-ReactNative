@@ -3,12 +3,13 @@
 #
 .DS_Store
 
-# node.js
+# npm
 #
 node_modules/
 npm-debug.log
 yarn-error.log
-  
+
+/dist
 
 # Xcode
 #
