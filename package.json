@@ -10,10 +10,10 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
+    "build": "yarn run prettier && yarn run lint && tsc --project ./tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --check \"{src,example}/**/*.{js,ts,tsx,json}\"",
-    "prettier:fix": "prettier --write \"{src,example}/**/*.{js,ts,tsx,json}\"",
+    "prettier": "prettier --check \"{src,example}/**/*.{js,jsx,ts,tsx,json}\"",
+    "prettier:fix": "prettier --write \"{src,example}/**/*.{js,jsx,ts,tsx,json}\"",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "yarn run prettier:fix && yarn run lint:fix"
@@ -27,6 +27,7 @@
     "react-native": "^0.63.0"
   },
   "devDependencies": {
+    "@amplitude/eslint-plugin-amplitude": "^1.0.1",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react-native": "^0.63.0",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
@@ -48,9 +49,12 @@
     }
   },
   "lint-staged": {
-    "{src,example}/**/*.ts": [
+    "{src,example}/**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    "{src,example}/**/*.{json}": [
+      "prettier --write"
     ]
   }
 }

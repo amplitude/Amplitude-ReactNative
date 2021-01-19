@@ -15,5 +15,10 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react-native", "@typescript-eslint", "prettier"]
+  "plugins": [
+    "react-native",
+    "@typescript-eslint",
+    "prettier",
+    "@amplitude/eslint-plugin-amplitude"
+  ]
 }

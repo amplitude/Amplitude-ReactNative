@@ -9,7 +9,8 @@
     "jsx": "react-native",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmitOnError": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist", "**/__tests__/*"]
