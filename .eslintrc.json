@@ -1,0 +1,24 @@
+{
+  "env": {
+    "react-native/react-native": true
+  },
+  "extends": [
+    "plugin:react-native/all",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react-native",
+    "@typescript-eslint",
+    "prettier",
+    "@amplitude/eslint-plugin-amplitude"
+  ]
+}
