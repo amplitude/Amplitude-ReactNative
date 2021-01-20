@@ -1,16 +1,14 @@
 
-package com.reactlibrary;
+package com.amplitude.reactnative;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 
-public class RNAmplitudeReactNativeModule extends ReactContextBaseJavaModule {
+public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
 
-  public RNAmplitudeReactNativeModule(ReactApplicationContext reactContext) {
+  public AmplitudeReactNativeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
   }

@@ -1,19 +1,20 @@
 
-package com.reactlibrary;
+package com.amplitude.reactnative;
+
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.NativeModule;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
-public class RNAmplitudeReactNativePackage implements ReactPackage {
+public class AmplitudeReactNativePackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNAmplitudeReactNativeModule(reactContext));
+      return Arrays.<NativeModule>asList(new AmplitudeReactNativeModule(reactContext));
     }
 
     // Deprecated from RN 0.47
