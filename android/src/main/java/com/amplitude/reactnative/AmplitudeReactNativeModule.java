@@ -1,8 +1,10 @@
 
 package com.amplitude.reactnative;
 
+import com.amplitude.api.Amplitude;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
 
 public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
@@ -15,6 +17,11 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
-    return "RNAmplitudeReactNative";
+    return "AmplitudeReactNative";
+  }
+
+  @ReactMethod
+  public void logEvent(String identifier) {
+    Amplitude.getInstance().logEvent(identifier);
   }
 }
