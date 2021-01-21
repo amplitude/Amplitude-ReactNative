@@ -21,7 +21,22 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void logEvent(String identifier) {
-    Amplitude.getInstance().logEvent(identifier);
+  public void initialize(String instanceName, String apiKey) {
+    Amplitude.getInstance(instanceName).initialize(this.reactContext, apiKey);
+  }
+
+  @ReactMethod
+  public void logEvent(String instanceName, String eventType) {
+    Amplitude.getInstance(instanceName).logEvent(eventType);
+  }
+
+  @ReactMethod
+  public void enableCoppaControl(String instanceName) {
+    Amplitude.getInstance(instanceName).enableCoppaControl();
+  }
+
+  @ReactMethod
+  public void disableCoppaControl(String instanceName) {
+    Amplitude.getInstance(instanceName).disableCoppaControl();
   }
 }
