@@ -22,7 +22,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void initialize(String instanceName, String apiKey) {
-    Amplitude.getInstance().initialize(this.reactContext, apiKey);
+    Amplitude.getInstance(instanceName).initialize(this.reactContext, apiKey);
   }
 
   @ReactMethod
@@ -32,11 +32,11 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void enableCoppaControl(String instanceName) {
-    Amplitude.getInstance().enableCoppaControl();
+    Amplitude.getInstance(instanceName).enableCoppaControl();
   }
 
   @ReactMethod
   public void disableCoppaControl(String instanceName) {
-    Amplitude.getInstance().disableCoppaControl();
+    Amplitude.getInstance(instanceName).disableCoppaControl();
   }
 }
