@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNAmplitudeReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAmplitudeReactNative.m */; };
+		A684A1AD22D4B0870060663F /* AmplitudeReactNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684A1AC22D4B0870060663F /* AmplitudeReactNative.swift */; };
+		B3E7B58A1CC2AC0600A0062D /* AmplitudeReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* AmplitudeReactNative.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +24,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNAmplitudeReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAmplitudeReactNative.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNAmplitudeReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAmplitudeReactNative.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNAmplitudeReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAmplitudeReactNative.m; sourceTree = "<group>"; };
+		12DB480425BE874A00347C73 /* libAmplitudeReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAmplitudeReactNative.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A684A1AB22D4B0870060663F /* AmplitudeReactNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AmplitudeReactNative-Bridging-Header.h"; sourceTree = "<group>"; };
+		A684A1AC22D4B0870060663F /* AmplitudeReactNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeReactNative.swift; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* AmplitudeReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplitudeReactNative.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,29 +41,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		134814211AA4EA7D00B7C361 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				134814201AA4EA6300B7C361 /* libRNAmplitudeReactNative.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNAmplitudeReactNative.h */,
-				B3E7B5891CC2AC0600A0062D /* RNAmplitudeReactNative.m */,
-				134814211AA4EA7D00B7C361 /* Products */,
+				A684A1AC22D4B0870060663F /* AmplitudeReactNative.swift */,
+				B3E7B5891CC2AC0600A0062D /* AmplitudeReactNative.m */,
+				A684A1AB22D4B0870060663F /* AmplitudeReactNative-Bridging-Header.h */,
+				6ED9AF5A230AD404007B1086 /* Frameworks */,
+				12DB480425BE874A00347C73 /* libAmplitudeReactNative.a */,
 			);
+			sourceTree = "<group>";
+		};
+		6ED9AF5A230AD404007B1086 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNAmplitudeReactNative */ = {
+		58B511DA1A9E6C8500147676 /* AmplitudeReactNative */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAmplitudeReactNative" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "AmplitudeReactNative" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -71,9 +74,9 @@
 			);
 			dependencies = (
 			);
-			name = RNAmplitudeReactNative;
+			name = AmplitudeReactNative;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNAmplitudeReactNative.a */;
+			productReference = 12DB480425BE874A00347C73 /* libAmplitudeReactNative.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -83,18 +86,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Facebook;
+				ORGANIZATIONNAME = Amplitude;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAmplitudeReactNative" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "AmplitudeReactNative" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -102,7 +107,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNAmplitudeReactNative */,
+				58B511DA1A9E6C8500147676 /* AmplitudeReactNative */,
 			);
 		};
 /* End PBXProject section */
@@ -112,7 +117,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNAmplitudeReactNative.m in Sources */,
+				A684A1AD22D4B0870060663F /* AmplitudeReactNative.swift in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* AmplitudeReactNative.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,39 +209,56 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
-					"$(SRCROOT)/../../react-native/React/**",
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAmplitudeReactNative;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		58B511F11A9E6C8500147676 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAmplitudeReactNative;
+				PRODUCT_NAME = AmplitudeReactNative;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AmplitudeReactNative-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AmplitudeReactNative;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AmplitudeReactNative-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAmplitudeReactNative" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "AmplitudeReactNative" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -244,7 +267,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAmplitudeReactNative" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "AmplitudeReactNative" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,
