@@ -20,5 +20,8 @@
     "@typescript-eslint",
     "prettier",
     "@amplitude/eslint-plugin-amplitude"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/no-floating-promises": 0
+  }
 }
