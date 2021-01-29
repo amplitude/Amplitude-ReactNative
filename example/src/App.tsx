@@ -1,14 +1,13 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import ReactNative from '@amplitude/react-native';
-
+import { fakeLogEvent } from '@amplitude/react-native';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    ReactNative.multiply(3, 7).then(setResult);
+    fakeLogEvent('I am instance', 'I am event').then(setResult);
   }, []);
 
   return (

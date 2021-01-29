@@ -1,4 +1,4 @@
-package com.amplitudereactnative;
+package com.amplitude.reactnative;
 
 import androidx.annotation.NonNull;
 
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ReactNativePackage implements ReactPackage {
+public class AmplitudeReactNativePackage implements ReactPackage {
     @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new ReactNativeModule(reactContext));
+        modules.add(new AmplitudeReactNativeModule(reactContext));
         return modules;
     }
 
