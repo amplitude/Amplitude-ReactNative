@@ -1,5 +1,6 @@
-rootProject.name = 'ExampleApp'
-include ':amplitude_react-native'
-project(':amplitude_react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@amplitude/react-native/android')
+rootProject.name = 'ReactNativeExample'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
+
+include ':amplitudereactnative'
+project(':amplitudereactnative').projectDir = new File(rootProject.projectDir, '../../android')

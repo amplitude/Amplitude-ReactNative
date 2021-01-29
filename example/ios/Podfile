@@ -4,16 +4,13 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 use_modular_headers!
 
-target 'ExampleApp' do
+target 'ReactNativeExample' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'ExampleAppTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
+  pod 'amplitude-react-native', :path => '../..'
+  
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
@@ -21,14 +18,5 @@ target 'ExampleApp' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
-  end
-end
-
-target 'ExampleApp-tvOS' do
-  # Pods for ExampleApp-tvOS
-
-  target 'ExampleApp-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end

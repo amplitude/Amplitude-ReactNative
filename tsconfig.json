@@ -1,18 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "declaration": true,
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "strict": true,
-    "jsx": "react-native",
+    "baseUrl": ".",
+    "paths": {
+      "@amplitude/react-native": ["./src/index"]
+    },
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "noEmitOnError": true,
-    "lib": ["esnext"]
-  },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "**/__tests__/*"]
+    "strict": true,
+    "target": "esnext"
+  }
 }

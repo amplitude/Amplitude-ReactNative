@@ -1,13 +1,19 @@
-// TODO(kelson): Get bridge calls working
-// import { NativeModules } from "react-native";
-// const { RNAmplitudeReactNative } = NativeModules;
+import { NativeModules } from 'react-native';
 
-import { Constants } from "./constants";
-import { Identify } from "./identify";
+import { Constants } from './constants';
+import { Identify } from './identify';
+
+const { AmplitudeReactNative } = NativeModules;
+
+export const fakeLogEvent = (
+  instanceName: string,
+  eventType: string,
+): Promise<string> =>
+  AmplitudeReactNative.fakeLogEvent(instanceName, eventType);
 
 export class Amplitude {
   protected static _instances: Record<string, Amplitude>;
-  protected static _defaultInstanceName = "$default_instance";
+  protected static _defaultInstanceName = '$default_instance';
   instanceName: string;
 
   constructor(instanceName: string) {
@@ -17,7 +23,7 @@ export class Amplitude {
   }
 
   static getInstance(
-    instanceName: string = this._defaultInstanceName
+    instanceName: string = this._defaultInstanceName,
   ): Amplitude {
     if (!this._instances) {
       this._instances = {};
@@ -31,7 +37,7 @@ export class Amplitude {
 
   init(apiKey: string): Promise<void> {
     const properties = this._baseProperties();
-    properties["apiKey"] = apiKey;
+    properties.apiKey = apiKey;
     // make call to native initialize method via RN bridge
     return Promise.resolve();
   }
@@ -48,47 +54,47 @@ export class Amplitude {
 
   setOptOut(optOut: boolean): Promise<void> {
     const properties = this._baseProperties();
-    properties["optOut"] = optOut;
+    properties.optOut = optOut;
     // make native call to setOptOut via RN Bridge
     return Promise.resolve();
   }
 
   trackingSessionEvents(trackSessionEvents: boolean): Promise<void> {
     const properties = this._baseProperties();
-    properties["trackingSessionEvents"] = trackSessionEvents;
+    properties.trackingSessionEvents = trackSessionEvents;
     // make native call to trackingSessionEvents via RN Bridge
     return Promise.resolve();
   }
 
   setUserId(userId: string): Promise<void> {
     const properties = this._baseProperties();
-    properties["userId"] = userId;
+    properties.userId = userId;
     // make native call to setUserId via RN Bridge
     return Promise.resolve();
   }
 
   setServerUrl(serverUrl: string): Promise<void> {
     const properties = this._baseProperties();
-    properties["serverUrl"] = serverUrl;
+    properties.serverUrl = serverUrl;
     // make native call to setServerUrl via RN Bridge
     return Promise.resolve();
   }
 
   setUseDynamicConfig(useDynamicConfig: boolean): Promise<void> {
     const properties = this._baseProperties();
-    properties["useDynamicConfig"] = useDynamicConfig;
+    properties.useDynamicConfig = useDynamicConfig;
     // make native call to setUseDynamicConfig via RN Bridge
     return Promise.resolve();
   }
 
   logEvent(
     eventType: string,
-    eventProperties?: Record<string, unknown>
+    eventProperties?: Record<string, unknown>,
   ): Promise<void> {
     const properties = this._baseProperties();
-    properties["eventType"] = eventType;
+    properties.eventType = eventType;
     if (eventProperties) {
-      properties["eventProperties"] = eventProperties;
+      properties.eventProperties = eventProperties;
     }
     // make native call to logEvent via RN Bridge
     return Promise.resolve();
@@ -97,34 +103,34 @@ export class Amplitude {
   logRevenue(
     productIdentifier: string,
     quantity: number,
-    price: number
+    price: number,
   ): Promise<void> {
     const properties = this._baseProperties();
-    properties["productIdentifier"] = productIdentifier;
-    properties["quantity"] = quantity;
-    properties["price"] = price;
+    properties.productIdentifier = productIdentifier;
+    properties.quantity = quantity;
+    properties.price = price;
     // make native call to logRevenue via RN Bridge
     return Promise.resolve();
   }
 
   logRevenueAmount(amount: number): Promise<void> {
     const properties = this._baseProperties();
-    properties["amount"] = amount;
+    properties.amount = amount;
     // make native call to logRevenueAmount via RN Bridge
     return Promise.resolve();
   }
 
   identify(identifyInstance: Identify): Promise<void> {
     const properties = this._baseProperties();
-    properties["userProperties"] = identifyInstance.payload;
+    properties.userProperties = identifyInstance.payload;
     // make native call to identify via RN Bridge
     return Promise.resolve();
   }
 
   setGroup(groupType: string, groupName: string | string[]): Promise<void> {
     const properties = this._baseProperties();
-    properties["groupType"] = groupType;
-    properties["groupName"] = groupName;
+    properties.groupType = groupType;
+    properties.groupName = groupName;
     // make native call to setGroup via RN Bridge
     return Promise.resolve();
   }
@@ -132,21 +138,21 @@ export class Amplitude {
   groupIdentify(
     groupType: string,
     groupName: string | string[],
-    groupIdentify: Identify
+    groupIdentify: Identify,
   ): Promise<void> {
     const properties = this._baseProperties();
-    properties["groupType"] = groupType;
-    properties["groupName"] = groupName;
-    properties["userProperties"] = groupIdentify.payload;
+    properties.groupType = groupType;
+    properties.groupName = groupName;
+    properties.userProperties = groupIdentify.payload;
     // TODO(kelson): update this to use proper param:
-    properties["outOfSession"] = false;
+    properties.outOfSession = false;
     // make native call to groupIdentify via RN Bridge
     return Promise.resolve();
   }
 
   setUserProperties(userProperties: Record<string, unknown>): Promise<void> {
     const properties = this._baseProperties();
-    properties["userProperties"] = userProperties;
+    properties.userProperties = userProperties;
     // make native call to setUserProperties via RN Bridge
     return Promise.resolve();
   }
@@ -164,14 +170,14 @@ export class Amplitude {
   // Private bridging calls
   protected _setLibraryName(libraryName: string): Promise<void> {
     const properties = this._baseProperties();
-    properties["libraryName"] = libraryName;
+    properties.libraryName = libraryName;
     // make native call to setLibraryName via RN Bridge
     return Promise.resolve();
   }
 
   protected _setLibraryVersion(libraryVersion: string): Promise<void> {
     const properties = this._baseProperties();
-    properties["libraryVersion"] = libraryVersion;
+    properties.libraryVersion = libraryVersion;
     // make native call to setLibraryVersion via RN Bridge
     return Promise.resolve();
   }

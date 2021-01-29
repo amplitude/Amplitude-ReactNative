@@ -2,12 +2,11 @@ import Foundation
 import Amplitude
 
 @objc(AmplitudeReactNative)
-open class AmplitudeReactNative: NSObject {
-    
+class ReactNative: NSObject {
     @objc static func requiresMainQueueSetup() -> Bool {
         return false
     }
-
+    
     @objc
     func initialize(instanceName: String,
                     apiKey: String,
@@ -16,7 +15,7 @@ open class AmplitudeReactNative: NSObject {
         Amplitude.instance(withName: instanceName).initializeApiKey(apiKey)
         resolve(true)
     }
-    
+
     @objc
     func logEvent(instanceName: String,
                   eventType: String,
@@ -25,7 +24,7 @@ open class AmplitudeReactNative: NSObject {
         Amplitude.instance(withName: instanceName).logEvent(eventType)
         resolve(true)
     }
-    
+
     @objc
     func enableCoppaControl(instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
