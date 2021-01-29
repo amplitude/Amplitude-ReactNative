@@ -10,7 +10,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.amplitudereactnative.ReactNativePackage;
+import com.amplitude.reactnative.AmplitudeReactNativePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,7 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for ReactNativeExample:
           // packages.add(new MyReactNativePackage());
-          packages.add(new ReactNativePackage());
+          packages.add(new AmplitudeReactNativePackage());
           return packages;
         }
 
