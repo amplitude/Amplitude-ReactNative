@@ -6,6 +6,14 @@ class ReactNative: NSObject {
     @objc static func requiresMainQueueSetup() -> Bool {
         return false
     }
+
+    @objc
+    func fakeLogEvent(_ instanceName: String,
+                      eventType: String,
+                      resolver resolve: RCTPromiseResolveBlock,
+                      rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve("instanceName: " + instanceName + " eventType: " + eventType)
+    }
     
     @objc
     func initialize(instanceName: String,
