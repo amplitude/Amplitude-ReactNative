@@ -128,7 +128,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setUserProperties(String instanceName) {
+    public void clearUserProperties(String instanceName) {
         Amplitude.getInstance(instanceName).clearUserProperties();
     }
 
