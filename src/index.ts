@@ -2,14 +2,10 @@ import { NativeModules } from 'react-native';
 
 import { Constants } from './constants';
 import { Identify } from './identify';
+import { AmplitudeReactNativeModule } from './types';
 
-const { AmplitudeReactNative } = NativeModules;
-
-export const fakeLogEvent = (
-  instanceName: string,
-  eventType: string,
-): Promise<string> =>
-  AmplitudeReactNative.fakeLogEvent(instanceName, eventType);
+const AmplitudeReactNative: AmplitudeReactNativeModule =
+  NativeModules.AmplitudeReactNative;
 
 export class Amplitude {
   protected static _instances: Record<string, Amplitude>;
@@ -35,68 +31,53 @@ export class Amplitude {
     return this._instances[instanceName];
   }
 
-  init(apiKey: string): Promise<void> {
-    const properties = this._baseProperties();
-    properties.apiKey = apiKey;
-    // make call to native initialize method via RN bridge
-    return Promise.resolve();
+  init(apiKey: string): Promise<void | boolean> {
+    return AmplitudeReactNative.initialize(this.instanceName, apiKey);
   }
 
-  enableCoppaControl(): Promise<void> {
-    // make native call to native enableCoppaControl via RN Bridge
-    return Promise.resolve();
+  logEvent(
+    eventType: string,
+    // eventProperties?: Record<string, unknown>,
+  ): Promise<void | boolean> {
+    // const properties = this._baseProperties();
+    // properties.eventType = eventType;
+    // if (eventProperties) {
+    //   properties.eventProperties = eventProperties;
+    // }
+    return AmplitudeReactNative.logEvent(this.instanceName, eventType);
   }
 
-  disableCoppaControl(): Promise<void> {
-    // make native call to native disableCoppaControl via RN Bridge
-    return Promise.resolve();
+  enableCoppaControl(): Promise<void | boolean> {
+    return AmplitudeReactNative.enableCoppaControl(this.instanceName);
+  }
+
+  disableCoppaControl(): Promise<void | boolean> {
+    return AmplitudeReactNative.disableCoppaControl(this.instanceName);
   }
 
   setOptOut(optOut: boolean): Promise<void> {
-    const properties = this._baseProperties();
-    properties.optOut = optOut;
-    // make native call to setOptOut via RN Bridge
-    return Promise.resolve();
+    return AmplitudeReactNative.setOptOut(this.instanceName, optOut);
   }
 
   trackingSessionEvents(trackSessionEvents: boolean): Promise<void> {
-    const properties = this._baseProperties();
-    properties.trackingSessionEvents = trackSessionEvents;
-    // make native call to trackingSessionEvents via RN Bridge
-    return Promise.resolve();
+    return AmplitudeReactNative.trackingSessionEvents(
+      this.instanceName,
+      trackSessionEvents,
+    );
   }
 
   setUserId(userId: string): Promise<void> {
-    const properties = this._baseProperties();
-    properties.userId = userId;
-    // make native call to setUserId via RN Bridge
-    return Promise.resolve();
+    return AmplitudeReactNative.setUserId(this.instanceName, userId);
   }
 
   setServerUrl(serverUrl: string): Promise<void> {
-    const properties = this._baseProperties();
-    properties.serverUrl = serverUrl;
-    // make native call to setServerUrl via RN Bridge
-    return Promise.resolve();
+    return AmplitudeReactNative.setServerUrl(this.instanceName, serverUrl);
   }
 
   setUseDynamicConfig(useDynamicConfig: boolean): Promise<void> {
     const properties = this._baseProperties();
     properties.useDynamicConfig = useDynamicConfig;
     // make native call to setUseDynamicConfig via RN Bridge
-    return Promise.resolve();
-  }
-
-  logEvent(
-    eventType: string,
-    eventProperties?: Record<string, unknown>,
-  ): Promise<void> {
-    const properties = this._baseProperties();
-    properties.eventType = eventType;
-    if (eventProperties) {
-      properties.eventProperties = eventProperties;
-    }
-    // make native call to logEvent via RN Bridge
     return Promise.resolve();
   }
 
