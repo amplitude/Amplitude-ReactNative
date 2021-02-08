@@ -7,15 +7,6 @@ class ReactNative: NSObject {
         return false
     }
 
-    // TODO: REMOVE THIS
-    @objc
-    func fakeLogEvent(_ instanceName: String,
-                      eventType: String,
-                      resolver resolve: RCTPromiseResolveBlock,
-                      rejecter reject: RCTPromiseRejectBlock) -> Void {
-        resolve("instanceName: " + instanceName + " eventType: " + eventType)
-    }
-    
     @objc
     func initialize(instanceName: String,
                     apiKey: String,

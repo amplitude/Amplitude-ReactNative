@@ -2,9 +2,6 @@
 
 @interface RCT_EXTERN_MODULE(AmplitudeReactNative, NSObject)
 
-// TODO: REMOVE THIS
-RCT_EXTERN_METHOD(fakeLogEvent:(NSString *)instanceName eventType:(NSString *)eventType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
-
 RCT_EXTERN_METHOD(initialize:(NSString *)instanceName apiKey:(NSString *)apiKey resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(enableCoppaControl:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
