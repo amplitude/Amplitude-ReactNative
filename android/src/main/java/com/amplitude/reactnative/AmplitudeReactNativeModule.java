@@ -29,15 +29,14 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         return NAME;
     }
 
-    // TODO: REMOVE IT
-    @ReactMethod
-    public void fakeLogEvent(String instanceName, String eventType, Promise promise) {
-        promise.resolve("instanceName: " + instanceName + " eventType: " + eventType);
-    }
-
     @ReactMethod
     public void initialize(String instanceName, String apiKey) {
         Amplitude.getInstance(instanceName).initialize(this.reactContext, apiKey);
+    }
+
+    @ReactMethod
+    public void logEvent(String instanceName, String eventType) {
+        Amplitude.getInstance(instanceName).logEvent(eventType);
     }
 
     @ReactMethod
@@ -88,11 +87,6 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setServerUrl(String instanceName, String serverUrl) {
         Amplitude.getInstance(instanceName).setServerUrl(serverUrl);
-    }
-
-    @ReactMethod
-    public void logEvent(String instanceName, String eventType) {
-        Amplitude.getInstance(instanceName).logEvent(eventType);
     }
 
     @ReactMethod
