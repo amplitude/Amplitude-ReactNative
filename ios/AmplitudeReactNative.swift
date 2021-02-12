@@ -8,7 +8,7 @@ class ReactNative: NSObject {
     }
 
     @objc
-    func initialize(instanceName: String,
+    func initialize(_ instanceName: String,
                     apiKey: String,
                     resolver resolve: RCTPromiseResolveBlock,
                     rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -96,7 +96,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func logEvent(instanceName: String,
+    func logEvent(_ instanceName: String,
                   eventType: String,
                   resolver resolve: RCTPromiseResolveBlock,
                   rejecter reject: RCTPromiseRejectBlock) -> Void {
