@@ -17,7 +17,7 @@ class ReactNative: NSObject {
     }
 
     @objc
-    func enableCoppaControl(instanceName: String,
+    func enableCoppaControl(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).enableCoppaControl()
@@ -25,7 +25,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func disableCoppaControl(instanceName: String,
+    func disableCoppaControl(_ instanceName: String,
                              resolver resolve: RCTPromiseResolveBlock,
                              rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).disableCoppaControl()
@@ -33,7 +33,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setOptOut(instanceName: String,
+    func setOptOut(_ instanceName: String,
                    optOut: Bool,
                    resolver resolve: RCTPromiseResolveBlock,
                    rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -42,7 +42,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setLibraryName(instanceName: String,
+    func setLibraryName(_ instanceName: String,
                         libraryName: String,
                         resolver resolve: RCTPromiseResolveBlock,
                         rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -51,7 +51,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setLibraryVersion(instanceName: String,
+    func setLibraryVersion(_ instanceName: String,
                            libraryVersion: String,
                            resolver resolve: RCTPromiseResolveBlock,
                            rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -60,7 +60,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func trackingSessionEvents(instanceName: String,
+    func trackingSessionEvents(_ instanceName: String,
                                trackingSessionEvents: Bool,
                                resolver resolve: RCTPromiseResolveBlock,
                                rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -69,7 +69,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setUseDynamicConfig(instanceName: String,
+    func setUseDynamicConfig(_ instanceName: String,
                              useDynamicConfig: Bool,
                              resolver resolve: RCTPromiseResolveBlock,
                              rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -78,7 +78,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setUserId(instanceName: String,
+    func setUserId(_ instanceName: String,
                    userId: String,
                    resolver resolve: RCTPromiseResolveBlock,
                    rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -87,7 +87,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setServerUrl(instanceName: String,
+    func setServerUrl(_ instanceName: String,
                       serverUrl: String,
                       resolver resolve: RCTPromiseResolveBlock,
                       rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -105,7 +105,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func logEventWithProperties(instanceName: String,
+    func logEventWithProperties(_ instanceName: String,
                                 eventType: String,
                                 eventProperties: [String: Any],
                                 resolver resolve: RCTPromiseResolveBlock,
@@ -115,7 +115,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func logRevenue(instanceName: String,
+    func logRevenue(_ instanceName: String,
                     productIdentifier: String,
                     quantity: Int,
                     price: NSNumber,
@@ -135,7 +135,7 @@ class ReactNative: NSObject {
     
     // TODO: IMPLEMENT
     @objc
-    func identify(instanceName: String,
+    func identify(_ instanceName: String,
                   resolver resolve: RCTPromiseResolveBlock,
                   rejecter reject: RCTPromiseRejectBlock) -> Void {
         let identify = AMPIdentify()
@@ -145,7 +145,7 @@ class ReactNative: NSObject {
     
     // TODO: IMPLEMENT
     @objc
-    func groupIdentify(instanceName: String,
+    func groupIdentify(_ instanceName: String,
                        groupType: String,
                        groupName: NSObject,
                        resolver resolve: RCTPromiseResolveBlock,
@@ -156,7 +156,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setGroup(instanceName: String,
+    func setGroup(_ instanceName: String,
                   groupType: String,
                   groupName: NSObject,
                   resolver resolve: RCTPromiseResolveBlock,
@@ -166,7 +166,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func setUserProperties(instanceName: String,
+    func setUserProperties(_ instanceName: String,
                            userProperties: [String: Any],
                            resolver resolve: RCTPromiseResolveBlock,
                            rejecter reject: RCTPromiseRejectBlock) -> Void {
@@ -175,7 +175,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func clearUserProperties(instanceName: String,
+    func clearUserProperties(_ instanceName: String,
                              resolver resolve: RCTPromiseResolveBlock,
                              rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).clearUserProperties()
@@ -183,7 +183,7 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func uploadEvents(instanceName: String,
+    func uploadEvents(_ instanceName: String,
                       resolver resolve: RCTPromiseResolveBlock,
                       rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).uploadEvents()
