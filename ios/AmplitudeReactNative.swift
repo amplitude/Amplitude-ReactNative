@@ -133,25 +133,27 @@ class ReactNative: NSObject {
         resolve(true)
     }
     
-    // TODO: IMPLEMENT
     @objc
     func identify(_ instanceName: String,
+                  userProperties: [String: [String : NSObject]],
                   resolver resolve: RCTPromiseResolveBlock,
                   rejecter reject: RCTPromiseRejectBlock) -> Void {
-        let identify = AMPIdentify()
+        let identify = createIdentify(userProperties)
         Amplitude.instance(withName: instanceName).identify(identify)
         resolve(true)
     }
     
-    // TODO: IMPLEMENT
     @objc
     func groupIdentify(_ instanceName: String,
                        groupType: String,
                        groupName: NSObject,
+                       userProperties: [String: [String : NSObject]],
                        resolver resolve: RCTPromiseResolveBlock,
                        rejecter reject: RCTPromiseRejectBlock) -> Void {
-        let identify = AMPIdentify()
-        Amplitude.instance(withName: instanceName).groupIdentify(withGroupType: groupType, groupName: groupName, groupIdentify: identify)
+        let identify = createIdentify(userProperties)
+        Amplitude.instance(withName: instanceName).groupIdentify(withGroupType: groupType,
+                                                                 groupName: groupName,
+                                                                 groupIdentify: identify)
         resolve(true)
     }
     
@@ -188,5 +190,31 @@ class ReactNative: NSObject {
                       rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).uploadEvents()
         resolve(true)
+    }
+    
+    private func createIdentify(_ userProperties: [String: [String : NSObject]]) -> AMPIdentify {
+        let identify = AMPIdentify()
+        
+        for (operation, properties) in userProperties {
+            for (key, value) in properties {
+                switch operation {
+                case "$add":
+                    identify.add(key, value: value)
+                case "$append":
+                    identify.append(key, value: value)
+                case "$prepend":
+                    identify.prepend(key, value: value)
+                case "$set":
+                    identify.set(key, value: value)
+                case "$setOnce":
+                    identify.setOnce(key, value: value)
+                case "$unset":
+                    identify.unset(key) // value is default to `-`
+                default:
+                    break
+                }
+            }
+        }
+        return identify
     }
 }
