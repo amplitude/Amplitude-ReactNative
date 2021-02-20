@@ -30,14 +30,11 @@ RCT_EXTERN_METHOD(setUserProperties:(NSString *)instanceName userProperties:(NSD
 
 RCT_EXTERN_METHOD(logRevenue:(NSString *)instanceName (NSString *)productIdentifier quantity:(NSInteger)quantity price:(NSNumber)price receipt:(NSString*)receipt resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
-// TODO: TO IMPLEMENT
-RCT_EXTERN_METHOD(identify:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(identify:(NSString *)instanceName userProperties:(NSDictionary *)userProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
-// TODO: TO IMPLEMENT
-RCT_EXTERN_METHOD(groupIdentify:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(groupIdentify:(NSString *)instanceName groupType:(NSString *)groupType groupName:(id)groupName userProperties:(NSDictionary *)userProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
-// TODO: TO IMPLEMENT
-RCT_EXTERN_METHOD(setGroup:(NSString *)instanceName groupType:(NSString *)groupType groupName:(NSObject *)groupName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(setGroup:(NSString *)instanceName groupType:(NSString *)groupType groupName:(id)groupName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(clearUserProperties:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
