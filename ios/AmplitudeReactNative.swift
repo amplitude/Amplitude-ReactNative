@@ -135,7 +135,7 @@ class ReactNative: NSObject {
     
     @objc
     func identify(_ instanceName: String,
-                  userProperties: [String: [String : Any]],
+                  userProperties: [String: [String : NSObject]],
                   resolver resolve: RCTPromiseResolveBlock,
                   rejecter reject: RCTPromiseRejectBlock) -> Void {
         let identify = createIdentify(userProperties)
@@ -146,22 +146,24 @@ class ReactNative: NSObject {
     @objc
     func groupIdentify(_ instanceName: String,
                        groupType: String,
-                       groupName: Any,
-                       userProperties: [String: [String : Any]],
+                       groupName: NSObject,
+                       userProperties: [String: [String : NSObject]],
                        resolver resolve: RCTPromiseResolveBlock,
                        rejecter reject: RCTPromiseRejectBlock) -> Void {
         let identify = createIdentify(userProperties)
-        Amplitude.instance(withName: instanceName).groupIdentify(withGroupType: groupType, groupName: groupName as! NSObject, groupIdentify: identify)
+        Amplitude.instance(withName: instanceName).groupIdentify(withGroupType: groupType,
+                                                                 groupName: groupName,
+                                                                 groupIdentify: identify)
         resolve(true)
     }
     
     @objc
     func setGroup(_ instanceName: String,
                   groupType: String,
-                  groupName: Any,
+                  groupName: NSObject,
                   resolver resolve: RCTPromiseResolveBlock,
                   rejecter reject: RCTPromiseRejectBlock) -> Void {
-        Amplitude.instance(withName: instanceName).setGroup(groupType, groupName: groupName as! NSObject)
+        Amplitude.instance(withName: instanceName).setGroup(groupType, groupName: groupName)
         resolve(true)
     }
     
@@ -190,22 +192,22 @@ class ReactNative: NSObject {
         resolve(true)
     }
     
-    private func createIdentify(_ userProperties: [String: [String : Any]]) -> AMPIdentify {
+    private func createIdentify(_ userProperties: [String: [String : NSObject]]) -> AMPIdentify {
         let identify = AMPIdentify()
         
         for (operation, properties) in userProperties {
             for (key, value) in properties {
                 switch operation {
                 case "$add":
-                    identify.add(key, value: value as? NSObject)
+                    identify.add(key, value: value)
                 case "$append":
-                    identify.append(key, value: value as? NSObject)
+                    identify.append(key, value: value)
                 case "$prepend":
-                    identify.prepend(key, value: value as? NSObject)
+                    identify.prepend(key, value: value)
                 case "$set":
-                    identify.set(key, value: value as? NSObject)
+                    identify.set(key, value: value)
                 case "$setOnce":
-                    identify.setOnce(key, value: value as? NSObject)
+                    identify.setOnce(key, value: value)
                 case "$unset":
                     identify.unset(key) // value is default to `-`
                 default:
