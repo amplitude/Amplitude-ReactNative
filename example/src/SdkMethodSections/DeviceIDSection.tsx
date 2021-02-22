@@ -1,14 +1,18 @@
 import * as React from 'react';
-// import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
+import { amplitudeInstance } from '../utils/amplitude';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
 
 export const DeviceIDSection = () => {
   return (
     <SdkSectionLayout heading={'Device ID'}>
-      {/* UI for regenerating device id goes here */}
+      <Button
+        title={'Regenerate Device ID'}
+        onPress={() => {
+          amplitudeInstance.regenerateDeviceId();
+        }}
+      />
     </SdkSectionLayout>
   );
 };
-
-// const styles = StyleSheet.create({});
