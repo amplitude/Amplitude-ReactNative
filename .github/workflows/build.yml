@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [12.x, 14.x]
-        os: [macos-10.14] # TODO(kelson): add ubuntu-18.04 or ubuntu-latest when getting closer to release
+        os: [macOS-latest] # TODO(kelson): add ubuntu-18.04 or ubuntu-latest when getting closer to release
     runs-on: ${{ matrix.os }}
 
     steps:
