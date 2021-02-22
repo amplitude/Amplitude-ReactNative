@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { amplitudeInstance } from '../utils/amplitude';
 
@@ -15,6 +16,7 @@ export const UserIDSection = () => {
       />
       <Button
         title="Set User ID"
+        style={styles.button}
         onPress={() => {
           if (userId.length > 0) {
             amplitudeInstance.setUserId(userId);
@@ -24,3 +26,9 @@ export const UserIDSection = () => {
     </SdkSectionLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: '30%',
+  },
+});

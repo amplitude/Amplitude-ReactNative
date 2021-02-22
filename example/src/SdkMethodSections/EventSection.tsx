@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Input, Button } from 'react-native-elements';
 import { amplitudeInstance } from '../utils/amplitude';
-// import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
 
@@ -15,6 +15,7 @@ export const EventSection = () => {
         onChangeText={setEventName}
       />
       <Button
+        style={styles.button}
         title={'Send Event'}
         onPress={() => {
           if (eventName.length > 0) {
@@ -26,4 +27,8 @@ export const EventSection = () => {
   );
 };
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    width: '30%',
+  },
+});

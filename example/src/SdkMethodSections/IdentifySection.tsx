@@ -25,6 +25,7 @@ export const IdentifySection = () => {
         />
       </View>
       <Button
+        style={styles.button}
         title={'Send Identify'}
         onPress={() => {
           if (propertyKey.length > 0 && propertyValue.length > 0) {
@@ -48,5 +49,8 @@ const styles = StyleSheet.create({
   inputView: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  button: {
+    width: '40%',
   },
 });
