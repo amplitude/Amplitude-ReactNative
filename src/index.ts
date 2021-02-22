@@ -7,6 +7,8 @@ import { AmplitudeReactNativeModule } from './types';
 const AmplitudeReactNative: AmplitudeReactNativeModule =
   NativeModules.AmplitudeReactNative;
 
+export { Identify };
+
 export class Amplitude {
   protected static _instances: Record<string, Amplitude>;
   protected static _defaultInstanceName = '$default_instance';
