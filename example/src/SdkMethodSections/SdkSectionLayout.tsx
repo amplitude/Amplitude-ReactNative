@@ -17,7 +17,14 @@ export const SdkSectionLayout = ({
 }: Props) => (
   <View style={styles.container}>
     <Text style={styles.heading}>{heading}</Text>
-    <View style={bodyContainerStyle && bodyContainerStyle}>{children}</View>
+    <View
+      style={StyleSheet.compose(
+        styles.body,
+        bodyContainerStyle && bodyContainerStyle,
+      )}
+    >
+      {children}
+    </View>
     <Divider style={styles.divider} />
   </View>
 );
@@ -30,11 +37,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     color: DARK_GRAY,
-    paddingBottom: 5,
+    paddingBottom: 10,
   },
   divider: {
     height: 1,
     width: '100%',
     color: '#323131',
+  },
+  body: {
+    paddingBottom: 10,
   },
 });
