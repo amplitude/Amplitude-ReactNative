@@ -55,6 +55,10 @@ export class Amplitude {
     return AmplitudeReactNative.disableCoppaControl(this.instanceName);
   }
 
+  regenerateDeviceId(): Promise<boolean> {
+    return AmplitudeReactNative.regenerateDeviceId(this.instanceName);
+  }
+
   setOptOut(optOut: boolean): Promise<void> {
     return AmplitudeReactNative.setOptOut(this.instanceName, optOut);
   }
