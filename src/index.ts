@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 
 import { Constants } from './constants';
-import { Identify } from './identify';
+//import { Identify } from './identify';
 import { AmplitudeReactNativeModule } from './types';
 
 const AmplitudeReactNative: AmplitudeReactNativeModule =
@@ -31,145 +31,191 @@ export class Amplitude {
     return this._instances[instanceName];
   }
 
-  init(apiKey: string): Promise<void | boolean> {
+  init(apiKey: string): Promise<boolean> {
     return AmplitudeReactNative.initialize(this.instanceName, apiKey);
   }
 
+  /**
+   * Tracks an event. Events are saved locally.
+   * Uploads are batched to occur every 30 events or every 30 seconds
+   * (whichever comes first), as well as on app close.
+   *
+   * @param eventType The name of the event you wish to track.
+   */
   logEvent(
     eventType: string,
     // eventProperties?: Record<string, unknown>,
-  ): Promise<void | boolean> {
-    // const properties = this._baseProperties();
-    // properties.eventType = eventType;
-    // if (eventProperties) {
-    //   properties.eventProperties = eventProperties;
-    // }
+  ): Promise<boolean> {
     return AmplitudeReactNative.logEvent(this.instanceName, eventType);
   }
 
-  enableCoppaControl(): Promise<void | boolean> {
+  /**
+   * Enable COPPA (Children's Online Privacy Protection Act) restrictions on
+   * IDFA, IDFV, city, IP address and location tracking.
+   *
+   * This can be used by any customer that does not want to collect IDFA, IDFV,
+   * city, IP address and location tracking.
+   */
+  enableCoppaControl(): Promise<boolean> {
     return AmplitudeReactNative.enableCoppaControl(this.instanceName);
   }
 
-  disableCoppaControl(): Promise<void | boolean> {
+  /**
+   * Disable COPPA (Children's Online Privacy Protection Act) restrictions on
+   * IDFA, IDFV, city, IP address and location tracking.
+   */
+  disableCoppaControl(): Promise<boolean> {
     return AmplitudeReactNative.disableCoppaControl(this.instanceName);
   }
 
+  /**
+   * Regenerate the DeviceId
+   */
   regenerateDeviceId(): Promise<boolean> {
     return AmplitudeReactNative.regenerateDeviceId(this.instanceName);
   }
 
-  setOptOut(optOut: boolean): Promise<void> {
+  /**
+   * Enables tracking opt out.
+   *
+   * If the user wants to opt out of all tracking, use this method to enable
+   * opt out for them. Once opt out is enabled, no events will be saved locally
+   * or sent to the server.
+   *
+   * Calling this method again with enabled set to false will turn tracking back on for the user.
+   *
+   * @param optOut
+   */
+  setOptOut(optOut: boolean): Promise<boolean> {
     return AmplitudeReactNative.setOptOut(this.instanceName, optOut);
   }
 
-  trackingSessionEvents(trackSessionEvents: boolean): Promise<void> {
+  /**
+   * Whether to automatically log start and end session events corresponding to
+   * the start and end of a user's session.
+   *
+   * @param trackSessionEvents
+   */
+  trackingSessionEvents(trackSessionEvents: boolean): Promise<boolean> {
     return AmplitudeReactNative.trackingSessionEvents(
       this.instanceName,
       trackSessionEvents,
     );
   }
 
-  setUserId(userId: string): Promise<void> {
+  /**
+   * If your app has its own login system that you want to track users with,
+   * you can set the userId.
+   *
+   * @param userId
+   */
+  setUserId(userId: string): Promise<boolean> {
     return AmplitudeReactNative.setUserId(this.instanceName, userId);
   }
 
-  setServerUrl(serverUrl: string): Promise<void> {
+  /**
+   * Customize the destination for server url.
+   *
+   * @param serverUrl
+   */
+  setServerUrl(serverUrl: string): Promise<boolean> {
     return AmplitudeReactNative.setServerUrl(this.instanceName, serverUrl);
   }
 
-  setUseDynamicConfig(useDynamicConfig: boolean): Promise<void> {
-    const properties = this._baseProperties();
-    properties.useDynamicConfig = useDynamicConfig;
-    // make native call to setUseDynamicConfig via RN Bridge
-    return Promise.resolve();
+  /**
+   * Dynamically adjust server URL
+   *
+   * @param useDynamicConfig
+   */
+  setUseDynamicConfig(useDynamicConfig: boolean): Promise<boolean> {
+    return AmplitudeReactNative.setUseDynamicConfig(
+      this.instanceName,
+      useDynamicConfig,
+    );
   }
 
+  // TODO(Alyssa): will implement in followup ticket
   logRevenue(
     productIdentifier: string,
     quantity: number,
     price: number,
-  ): Promise<void> {
-    const properties = this._baseProperties();
-    properties.productIdentifier = productIdentifier;
-    properties.quantity = quantity;
-    properties.price = price;
-    // make native call to logRevenue via RN Bridge
-    return Promise.resolve();
+    receipt: string,
+    receiptType: string,
+  ): Promise<boolean> {
+    return AmplitudeReactNative.logRevenue(
+      this.instanceName,
+      productIdentifier,
+      quantity,
+      price,
+      receipt,
+      receiptType,
+    );
   }
 
-  logRevenueAmount(amount: number): Promise<void> {
-    const properties = this._baseProperties();
-    properties.amount = amount;
-    // make native call to logRevenueAmount via RN Bridge
-    return Promise.resolve();
+  // TODO(Alyssa): will implement in followup ticket
+  identify(): Promise<boolean> {
+    return AmplitudeReactNative.identify(this.instanceName);
   }
 
-  identify(identifyInstance: Identify): Promise<void> {
-    const properties = this._baseProperties();
-    properties.userProperties = identifyInstance.payload;
-    // make native call to identify via RN Bridge
-    return Promise.resolve();
+  setGroup(groupType: string, groupName: string | string[]): Promise<boolean> {
+    return AmplitudeReactNative.setGroup(
+      this.instanceName,
+      groupType,
+      groupName,
+    );
   }
 
-  setGroup(groupType: string, groupName: string | string[]): Promise<void> {
-    const properties = this._baseProperties();
-    properties.groupType = groupType;
-    properties.groupName = groupName;
-    // make native call to setGroup via RN Bridge
-    return Promise.resolve();
-  }
-
+  // TODO(Alyssa): will implement in followup ticket
   groupIdentify(
     groupType: string,
     groupName: string | string[],
-    groupIdentify: Identify,
-  ): Promise<void> {
-    const properties = this._baseProperties();
-    properties.groupType = groupType;
-    properties.groupName = groupName;
-    properties.userProperties = groupIdentify.payload;
+  ): Promise<boolean> {
     // TODO(kelson): update this to use proper param:
-    properties.outOfSession = false;
-    // make native call to groupIdentify via RN Bridge
-    return Promise.resolve();
+    return AmplitudeReactNative.groupIdentify(
+      this.instanceName,
+      groupType,
+      groupName,
+    );
   }
 
-  setUserProperties(userProperties: Record<string, unknown>): Promise<void> {
-    const properties = this._baseProperties();
-    properties.userProperties = userProperties;
-    // make native call to setUserProperties via RN Bridge
-    return Promise.resolve();
+  /**
+   * Adds properties that are tracked on the user level.
+   * Note: Property keys must be [String] objects and values must be serializable.
+   *
+   * @param userProperties
+   */
+  setUserProperties(userProperties: Record<string, unknown>): Promise<boolean> {
+    return AmplitudeReactNative.setUserProperties(
+      this.instanceName,
+      userProperties,
+    );
   }
 
-  clearUserProperties(): Promise<void> {
-    // make native call to clearUserProperties via RN Bridge, passing baseProperties
-    return Promise.resolve();
+  /**
+   * Clears all properties that are tracked on the user level.
+   *
+   * Note: This operation is irreversible!!
+   */
+  clearUserProperties(): Promise<boolean> {
+    return AmplitudeReactNative.clearUserProperties(this.instanceName);
   }
 
-  uploadEvents(): Promise<void> {
-    // make native call to uploadEvents via RN Bridge, passing baseProperties
-    return Promise.resolve();
+  /**
+   * Upload all unsent events.
+   */
+  uploadEvents(): Promise<boolean> {
+    return AmplitudeReactNative.uploadEvents(this.instanceName);
   }
 
   // Private bridging calls
-  protected _setLibraryName(libraryName: string): Promise<void> {
-    const properties = this._baseProperties();
-    properties.libraryName = libraryName;
-    // make native call to setLibraryName via RN Bridge
-    return Promise.resolve();
+  protected _setLibraryName(libraryName: string): Promise<boolean> {
+    return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);
   }
 
-  protected _setLibraryVersion(libraryVersion: string): Promise<void> {
-    const properties = this._baseProperties();
-    properties.libraryVersion = libraryVersion;
-    // make native call to setLibraryVersion via RN Bridge
-    return Promise.resolve();
-  }
-
-  _baseProperties(): Record<string, unknown> {
-    return {
-      instanceName: this.instanceName,
-    };
+  protected _setLibraryVersion(libraryVersion: string): Promise<boolean> {
+    return AmplitudeReactNative.setLibraryVersion(
+      this.instanceName,
+      libraryVersion,
+    );
   }
 }
