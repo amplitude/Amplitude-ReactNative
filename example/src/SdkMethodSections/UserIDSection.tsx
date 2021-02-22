@@ -10,7 +10,7 @@ export const UserIDSection = () => {
   return (
     <SdkSectionLayout heading={'User ID'}>
       <Input
-        placeholder={'Enter User ID to set'}
+        placeholder={'Enter User ID'}
         onChangeText={setUserId}
         value={userId}
       />
