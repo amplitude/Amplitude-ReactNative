@@ -115,24 +115,40 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func logRevenue(_ instanceName: String,
-                    productIdentifier: String,
-                    quantity: Int,
-                    price: NSNumber,
-                    receipt: String? = nil,
-                    receiptType: String? = nil,
+    func logRevenueV2(_ instanceName: String,
+                    userProperties: [String: Any],
                     resolver resolve: RCTPromiseResolveBlock,
                     rejecter reject: RCTPromiseRejectBlock) -> Void {
-        let revenue = AMPRevenue()
-        revenue.setProductIdentifier(productIdentifier)
-        revenue.setQuantity(quantity)
-        revenue.setPrice(price)
-        revenue.setReceipt(receipt?.data(using: .utf8))
-        revenue.setRevenueType(receiptType)
+        let revenue = populateRevenue(userProperties);
         Amplitude.instance(withName: instanceName).logRevenueV2(revenue)
         resolve(true)
     }
-    
+
+    private func populateRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
+        let revenue = new AMPRevenue();
+        if userProperties['productId'] != nil {
+            revenue.setProductId(userProperties['productId']);
+        } 
+        if userProperties['price'] != nil {
+            revenue.setPrice(userProperties['price']);
+        }
+        if userProperties['quantity'] != nil {
+            revenue.setQuantity(userProperties['quantity']);
+        } else {
+            revenue.setQuantity(1);
+        }
+        if userProperties['revenueType'] != nil {
+            revenue.setRevenueType(userProperties['revenueType']);
+        }
+        if userProperties['receipt'] {
+            revenue.setReceipt(userProperties['receipt'].data(using: .utf8));
+        }
+        if userProperties['eventProperties'] != nil {
+            revenue.setEventProperties(userProperties['eventProperties'])''
+        }
+        return revenue;
+    }
+
     @objc
     func identify(_ instanceName: String,
                   userProperties: [String: [String : NSObject]],

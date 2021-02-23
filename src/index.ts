@@ -136,22 +136,15 @@ export class Amplitude {
     );
   }
 
-  // TODO(Alyssa): will implement in followup ticket
-  logRevenue(
-    productIdentifier: string,
-    quantity: number,
-    price: number,
-    receipt: string,
-    receiptType: string,
-  ): Promise<boolean> {
-    return AmplitudeReactNative.logRevenue(
-      this.instanceName,
-      productIdentifier,
-      quantity,
-      price,
-      receipt,
-      receiptType,
-    );
+  logRevenueV2(userProperties: {
+    productId: string;
+    price: number;
+    quantity?: number;
+    revenueType?: string;
+    receipt?: string;
+    eventProperties?: { [key: string]: any };
+  }): Promise<boolean> {
+    return AmplitudeReactNative.logRevenueV2(this.instanceName, userProperties);
   }
 
   // TODO(Alyssa): will implement in followup ticket

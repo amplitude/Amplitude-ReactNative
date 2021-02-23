@@ -1,5 +1,14 @@
 type PropertiesObject = { [key: string]: any };
 
+type RevenueProperties = {
+  productId: string;
+  price: number;
+  quantity?: number;
+  revenueType?: string;
+  receipt?: string;
+  eventProperties?: { [key: string]: any };
+};
+
 export interface AmplitudeReactNativeModule {
   initialize(instanceName: string, apiKey: string): Promise<boolean>;
   logEvent(instanceName: string, eventType: string): Promise<boolean>;
@@ -22,22 +31,10 @@ export interface AmplitudeReactNativeModule {
   ): Promise<boolean>;
   setUserId(instanceName: string, userId: string): Promise<boolean>;
   setServerUrl(instanceName: string, serverUrl: string): Promise<boolean>;
-  logRevenue(
-    instanceName: string,
-    productIdentifier: string,
-    quantity: number,
-    price: number,
-    receipt: string,
-    receiptType: string,
-  ): Promise<boolean>;
   logRevenueV2(
     instanceName: string,
-    logRevenueV2: string,
-    price: number,
-    quantity: number,
-    revenueType: string,
-    eventProperties: PropertiesObject,
-  ): Promise<void>;
+    userProperties: RevenueProperties,
+  ): Promise<boolean>;
   // TODO: Correct the type once implemented:
   identify(instanceName: string): Promise<boolean>;
   // TODO: Correct the type once implemented:
