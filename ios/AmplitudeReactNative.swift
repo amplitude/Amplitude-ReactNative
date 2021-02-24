@@ -115,24 +115,15 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func logRevenue(_ instanceName: String,
-                    productIdentifier: String,
-                    quantity: Int,
-                    price: NSNumber,
-                    receipt: String? = nil,
-                    receiptType: String? = nil,
-                    resolver resolve: RCTPromiseResolveBlock,
-                    rejecter reject: RCTPromiseRejectBlock) -> Void {
-        let revenue = AMPRevenue()
-        revenue.setProductIdentifier(productIdentifier)
-        revenue.setQuantity(quantity)
-        revenue.setPrice(price)
-        revenue.setReceipt(receipt?.data(using: .utf8))
-        revenue.setRevenueType(receiptType)
+    func logRevenueV2(_ instanceName: String,
+                      userProperties: [String: Any],
+                      resolver resolve: RCTPromiseResolveBlock,
+                      rejecter reject: RCTPromiseRejectBlock) -> Void {
+        let revenue = populateRevenue(userProperties);
         Amplitude.instance(withName: instanceName).logRevenueV2(revenue)
         resolve(true)
     }
-    
+
     @objc
     func identify(_ instanceName: String,
                   userProperties: [String: [String : NSObject]],
@@ -192,9 +183,33 @@ class ReactNative: NSObject {
         resolve(true)
     }
     
+    private func populateRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
+        let revenue = AMPRevenue()
+        if userProperties["productId"] != nil {
+            revenue.setProductIdentifier((userProperties["productId"] as! String))
+        } 
+        if userProperties["price"] != nil {
+            revenue.setPrice((userProperties["price"] as! NSNumber))
+        }
+        if userProperties["quantity"] != nil {
+            revenue.setQuantity((userProperties["quantity"] as! Int))
+        } else {
+            revenue.setQuantity(1)
+        }
+        if userProperties["revenueType"] != nil {
+            revenue.setRevenueType((userProperties["revenueType"] as! String))
+        }
+        if userProperties["receipt"] != nil {
+            revenue.setReceipt((userProperties["receipt"] as! String).data(using: .utf8))
+        }
+        if userProperties["eventProperties"] != nil {
+            revenue.setEventProperties((userProperties["eventProperties"] as! [String : Any]))
+        }
+        return revenue;
+    }
+
     private func createIdentify(_ userProperties: [String: [String : NSObject]]) -> AMPIdentify {
         let identify = AMPIdentify()
-        
         for (operation, properties) in userProperties {
             for (key, value) in properties {
                 switch operation {

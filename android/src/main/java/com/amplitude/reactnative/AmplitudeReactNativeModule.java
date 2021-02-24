@@ -13,6 +13,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 
 import org.json.JSONObject;
+import org.json.JSONException;
 
 @ReactModule(name = AmplitudeReactNativeModule.NAME)
 public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
@@ -136,15 +137,10 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logRevenueV2(String instanceName, String productId, double price, int quantity, String revenueType, JSONObject eventProperties, Promise promise) {
+    public void logRevenueV2(String instanceName, JSONObject properties, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Revenue revenue = new Revenue();
-            revenue.setProductId(productId);
-            revenue.setPrice(price);
-            revenue.setQuantity(quantity);
-            revenue.setRevenueType(revenueType);
-            revenue.setEventProperties(eventProperties);
+            Revenue revenue = populateRevenue(properties);
             client.logRevenueV2(revenue);
             promise.resolve(true);
         }
@@ -210,7 +206,37 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    // TODO: Implement this
+    private Revenue populateRevenue(JSONObject properties) {
+        Revenue revenue = new Revenue();
+        try {
+            if (properties.has("productId")) {
+                revenue.setProductId(properties.getString("productId"));
+            } 
+            if (properties.has("price")) {
+                revenue.setPrice(properties.getDouble("price"));
+            }
+            if (properties.has("quantity")) {
+                revenue.setQuantity(properties.getInt("quantity"));
+            } else {
+                revenue.setQuantity(1);
+            }
+            if (properties.has("revenueType")) {
+                revenue.setRevenueType(properties.getString("revenueType"));
+            }
+            if (properties.has("receipt") && properties.has("receiptSignature")) {
+                String receipt = properties.getString("receipt");
+                String receiptSignature = properties.getString("receiptSignature"); 
+                revenue.setReceipt(receipt, receiptSignature);
+            }
+            if (properties.has("eventProperties")) {
+                revenue.setEventProperties(properties.getJSONObject("eventProperties"));
+            }
+        } catch(JSONException e) {
+            //do nothing
+        }
+        return revenue;
+    }
+
     private Identify createIdentify() {
         Identify identify = new Identify();
         return identify;
