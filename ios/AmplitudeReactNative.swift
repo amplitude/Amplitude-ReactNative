@@ -116,9 +116,9 @@ class ReactNative: NSObject {
     
     @objc
     func logRevenueV2(_ instanceName: String,
-                    userProperties: [String: Any],
-                    resolver resolve: RCTPromiseResolveBlock,
-                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+                      userProperties: [String: Any],
+                      resolver resolve: RCTPromiseResolveBlock,
+                      rejecter reject: RCTPromiseRejectBlock) -> Void {
         let revenue = populateRevenue(userProperties);
         Amplitude.instance(withName: instanceName).logRevenueV2(revenue)
         resolve(true)

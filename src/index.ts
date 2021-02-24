@@ -137,7 +137,7 @@ export class Amplitude {
   }
 
   /**
-   * Wrapper for logging Revenue data.
+   * Log revenue data.
    *
    * Note: price is a required field to log revenue events.
    * If quantity is not specified then defaults to 1.
