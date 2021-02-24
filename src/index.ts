@@ -156,11 +156,23 @@ export class Amplitude {
     return AmplitudeReactNative.logRevenueV2(this.instanceName, userProperties);
   }
 
-  // TODO(Alyssa): will implement in followup ticket
-  identify(): Promise<boolean> {
-    return AmplitudeReactNative.identify(this.instanceName);
+  /**
+   * Send an identify call containing user property operations to Amplitude servers.
+   *
+   * @param identifyInstance
+   */
+  identify(identifyInstance: Identify): Promise<boolean> {
+    return AmplitudeReactNative.identify(
+      this.instanceName,
+      identifyInstance.payload,
+    );
   }
 
+  /**
+   * Adds a user to a group or groups. You need to specify a groupType and groupName(s).
+   * @param groupType
+   * @param groupName
+   */
   setGroup(groupType: string, groupName: string | string[]): Promise<boolean> {
     return AmplitudeReactNative.setGroup(
       this.instanceName,
@@ -169,16 +181,23 @@ export class Amplitude {
     );
   }
 
-  // TODO(Alyssa): will implement in followup ticket
+  /**
+   * Set or update properties of particular groups
+   *
+   * @param groupType
+   * @param groupName
+   * @param identifyInstance
+   */
   groupIdentify(
     groupType: string,
     groupName: string | string[],
+    identifyInstance: Identify,
   ): Promise<boolean> {
-    // TODO(kelson): update this to use proper param:
     return AmplitudeReactNative.groupIdentify(
       this.instanceName,
       groupType,
       groupName,
+      identifyInstance,
     );
   }
 
