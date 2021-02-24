@@ -157,7 +157,8 @@ export class Amplitude {
   }
 
   // TODO(Alyssa): will implement in followup ticket
-  identify(): Promise<boolean> {
+  // and remove _ from identifyInstance
+  identify(_identifyInstance: Identify): Promise<boolean> {
     return AmplitudeReactNative.identify(this.instanceName);
   }
 
@@ -173,12 +174,13 @@ export class Amplitude {
   groupIdentify(
     groupType: string,
     groupName: string | string[],
+    identifyInstance: Identify,
   ): Promise<boolean> {
-    // TODO(kelson): update this to use proper param:
     return AmplitudeReactNative.groupIdentify(
       this.instanceName,
       groupType,
       groupName,
+      identifyInstance.payload,
     );
   }
 

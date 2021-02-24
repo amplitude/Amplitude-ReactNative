@@ -1,14 +1,71 @@
 import * as React from 'react';
-// import { StyleSheet } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
+import { amplitudeInstance } from '../utils/amplitude';
+
+const sanitizeNumericInput = (value: string): string =>
+  value.replace(/[^0-9.]/g, '');
 
 export const RevenueSection = () => {
+  const [productId, setProductId] = React.useState<string>('');
+  const [price, setPrice] = React.useState<string>('');
+  const [quantity, setQuantity] = React.useState<string>('');
+
   return (
     <SdkSectionLayout heading={'Revenue'}>
-      {/* UI for revenue calls goes here */}
+      <Input
+        placeholder={'Product ID'}
+        value={productId}
+        onChangeText={setProductId}
+        containerStyle={styles.inputContainer}
+      />
+      <View style={styles.inputView}>
+        <Input
+          placeholder={'Price'}
+          value={`${price}`}
+          onChangeText={(newPrice) => setPrice(sanitizeNumericInput(newPrice))}
+          containerStyle={styles.halfInput}
+        />
+        <Input
+          placeholder={'Quantity'}
+          value={`${quantity}`}
+          onChangeText={(newQuantity) =>
+            setQuantity(sanitizeNumericInput(newQuantity))
+          }
+          containerStyle={styles.halfInput}
+        />
+      </View>
+      <Button
+        style={styles.button}
+        title={'Send Revenue'}
+        disabled={!productId || !price || !quantity}
+        onPress={() => {
+          amplitudeInstance.logRevenueV2({
+            productId,
+            price: Number(price),
+            quantity: Number(quantity),
+          });
+        }}
+      />
     </SdkSectionLayout>
   );
 };
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  halfInput: {
+    width: '50%',
+  },
+  inputContainer: {
+    width: '100%',
+    marginLeft: -5,
+  },
+  inputView: {
+    flexDirection: 'row',
+    marginLeft: -5,
+  },
+  button: {
+    width: '50%',
+  },
+});
