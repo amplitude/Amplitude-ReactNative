@@ -13,14 +13,14 @@ export const EventSection = () => {
         placeholder={'Event Name'}
         value={eventName}
         onChangeText={setEventName}
+        containerStyle={styles.inputContainer}
       />
       <Button
         style={styles.button}
         title={'Send Event'}
+        disabled={!eventName}
         onPress={() => {
-          if (eventName.length > 0) {
-            amplitudeInstance.logEvent(eventName);
-          }
+          amplitudeInstance.logEvent(eventName);
         }}
       />
     </SdkSectionLayout>
@@ -30,5 +30,8 @@ export const EventSection = () => {
 const styles = StyleSheet.create({
   button: {
     width: '30%',
+  },
+  inputContainer: {
+    marginLeft: -5,
   },
 });

@@ -27,10 +27,9 @@ export const GroupAccountSection = () => {
       <Button
         style={styles.button}
         title={'Set Group'}
+        disabled={!groupType || !groupValue}
         onPress={() => {
-          if (groupType.length > 0 && groupValue.length > 0) {
-            amplitudeInstance.setGroup(groupType, groupValue);
-          }
+          amplitudeInstance.setGroup(groupType, groupValue);
         }}
       />
     </SdkSectionLayout>
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    marginLeft: -5,
   },
   button: {
     width: '40%',

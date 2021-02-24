@@ -197,7 +197,7 @@ export class Amplitude {
       this.instanceName,
       groupType,
       groupName,
-      identifyInstance,
+      identifyInstance.payload,
     );
   }
 

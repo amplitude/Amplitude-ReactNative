@@ -38,11 +38,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: DARK_GRAY,
     paddingBottom: 10,
+    paddingLeft: 5,
   },
   divider: {
     height: 1,
     width: '100%',
     color: '#323131',
+    marginTop: 5,
   },
   body: {
     paddingBottom: 10,
