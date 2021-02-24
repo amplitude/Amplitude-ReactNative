@@ -13,14 +13,14 @@ export const UserIDSection = () => {
         placeholder={'Enter User ID'}
         onChangeText={setUserId}
         value={userId}
+        containerStyle={styles.inputContainer}
       />
       <Button
         title="Set User ID"
         style={styles.button}
+        disabled={!userId}
         onPress={() => {
-          if (userId.length > 0) {
-            amplitudeInstance.setUserId(userId);
-          }
+          amplitudeInstance.setUserId(userId);
         }}
       />
     </SdkSectionLayout>
@@ -30,5 +30,8 @@ export const UserIDSection = () => {
 const styles = StyleSheet.create({
   button: {
     width: '30%',
+  },
+  inputContainer: {
+    marginLeft: -5,
   },
 });

@@ -27,12 +27,11 @@ export const IdentifySection = () => {
       <Button
         style={styles.button}
         title={'Send Identify'}
+        disabled={!propertyKey || !propertyValue}
         onPress={() => {
-          if (propertyKey.length > 0 && propertyValue.length > 0) {
-            const identify = new Identify();
-            identify.set(propertyKey, propertyValue);
-            amplitudeInstance.identify(identify);
-          }
+          const identify = new Identify();
+          identify.set(propertyKey, propertyValue);
+          amplitudeInstance.identify(identify);
         }}
       />
     </SdkSectionLayout>
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
   inputView: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginLeft: -5,
   },
   button: {
     width: '40%',

@@ -38,7 +38,7 @@ export interface AmplitudeReactNativeModule {
   ): Promise<boolean>;
   identify(
     instanceName: string,
-    identifyPayload: { [key: string]: any },
+    identifyPayload: Record<string, any>,
   ): Promise<boolean>;
   setGroup(
     instanceName: string,
@@ -49,7 +49,7 @@ export interface AmplitudeReactNativeModule {
     instanceName: string,
     groupType: string,
     groupName: string | string[],
-    identifyPayload: { [key: string]: any },
+    identifyPayload: Record<string, any>,
   ): Promise<boolean>;
   setUserProperties(
     instanceName: string,
