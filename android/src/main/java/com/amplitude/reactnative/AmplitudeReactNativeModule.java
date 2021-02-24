@@ -237,7 +237,6 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         return revenue;
     }
 
-    // TODO: Implement this
     private Identify createIdentify() {
         Identify identify = new Identify();
         return identify;
