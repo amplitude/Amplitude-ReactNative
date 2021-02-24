@@ -136,12 +136,21 @@ export class Amplitude {
     );
   }
 
+  /**
+   * Wrapper for logging Revenue data.
+   *
+   * Note: price is a required field to log revenue events.
+   * If quantity is not specified then defaults to 1.
+   *
+   * @param userProperties
+   */
   logRevenueV2(userProperties: {
-    productId: string;
     price: number;
+    productId?: string;
     quantity?: number;
     revenueType?: string;
     receipt?: string;
+    receiptSignature?: string;
     eventProperties?: { [key: string]: any };
   }): Promise<boolean> {
     return AmplitudeReactNative.logRevenueV2(this.instanceName, userProperties);

@@ -1,11 +1,12 @@
 type PropertiesObject = { [key: string]: any };
 
 type RevenueProperties = {
-  productId: string;
   price: number;
+  productId?: string;
   quantity?: number;
   revenueType?: string;
   receipt?: string;
+  receiptSignature?: string;
   eventProperties?: { [key: string]: any };
 };
 
