@@ -36,24 +36,26 @@ export interface AmplitudeReactNativeModule {
     instanceName: string,
     userProperties: RevenueProperties,
   ): Promise<boolean>;
-  // TODO: Correct the type once implemented:
-  identify(instanceName: string): Promise<boolean>;
-  // TODO: Correct the type once implemented:
+  identify(
+    instanceName: string,
+    identifyPayload: { [key: string]: any },
+  ): Promise<boolean>;
+  setGroup(
+    instanceName: string,
+    groupType: string,
+    groupName: string | string[],
+  ): Promise<boolean>;
   groupIdentify(
     instanceName: string,
     groupType: string,
     groupName: string | string[],
+    identifyPayload: { [key: string]: any },
   ): Promise<boolean>;
   setUserProperties(
     instanceName: string,
     userProperties: PropertiesObject,
   ): Promise<boolean>;
   clearUserProperties(instanceName: string): Promise<boolean>;
-  setGroup(
-    instanceName: string,
-    groupType: string,
-    groupName: string | string[],
-  ): Promise<boolean>;
   uploadEvents(instanceName: string): Promise<boolean>;
   // TODO: Correct the type once implemented:
   createIdentify(): Promise<void>;

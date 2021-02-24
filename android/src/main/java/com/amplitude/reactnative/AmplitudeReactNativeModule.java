@@ -15,6 +15,8 @@ import com.facebook.react.module.annotations.ReactModule;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import java.util.Iterator;
+
 @ReactModule(name = AmplitudeReactNativeModule.NAME)
 public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     public static final String NAME = "AmplitudeReactNative";
@@ -146,25 +148,21 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    // TODO: Correct the signature and finish the impl
     @ReactMethod
-    public void identify(String instanceName, Promise promise) {
+    public void identify(String instanceName, JSONObject userProperties, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = new Identify();
-            identify = createIdentify();
+            Identify identify = createIdentify(userProperties);
             client.identify(identify);
             promise.resolve(true);
         }
     }
 
-    // TODO: Correct the signature and finish the impl
     @ReactMethod
-    public void groupIdentify(String instanceName, String groupType, String groupName, Promise promise) {
+    public void groupIdentify(String instanceName, String groupType, String groupName, JSONObject userProperties, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = new Identify();
-            identify = createIdentify();
+            Identify identify = createIdentify(userProperties);
             client.groupIdentify(groupType, groupName, identify);
             promise.resolve(true);
         }
@@ -211,7 +209,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         try {
             if (properties.has("productId")) {
                 revenue.setProductId(properties.getString("productId"));
-            } 
+            }
             if (properties.has("price")) {
                 revenue.setPrice(properties.getDouble("price"));
             }
@@ -225,7 +223,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
             }
             if (properties.has("receipt") && properties.has("receiptSignature")) {
                 String receipt = properties.getString("receipt");
-                String receiptSignature = properties.getString("receiptSignature"); 
+                String receiptSignature = properties.getString("receiptSignature");
                 revenue.setReceipt(receipt, receiptSignature);
             }
             if (properties.has("eventProperties")) {
@@ -237,8 +235,100 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         return revenue;
     }
 
-    private Identify createIdentify() {
+    private Identify createIdentify(JSONObject userProperties) {
         Identify identify = new Identify();
+        Iterator<String> operations = userProperties.keys();
+        while(operations.hasNext()) {
+            String operation = operations.next();
+            try {
+                JSONObject userPropertiesObj = userProperties.getJSONObject(operation);
+                Iterator<String> keys = userPropertiesObj.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    switch(operation) {
+                        case "$add":
+                            switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
+                                case "Double":
+                                    identify.add(key, userPropertiesObj.getDouble(key));
+                                case "Integer":
+                                    identify.add(key, userPropertiesObj.getInt(key));
+                                case "Long":
+                                    identify.add(key, userPropertiesObj.getLong(key));
+                                case "String":
+                                    identify.add(key, userPropertiesObj.getString(key));
+                                case "JSONObject":
+                                    identify.add(key, userPropertiesObj.getJSONObject(key));
+                            }
+                        case "$append":
+                            switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
+                                case "Double":
+                                    identify.append(key, userPropertiesObj.getDouble(key));
+                                case "Integer":
+                                    identify.append(key, userPropertiesObj.getInt(key));
+                                case "Long":
+                                    identify.append(key, userPropertiesObj.getLong(key));
+                                case "String":
+                                    identify.append(key, userPropertiesObj.getString(key));
+                                case "JSONObject":
+                                    identify.append(key, userPropertiesObj.getJSONObject(key));
+                                case "getJSONArray":
+                                    identify.append(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$prepend":
+                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
+                                case "Double":
+                                    identify.prepend(key, userPropertiesObj.getDouble(key));
+                                case "Integer":
+                                    identify.prepend(key, userPropertiesObj.getInt(key));
+                                case "Long":
+                                    identify.prepend(key, userPropertiesObj.getLong(key));
+                                case "String":
+                                    identify.prepend(key, userPropertiesObj.getString(key));
+                                case "JSONObject":
+                                    identify.prepend(key, userPropertiesObj.getJSONObject(key));
+                                case "getJSONArray":
+                                    identify.prepend(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$set":
+                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
+                                case "Double":
+                                    identify.set(key, userPropertiesObj.getDouble(key));
+                                case "Integer":
+                                    identify.set(key, userPropertiesObj.getInt(key));
+                                case "Long":
+                                    identify.set(key, userPropertiesObj.getLong(key));
+                                case "String":
+                                    identify.set(key, userPropertiesObj.getString(key));
+                                case "JSONObject":
+                                    identify.set(key, userPropertiesObj.getJSONObject(key));
+                                case "getJSONArray":
+                                    identify.set(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$setOnce":
+                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
+                                case "Double":
+                                    identify.setOnce(key, userPropertiesObj.getDouble(key));
+                                case "Integer":
+                                    identify.setOnce(key, userPropertiesObj.getInt(key));
+                                case "Long":
+                                    identify.setOnce(key, userPropertiesObj.getLong(key));
+                                case "String":
+                                    identify.setOnce(key, userPropertiesObj.getString(key));
+                                case "JSONObject":
+                                    identify.setOnce(key, userPropertiesObj.getJSONObject(key));
+                                case "getJSONArray":
+                                    identify.setOnce(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$unset":
+                            identify.unset(key); // value is default to `-`
+                        default:
+                            break;
+                    }
+                }
+            } catch (JSONException e) {
+                //do nothing
+            }
+        }
         return identify;
     }
 }
