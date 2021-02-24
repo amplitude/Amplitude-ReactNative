@@ -43,6 +43,7 @@ export interface AmplitudeReactNativeModule {
     instanceName: string,
     groupType: string,
     groupName: string | string[],
+    identifyPayload: Record<string, any>,
   ): Promise<boolean>;
   setUserProperties(
     instanceName: string,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { initAmplitude } from './utils/amplitude';
 import { AppHeader } from './AppHeader';
@@ -20,17 +20,19 @@ initAmplitude();
 export default function App() {
   return (
     <SafeAreaProvider>
-      <ScrollView style={styles.container}>
-        <AppHeader />
-        <UserIDSection />
-        <DeviceIDSection />
-        <EventSection />
-        <IdentifySection />
-        <GroupAccountSection />
-        <GroupIdentifySection />
-        <RevenueSection />
-        <FlushEventsSection />
-      </ScrollView>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
+          <AppHeader />
+          <UserIDSection />
+          <DeviceIDSection />
+          <EventSection />
+          <IdentifySection />
+          <GroupAccountSection />
+          <GroupIdentifySection />
+          <RevenueSection />
+          <FlushEventsSection />
+        </ScrollView>
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 }
