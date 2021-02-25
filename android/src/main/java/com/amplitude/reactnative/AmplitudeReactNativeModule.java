@@ -144,7 +144,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         JSONObject revenueProperties = ReactNativeHelper.convertMapToJson(properties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Revenue revenue = populateRevenue(revenueProperties);
+            Revenue revenue = createRevenue(revenueProperties);
             client.logRevenueV2(revenue);
             promise.resolve(true);
         }
@@ -209,7 +209,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private Revenue populateRevenue(JSONObject properties) {
+    private Revenue createRevenue(JSONObject properties) {
         Revenue revenue = new Revenue();
         try {
             if (properties.has("productId")) {
@@ -263,6 +263,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                     identify.add(key, userPropertiesObj.getString(key));
                                 case "JSONObject":
                                     identify.add(key, userPropertiesObj.getJSONObject(key));
+                                case "JSONArray":
+                                    identify.add(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$append":
                             switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
@@ -276,7 +278,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                     identify.append(key, userPropertiesObj.getString(key));
                                 case "JSONObject":
                                     identify.append(key, userPropertiesObj.getJSONObject(key));
-                                case "getJSONArray":
+                                case "JSONArray":
                                     identify.append(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$prepend":
@@ -291,7 +293,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                     identify.prepend(key, userPropertiesObj.getString(key));
                                 case "JSONObject":
                                     identify.prepend(key, userPropertiesObj.getJSONObject(key));
-                                case "getJSONArray":
+                                case "JSONArray":
                                     identify.prepend(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$set":
@@ -306,7 +308,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                     identify.set(key, userPropertiesObj.getString(key));
                                 case "JSONObject":
                                     identify.set(key, userPropertiesObj.getJSONObject(key));
-                                case "getJSONArray":
+                                case "JSONArray":
                                     identify.set(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$setOnce":
