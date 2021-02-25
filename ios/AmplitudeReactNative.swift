@@ -33,6 +33,13 @@ class ReactNative: NSObject {
     }
     
     @objc
+    func regenerateDeviceId(_ instanceName: String, 
+                            resolver resolve: RCTPromiseResolveBlock,
+                            rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).regenerateDeviceId()
+    }
+
+    @objc
     func setOptOut(_ instanceName: String,
                    optOut: Bool,
                    resolver resolve: RCTPromiseResolveBlock,
