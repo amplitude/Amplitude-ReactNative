@@ -126,7 +126,7 @@ class ReactNative: NSObject {
                       userProperties: [String: Any],
                       resolver resolve: RCTPromiseResolveBlock,
                       rejecter reject: RCTPromiseRejectBlock) -> Void {
-        let revenue = populateRevenue(userProperties);
+        let revenue = createRevenue(userProperties);
         Amplitude.instance(withName: instanceName).logRevenueV2(revenue)
         resolve(true)
     }
@@ -190,7 +190,7 @@ class ReactNative: NSObject {
         resolve(true)
     }
     
-    private func populateRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
+    private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()
         if userProperties["productId"] != nil {
             revenue.setProductIdentifier((userProperties["productId"] as! String))
