@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
+import com.facebook.react.bridge.ReadableMap;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -139,40 +140,44 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logRevenueV2(String instanceName, JSONObject properties, Promise promise) {
+    public void logRevenueV2(String instanceName, ReadableMap properties, Promise promise) throws JSONException {
+        JSONObject revenueProperties = ReactNativeHelper.convertMapToJson(properties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Revenue revenue = populateRevenue(properties);
+            Revenue revenue = populateRevenue(revenueProperties);
             client.logRevenueV2(revenue);
             promise.resolve(true);
         }
     }
 
     @ReactMethod
-    public void identify(String instanceName, JSONObject userProperties, Promise promise) {
+    public void identify(String instanceName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject identifyProperties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = createIdentify(userProperties);
+            Identify identify = createIdentify(identifyProperties);
             client.identify(identify);
             promise.resolve(true);
         }
     }
 
     @ReactMethod
-    public void groupIdentify(String instanceName, String groupType, String groupName, JSONObject userProperties, Promise promise) {
+    public void groupIdentify(String instanceName, String groupType, String groupName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject groupIdentifyProperties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = createIdentify(userProperties);
+            Identify identify = createIdentify(groupIdentifyProperties);
             client.groupIdentify(groupType, groupName, identify);
             promise.resolve(true);
         }
     }
 
     @ReactMethod
-    public void setUserProperties(String instanceName, JSONObject userProperties, Promise promise) {
+    public void setUserProperties(String instanceName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject properties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            client.setUserProperties(userProperties);
+            client.setUserProperties(properties);
             promise.resolve(true);
         }
     }
