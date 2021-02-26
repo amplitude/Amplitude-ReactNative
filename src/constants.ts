@@ -1,4 +1,9 @@
-export const Constants = {
-  packageName: 'ampitude-reactnative',
-  packageVersion: '0.0.1',
+import { name, version } from '../package.json';
+
+export const Constants: {
+  packageName: string;
+  packageVersion: string;
+} = {
+  packageName: name,
+  packageVersion: version,
 };
