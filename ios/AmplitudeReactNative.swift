@@ -37,6 +37,7 @@ class ReactNative: NSObject {
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).regenerateDeviceId()
+        resolve(true)
     }
 
     @objc
