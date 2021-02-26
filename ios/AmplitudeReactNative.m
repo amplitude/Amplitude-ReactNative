@@ -8,6 +8,8 @@ RCT_EXTERN_METHOD(enableCoppaControl:(NSString *)instanceName resolver:(RCTPromi
 
 RCT_EXTERN_METHOD(disableCoppaControl:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(regenerateDeviceId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(setOptOut:(NSString *)instanceName optOut:(BOOL)optOut resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(setLibraryName:(NSString *)instanceName libraryName:(NSString *)libraryName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
@@ -28,7 +30,7 @@ RCT_EXTERN_METHOD(logEventWithProperties:(NSString *)instanceName eventType:(NSS
 
 RCT_EXTERN_METHOD(setUserProperties:(NSString *)instanceName userProperties:(NSDictionary *)userProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(logRevenue:(NSString *)instanceName productIdentifier:(NSString *)productIdentifier quantity:(NSInteger)quantity price:(NSNumber)price receipt:(NSString*)receipt resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(logRevenueV2:(NSString *)instanceName userProperties:(NSDictionary *)userProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(identify:(NSString *)instanceName userProperties:(NSDictionary *)userProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 

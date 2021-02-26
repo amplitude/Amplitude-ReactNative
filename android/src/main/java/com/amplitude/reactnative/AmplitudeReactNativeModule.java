@@ -11,9 +11,13 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
+import com.facebook.react.bridge.ReadableMap;
 
 import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONArray;
+
+import java.util.Iterator;
 
 @ReactModule(name = AmplitudeReactNativeModule.NAME)
 public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
@@ -137,44 +141,44 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logRevenueV2(String instanceName, JSONObject properties, Promise promise) {
+    public void logRevenueV2(String instanceName, ReadableMap properties, Promise promise) throws JSONException {
+        JSONObject revenueProperties = ReactNativeHelper.convertMapToJson(properties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Revenue revenue = populateRevenue(properties);
+            Revenue revenue = createRevenue(revenueProperties);
             client.logRevenueV2(revenue);
             promise.resolve(true);
         }
     }
 
-    // TODO: Correct the signature and finish the impl
     @ReactMethod
-    public void identify(String instanceName, Promise promise) {
+    public void identify(String instanceName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject identifyProperties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = new Identify();
-            identify = createIdentify();
+            Identify identify = createIdentify(identifyProperties);
             client.identify(identify);
             promise.resolve(true);
         }
     }
 
-    // TODO: Correct the signature and finish the impl
     @ReactMethod
-    public void groupIdentify(String instanceName, String groupType, String groupName, Promise promise) {
+    public void groupIdentify(String instanceName, String groupType, String groupName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject groupIdentifyProperties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            Identify identify = new Identify();
-            identify = createIdentify();
+            Identify identify = createIdentify(groupIdentifyProperties);
             client.groupIdentify(groupType, groupName, identify);
             promise.resolve(true);
         }
     }
 
     @ReactMethod
-    public void setUserProperties(String instanceName, JSONObject userProperties, Promise promise) {
+    public void setUserProperties(String instanceName, ReadableMap userProperties, Promise promise) throws JSONException {
+        JSONObject properties = ReactNativeHelper.convertMapToJson(userProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
-            client.setUserProperties(userProperties);
+            client.setUserProperties(properties);
             promise.resolve(true);
         }
     }
@@ -206,12 +210,12 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private Revenue populateRevenue(JSONObject properties) {
+    private Revenue createRevenue(JSONObject properties) {
         Revenue revenue = new Revenue();
         try {
             if (properties.has("productId")) {
                 revenue.setProductId(properties.getString("productId"));
-            } 
+            }
             if (properties.has("price")) {
                 revenue.setPrice(properties.getDouble("price"));
             }
@@ -225,7 +229,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
             }
             if (properties.has("receipt") && properties.has("receiptSignature")) {
                 String receipt = properties.getString("receipt");
-                String receiptSignature = properties.getString("receiptSignature"); 
+                String receiptSignature = properties.getString("receiptSignature");
                 revenue.setReceipt(receipt, receiptSignature);
             }
             if (properties.has("eventProperties")) {
@@ -237,8 +241,95 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         return revenue;
     }
 
-    private Identify createIdentify() {
+    private Identify createIdentify(JSONObject userProperties) {
         Identify identify = new Identify();
+        Iterator<String> operations = userProperties.keys();
+        while(operations.hasNext()) {
+            String operation = operations.next();
+            try {
+                JSONObject userPropertiesObj = userProperties.getJSONObject(operation);
+                Iterator<String> keys = userPropertiesObj.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    switch(operation) {
+                        case "$add":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.add(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.add(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.add(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.add(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.add(key, userPropertiesObj.getJSONObject(key));
+                            }
+                        case "$append":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.append(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.append(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.append(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.append(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.append(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.append(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$prepend":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.prepend(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.prepend(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.prepend(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.prepend(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.prepend(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.prepend(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$set":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.set(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.set(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.set(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.set(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.set(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.set(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$setOnce":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.setOnce(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.setOnce(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.setOnce(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.setOnce(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.setOnce(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.setOnce(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$unset":
+                            identify.unset(key); // value is default to `-`
+                        default:
+                            break;
+                    }
+                }
+            } catch (JSONException e) {
+                //do nothing
+            }
+        }
         return identify;
     }
 }

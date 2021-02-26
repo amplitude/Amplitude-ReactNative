@@ -1,5 +1,5 @@
 export class Identify {
-  payload: Record<string, unknown>;
+  payload: Record<string, Record<string, unknown>>;
 
   private static OP_SET = '$set';
   private static OP_SET_ONCE = '$setOnce';
@@ -54,6 +54,6 @@ export class Identify {
     if (!Object.prototype.hasOwnProperty.call(this.payload, key)) {
       this.payload[key] = {};
     }
-    return this.payload;
+    return this.payload[key];
   }
 }
