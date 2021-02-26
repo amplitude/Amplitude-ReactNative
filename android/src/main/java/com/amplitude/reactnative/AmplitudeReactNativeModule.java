@@ -15,6 +15,7 @@ import com.facebook.react.bridge.ReadableMap;
 
 import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONArray;
 
 import java.util.Iterator;
 
@@ -252,79 +253,72 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                     String key = keys.next();
                     switch(operation) {
                         case "$add":
-                            switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
-                                case "Double":
-                                    identify.add(key, userPropertiesObj.getDouble(key));
-                                case "Integer":
-                                    identify.add(key, userPropertiesObj.getInt(key));
-                                case "Long":
-                                    identify.add(key, userPropertiesObj.getLong(key));
-                                case "String":
-                                    identify.add(key, userPropertiesObj.getString(key));
-                                case "JSONObject":
-                                    identify.add(key, userPropertiesObj.getJSONObject(key));
-                                case "JSONArray":
-                                    identify.add(key, userPropertiesObj.getJSONArray(key));
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.add(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.add(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.add(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.add(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.add(key, userPropertiesObj.getJSONObject(key));
                             }
                         case "$append":
-                            switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
-                                case "Double":
-                                    identify.append(key, userPropertiesObj.getDouble(key));
-                                case "Integer":
-                                    identify.append(key, userPropertiesObj.getInt(key));
-                                case "Long":
-                                    identify.append(key, userPropertiesObj.getLong(key));
-                                case "String":
-                                    identify.append(key, userPropertiesObj.getString(key));
-                                case "JSONObject":
-                                    identify.append(key, userPropertiesObj.getJSONObject(key));
-                                case "JSONArray":
-                                    identify.append(key, userPropertiesObj.getJSONArray(key));
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.append(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.append(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.append(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.append(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.append(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.append(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$prepend":
-                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
-                                case "Double":
-                                    identify.prepend(key, userPropertiesObj.getDouble(key));
-                                case "Integer":
-                                    identify.prepend(key, userPropertiesObj.getInt(key));
-                                case "Long":
-                                    identify.prepend(key, userPropertiesObj.getLong(key));
-                                case "String":
-                                    identify.prepend(key, userPropertiesObj.getString(key));
-                                case "JSONObject":
-                                    identify.prepend(key, userPropertiesObj.getJSONObject(key));
-                                case "JSONArray":
-                                    identify.prepend(key, userPropertiesObj.getJSONArray(key));
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.prepend(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.prepend(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.prepend(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.prepend(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.prepend(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.prepend(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$set":
-                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
-                                case "Double":
-                                    identify.set(key, userPropertiesObj.getDouble(key));
-                                case "Integer":
-                                    identify.set(key, userPropertiesObj.getInt(key));
-                                case "Long":
-                                    identify.set(key, userPropertiesObj.getLong(key));
-                                case "String":
-                                    identify.set(key, userPropertiesObj.getString(key));
-                                case "JSONObject":
-                                    identify.set(key, userPropertiesObj.getJSONObject(key));
-                                case "JSONArray":
-                                    identify.set(key, userPropertiesObj.getJSONArray(key));
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.set(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.set(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.set(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.set(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.set(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.set(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$setOnce":
-                        switch(((Object)userPropertiesObj.get(key)).getClass().getSimpleName()) {
-                                case "Double":
-                                    identify.setOnce(key, userPropertiesObj.getDouble(key));
-                                case "Integer":
-                                    identify.setOnce(key, userPropertiesObj.getInt(key));
-                                case "Long":
-                                    identify.setOnce(key, userPropertiesObj.getLong(key));
-                                case "String":
-                                    identify.setOnce(key, userPropertiesObj.getString(key));
-                                case "JSONObject":
-                                    identify.setOnce(key, userPropertiesObj.getJSONObject(key));
-                                case "getJSONArray":
-                                    identify.setOnce(key, userPropertiesObj.getJSONArray(key));
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.setOnce(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.setOnce(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.setOnce(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.setOnce(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.setOnce(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.setOnce(key, userPropertiesObj.getJSONArray(key));
                             }
                         case "$unset":
                             identify.unset(key); // value is default to `-`
