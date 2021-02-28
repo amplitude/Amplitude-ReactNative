@@ -39,7 +39,7 @@ export class Identify {
     this.addOp(Identify.OP_APPEND, key, value);
   }
 
-  protected addOp(op: string, key: string, value: unknown): void {
+  private addOp(op: string, key: string, value: unknown): void {
     if (!Identify.ALL_OPS.includes(op)) {
       throw new Error(
         `Unknown Identify operation: ${op} called with key: ${key} value: ${String(

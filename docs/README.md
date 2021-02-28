@@ -1,3 +1,5 @@
+@amplitude/react-native / [Exports](modules.md)
+
 # @amplitude/react-native
 
 Official Amplitude React Native SDK
