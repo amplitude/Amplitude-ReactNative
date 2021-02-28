@@ -85,7 +85,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "rm -rf docs && yarn run gen-docs && lint-staged"
+      "pre-commit": "rm -rf docs && yarn run gen-docs && git add docs && lint-staged"
     }
   },
   "lint-staged": {
