@@ -8,19 +8,34 @@ Official Amplitude React Native SDK
 npm install @amplitude/react-native
 ```
 
+## Documentation
+
+[Exported Modules](./docs/modules.md)
+
 ## Usage
 
-```js
-import ReactNative from "@amplitude/react-native";
+```tsx
+import * as React from 'react';
+import { Button } from 'react-native';
+import { Amplitude, Identify } from '@amplitude/react-native';
 
-// ...
+const ampInstance = Amplitude.getInstance();
+ampInstance.init(API_KEY);
 
-const result = await ReactNative.multiply(3, 7);
+export function MyApp() {
+  return (
+    <Button
+      title="Log Event"
+      onPress={() => ampInstance.logEvent('BUTTON_CLICKED')}
+    />
+  );
+}
 ```
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the
+repository and the development workflow.
 
 ## License
 

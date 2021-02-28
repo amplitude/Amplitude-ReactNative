@@ -10,11 +10,11 @@ const AmplitudeReactNative: AmplitudeReactNativeModule =
 export { Identify };
 
 export class Amplitude {
-  protected static _instances: Record<string, Amplitude>;
-  protected static _defaultInstanceName = '$default_instance';
+  private static _instances: Record<string, Amplitude>;
+  private static _defaultInstanceName = '$default_instance';
   instanceName: string;
 
-  constructor(instanceName: string) {
+  private constructor(instanceName: string) {
     this.instanceName = instanceName;
     this._setLibraryName(Constants.packageName);
     this._setLibraryVersion(Constants.packageVersion);
@@ -231,11 +231,11 @@ export class Amplitude {
   }
 
   // Private bridging calls
-  protected _setLibraryName(libraryName: string): Promise<boolean> {
+  private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);
   }
 
-  protected _setLibraryVersion(libraryVersion: string): Promise<boolean> {
+  private _setLibraryVersion(libraryVersion: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryVersion(
       this.instanceName,
       libraryVersion,
