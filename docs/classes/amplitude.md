@@ -1,4 +1,4 @@
-[@amplitude/react-native]() / [Exports](../modules.md) / Amplitude
+[@amplitude/react-native](../README.md) / [Exports](../modules.md) / Amplitude
 
 # Class: Amplitude
 

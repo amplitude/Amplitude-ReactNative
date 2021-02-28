@@ -1,4 +1,4 @@
-[@amplitude/react-native]() / [Exports](../modules.md) / Identify
+[@amplitude/react-native](../README.md) / [Exports](../modules.md) / Identify
 
 # Class: Identify
 
