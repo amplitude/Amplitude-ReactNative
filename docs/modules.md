@@ -1,4 +1,4 @@
-[@amplitude/react-native]() / Exports
+[@amplitude/react-native](LIBRARY.md) / Exports
 
 # @amplitude/react-native
 

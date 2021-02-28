@@ -85,7 +85,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn run gen-docs && lint-staged"
     }
   },
   "lint-staged": {
