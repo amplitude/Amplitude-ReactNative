@@ -33,7 +33,8 @@
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
-    "gen-docs": "typedoc --tsconfig ./tsconfig.build.json"
+    "create-docs": "typedoc --tsconfig ./tsconfig.build.json",
+    "gen-docs": "rm -rf docs && yarn run gen-docs && git add docs"
   },
   "keywords": [
     "react-native",
@@ -85,7 +86,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "rm -rf docs && yarn run gen-docs && git add docs && lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
