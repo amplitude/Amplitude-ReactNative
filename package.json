@@ -34,7 +34,7 @@
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
     "create-docs": "typedoc --tsconfig ./tsconfig.build.json",
-    "gen-docs": "rm -rf docs && yarn run gen-docs && git add docs"
+    "gen-docs": "rm -rf docs && yarn run create-docs && git add docs"
   },
   "keywords": [
     "react-native",

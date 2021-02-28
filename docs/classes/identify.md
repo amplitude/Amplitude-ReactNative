@@ -15,7 +15,6 @@
 ### Methods
 
 - [add](identify.md#add)
-- [addOp](identify.md#addop)
 - [append](identify.md#append)
 - [set](identify.md#set)
 - [setOnce](identify.md#setonce)
@@ -47,22 +46,6 @@ Name | Type |
 :------ | :------ |
 `key` | *string* |
 `value` | *number* |
-
-**Returns:** *void*
-
-___
-
-### addOp
-
-▸ `Protected`**addOp**(`op`: *string*, `key`: *string*, `value`: *unknown*): *void*
-
-#### Parameters:
-
-Name | Type |
-:------ | :------ |
-`op` | *string* |
-`key` | *string* |
-`value` | *unknown* |
 
 **Returns:** *void*
 
