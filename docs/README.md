@@ -12,7 +12,7 @@ npm install @amplitude/react-native
 
 ## Documentation
 
-[Exported Modules](./docs/modules.md)
+[Exported Modules](docs/modules.md)
 
 ## Usage
 
