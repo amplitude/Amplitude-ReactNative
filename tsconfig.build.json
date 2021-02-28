@@ -6,7 +6,8 @@
     "entryPoints": ["./src/index.ts"],
     "exclude": ["./src/types.ts", "./src/__tests__/**/*"],
     "excludePrivate": true,
-    "entryDocument": "./README.md",
+    "entryDocument": "",
+    "readme": "README.md",
     "disableSources": true
   }
 }
