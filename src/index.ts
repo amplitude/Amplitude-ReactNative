@@ -144,7 +144,7 @@ export class Amplitude {
    *
    * @param userProperties
    */
-  logRevenueV2(userProperties: {
+  logRevenue(userProperties: {
     price: number;
     productId?: string;
     quantity?: number;
