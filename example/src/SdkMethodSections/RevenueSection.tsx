@@ -42,7 +42,7 @@ export const RevenueSection = () => {
         title={'Send Revenue'}
         disabled={!productId || !price || !quantity}
         onPress={() => {
-          amplitudeInstance.logRevenueV2({
+          amplitudeInstance.logRevenue({
             productId,
             price: Number(price),
             quantity: Number(quantity),

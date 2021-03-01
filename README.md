@@ -2,6 +2,10 @@
 
 Official Amplitude React Native SDK
 
+```diff
+- This SDK is in active development and is not currently guaranteed to be stable.  Use at your own risk.
+```
+
 ## Installation
 
 ```sh

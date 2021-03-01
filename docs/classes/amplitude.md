@@ -17,7 +17,7 @@
 - [identify](amplitude.md#identify)
 - [init](amplitude.md#init)
 - [logEvent](amplitude.md#logevent)
-- [logRevenueV2](amplitude.md#logrevenuev2)
+- [logRevenue](amplitude.md#logrevenue)
 - [regenerateDeviceId](amplitude.md#regeneratedeviceid)
 - [setGroup](amplitude.md#setgroup)
 - [setOptOut](amplitude.md#setoptout)
@@ -140,9 +140,9 @@ Name | Type | Description |
 
 ___
 
-### logRevenueV2
+### logRevenue
 
-▸ **logRevenueV2**(`userProperties`: { `eventProperties?`: *undefined* \| { [key: string]: *any*;  } ; `price`: *number* ; `productId?`: *undefined* \| *string* ; `quantity?`: *undefined* \| *number* ; `receipt?`: *undefined* \| *string* ; `receiptSignature?`: *undefined* \| *string* ; `revenueType?`: *undefined* \| *string*  }): *Promise*<boolean\>
+▸ **logRevenue**(`userProperties`: { `eventProperties?`: *undefined* \| { [key: string]: *any*;  } ; `price`: *number* ; `productId?`: *undefined* \| *string* ; `quantity?`: *undefined* \| *number* ; `receipt?`: *undefined* \| *string* ; `receiptSignature?`: *undefined* \| *string* ; `revenueType?`: *undefined* \| *string*  }): *Promise*<boolean\>
 
 Log revenue data.
 
