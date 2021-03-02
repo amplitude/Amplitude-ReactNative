@@ -51,6 +51,16 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void logEventWithProperties(String instanceName, String eventType, ReadableMap eventProperties, Promise promise) throws JSONException {
+        JSONObject convertedEventProperties = ReactNativeHelper.convertMapToJson(properties);
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.logEvent(eventType, convertedEventProperties);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
     public void enableCoppaControl(String instanceName, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {

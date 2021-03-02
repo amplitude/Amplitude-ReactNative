@@ -13,6 +13,11 @@ type RevenueProperties = {
 export interface AmplitudeReactNativeModule {
   initialize(instanceName: string, apiKey: string): Promise<boolean>;
   logEvent(instanceName: string, eventType: string): Promise<boolean>;
+  logEventWithProperties(
+    instanceName: string,
+    eventType: string,
+    eventProperties: Record<string, unknown>,
+  ): Promise<boolean>;
   enableCoppaControl(instanceName: string): Promise<boolean>;
   disableCoppaControl(instanceName: string): Promise<boolean>;
   regenerateDeviceId(instanceName: string): Promise<boolean>;
