@@ -9,7 +9,7 @@ Official Amplitude React Native SDK
 ## Installation
 
 ```sh
-npm install @amplitude/react-native
+yarn add @amplitude/react-native
 ```
 
 ## Documentation
