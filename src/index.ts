@@ -46,8 +46,15 @@ export class Amplitude {
    */
   logEvent(
     eventType: string,
-    // eventProperties?: Record<string, unknown>,
+    eventProperties?: Record<string, unknown>,
   ): Promise<boolean> {
+    if (eventProperties && Object.keys(eventProperties).length > 0) {
+      return AmplitudeReactNative.logEventWithProperties(
+        this.instanceName,
+        eventType,
+        eventProperties,
+      );
+    }
     return AmplitudeReactNative.logEvent(this.instanceName, eventType);
   }
 
