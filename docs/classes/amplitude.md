@@ -124,7 +124,7 @@ ___
 
 ### logEvent
 
-▸ **logEvent**(`eventType`: *string*): *Promise*<boolean\>
+▸ **logEvent**(`eventType`: *string*, `eventProperties?`: *Record*<string, unknown\>): *Promise*<boolean\>
 
 Tracks an event. Events are saved locally.
 Uploads are batched to occur every 30 events or every 30 seconds
@@ -135,6 +135,7 @@ Uploads are batched to occur every 30 events or every 30 seconds
 Name | Type | Description |
 :------ | :------ | :------ |
 `eventType` | *string* | The name of the event you wish to track.    |
+`eventProperties?` | *Record*<string, unknown\> | - |
 
 **Returns:** *Promise*<boolean\>
 
