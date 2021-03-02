@@ -5,13 +5,13 @@
 Official Amplitude React Native SDK
 
 ```diff
-- This SDK is in active development and is not currently guaranteed to be stable.  Use at your own risk.
+! v2 of this SDK is newly developed and has just been released.  Please file any bug reports under issues. PR's welcome!
 ```
 
 ## Installation
 
 ```sh
-npm install @amplitude/react-native
+yarn add @amplitude/react-native
 ```
 
 ## Documentation
