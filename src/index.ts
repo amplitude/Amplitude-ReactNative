@@ -16,7 +16,7 @@ export class Amplitude {
 
   private constructor(instanceName: string) {
     this.instanceName = instanceName;
-    this._setLibraryName(Constants.packageName);
+    this._setLibraryName(Constants.packageSourceName);
     this._setLibraryVersion(Constants.packageVersion);
   }
 

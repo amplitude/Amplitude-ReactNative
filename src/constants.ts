@@ -1,9 +1,11 @@
-import { name, version } from '../package.json';
+import { version } from '../package.json';
+
+const packageSourceName = 'amplitude-react-native';
 
 export const Constants: {
-  packageName: string;
+  packageSourceName: string;
   packageVersion: string;
 } = {
-  packageName: name,
+  packageSourceName,
   packageVersion: version,
 };
