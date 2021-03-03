@@ -64,4 +64,8 @@ export interface AmplitudeReactNativeModule {
   uploadEvents(instanceName: string): Promise<boolean>;
   // TODO: Correct the type once implemented:
   createIdentify(): Promise<void>;
+  idfaMethod(
+    name: string,
+    callback: (error: unknown, result: Record<string, unknown>) => void,
+  ): void;
 }

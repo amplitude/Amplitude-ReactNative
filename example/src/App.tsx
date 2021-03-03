@@ -15,7 +15,15 @@ import {
   RevenueSection,
 } from './SdkMethodSections';
 
-initAmplitude();
+const amplitude = initAmplitude();
+amplitude.idfaMethod('Kelson', (
+  _ /* error object */,
+  result: { success?: boolean; value?: string },
+) => {
+  if (result.success) {
+    console.warn(result?.value || '');
+  }
+});
 
 export default function App() {
   return (

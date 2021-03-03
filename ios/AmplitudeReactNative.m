@@ -42,4 +42,6 @@ RCT_EXTERN_METHOD(clearUserProperties:(NSString *)instanceName resolver:(RCTProm
 
 RCT_EXTERN_METHOD(uploadEvents:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(idfaMethod:(NSString*)name callback:(RCTResponseSenderBlock)callback)
+
 @end

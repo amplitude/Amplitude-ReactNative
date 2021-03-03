@@ -33,6 +33,13 @@ export class Amplitude {
     return this._instances[instanceName];
   }
 
+  idfaMethod(
+    name: string,
+    cb: (err: unknown, res: Record<string, unknown>) => void,
+  ) {
+    return AmplitudeReactNative.idfaMethod(name, cb);
+  }
+
   init(apiKey: string): Promise<boolean> {
     return AmplitudeReactNative.initialize(this.instanceName, apiKey);
   }
