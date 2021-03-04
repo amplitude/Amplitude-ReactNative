@@ -1,4 +1,4 @@
-type PropertiesObject = { [key: string]: any };
+type PropertiesObject = Record<string, any>;
 
 type RevenueProperties = {
   price: number;
@@ -7,7 +7,7 @@ type RevenueProperties = {
   revenueType?: string;
   receipt?: string;
   receiptSignature?: string;
-  eventProperties?: { [key: string]: any };
+  eventProperties?: PropertiesObject;
 };
 
 export interface AmplitudeReactNativeModule {
@@ -16,7 +16,7 @@ export interface AmplitudeReactNativeModule {
   logEventWithProperties(
     instanceName: string,
     eventType: string,
-    eventProperties: Record<string, unknown>,
+    eventProperties: PropertiesObject,
   ): Promise<boolean>;
   enableCoppaControl(instanceName: string): Promise<boolean>;
   disableCoppaControl(instanceName: string): Promise<boolean>;
@@ -43,7 +43,7 @@ export interface AmplitudeReactNativeModule {
   ): Promise<boolean>;
   identify(
     instanceName: string,
-    identifyPayload: { [key: string]: any },
+    identifyPayload: PropertiesObject,
   ): Promise<boolean>;
   setGroup(
     instanceName: string,
@@ -62,6 +62,4 @@ export interface AmplitudeReactNativeModule {
   ): Promise<boolean>;
   clearUserProperties(instanceName: string): Promise<boolean>;
   uploadEvents(instanceName: string): Promise<boolean>;
-  // TODO: Correct the type once implemented:
-  createIdentify(): Promise<void>;
 }
