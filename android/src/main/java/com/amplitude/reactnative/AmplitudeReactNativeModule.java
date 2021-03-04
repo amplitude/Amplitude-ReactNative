@@ -52,7 +52,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logEventWithProperties(String instanceName, String eventType, ReadableMap eventProperties, Promise promise) throws JSONException {
-        JSONObject convertedEventProperties = ReactNativeHelper.convertMapToJson(properties);
+        JSONObject convertedEventProperties = ReactNativeHelper.convertMapToJson(eventProperties);
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.logEvent(eventType, convertedEventProperties);
