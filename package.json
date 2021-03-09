@@ -107,6 +107,7 @@
       "publish": true
     },
     "github": {
+      "releaseName": "${version}",
       "release": true
     },
     "plugins": {
