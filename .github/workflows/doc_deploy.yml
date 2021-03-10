@@ -1,0 +1,72 @@
+name: Publish documentation on GitHub Pages
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main, workflow ]
+    paths:
+      - 'src/index.ts'
+      - 'README.md'
+  pull_request:
+    branches: [ main, workflow ]
+    paths:
+      - 'src/index.ts'
+      - 'README.md'
+  workflow_dispatch:
+  
+jobs:
+  authorize: 
+    name: Authorize
+    runs-on: ubuntu-latest
+    steps:
+      - name: ${{ github.actor }} permission check to do a release
+        uses: octokit/request-action@v2.0.0
+        with:
+          route: GET /repos/${{ github.repository }}/collaborators/${{ github.actor }}
+          #repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  gh-pages:
+    name: Publish to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [authorize]
+    steps:
+      #This step checks out a copy of your repository. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      # Runs a single command using the runners shell
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+        # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 12.x
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
+      - name: Generate website assets
+        run:  yarn docs:gen-docs 
+        
+      - name: Add key to allow access to repository
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          echo "${{ secrets.GH_PAGES_DEPLOY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cat <<EOT >> ~/.ssh/config
+          Host github.com
+          HostName github.com
+          IdentityFile ~/.ssh/id_rsa
+          EOT
+          
+      - name: Release to GitHub Pages
+        env: 
+          USE_SSH: true
+        run: |
+          git config --global user.email "amplitude-sdk-bot@users.noreply.github.com"
+          git config --global user.name "amplitude-sdk-bot"
+          yarn docs:deploy
