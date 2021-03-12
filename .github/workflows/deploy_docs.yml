@@ -17,19 +17,18 @@ on:
 jobs:
   authorize: 
     name: Authorize
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: ${{ github.actor }} permission check to do a release
         uses: octokit/request-action@v2.0.0
         with:
           route: GET /repos/${{ github.repository }}/collaborators/${{ github.actor }}
-          #repository: ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   gh-pages:
     name: Publish to GitHub Pages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04t
     needs: [authorize]
     steps:
       #This step checks out a copy of your repository. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -65,8 +64,7 @@ jobs:
           
       - name: Release to GitHub Pages
         env: 
-          USE_SSH: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.email "amplitude-sdk-bot@users.noreply.github.com"
-          git config --global user.name "amplitude-sdk-bot"
-          yarn docs:deploy
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn docs:deploy -u "amplitude-sdk-bot <amplitude-sdk-bot@users.noreply.github.com>"
