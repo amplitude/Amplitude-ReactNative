@@ -13,7 +13,7 @@
       	 `import { Amplitude, Identify } from '@amplitude/react-native'`
   5. The API's between the two libraries are very similar but there are some subtle differences discussed below.  You can reference the [documentation](https://amplitude.github.io/Amplitude-ReactNative/modules.html) for detailed API documentation and typing for `@amplitude/react-native`:
 		-  calls to `Amplitude.getInstance().init` only require passing your API key.  There is no options object.  
-		 - The following `amplitude-js` methods are not supported in @amplitude/react-native:
+		 - The following `amplitude-js` methods are not supported in `@amplitude/react-native`:
 			 - `setDomain`
 			 - `getSessionId`
 			 - `isNewSession`
