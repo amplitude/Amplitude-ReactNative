@@ -18,6 +18,9 @@ A React Native SDK for tracking events and revenue to [Amplitude](https://www.am
 * For using the SDK, please visit our :100:[Developer Center](https://developers.amplitude.com/docs/react-native-setup).
 * For developing the SDK, please visit our [CONTRIBUTING.md](https://github.com/amplitude/Amplitude-ReactNative/blob/main/CONTRIBUTING.md).
 
+# Previously used amplitude-js and looking to migrate to @amplitude/react-native?
+* Please follow the steps detailed in our [migration guide](https://github.com/amplitude/Amplitude-ReactNative/blob/main/MIGRATION_GUIDE.md)
+
 ## License
 MIT
 
