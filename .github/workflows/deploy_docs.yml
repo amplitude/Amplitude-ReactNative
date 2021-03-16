@@ -28,7 +28,7 @@ jobs:
           
   gh-pages:
     name: Publish to GitHub Pages
-    runs-on: ubuntu-18.04t
+    runs-on: ubuntu-18.04
     needs: [authorize]
     steps:
       #This step checks out a copy of your repository. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
