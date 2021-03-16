@@ -116,5 +116,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
