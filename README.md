@@ -6,9 +6,9 @@
 </p>
 
 <div align="center">
-  
-[![npm version](https://badge.fury.io/js/%40amplitude%2Freact-native.svg)](https://badge.fury.io/js/%40amplitude%2Freact-native)
-
+  <a href="https://badge.fury.io/js/%40amplitude%2Freact-native">
+  	<img src="https://badge.fury.io/js/%40amplitude%2Freact-native.svg" style="max-width:100%;" alt="npm version">
+  </a>
 </div>
 
 # Official Amplitude React Native SDK
