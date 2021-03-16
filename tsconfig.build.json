@@ -2,7 +2,6 @@
   "extends": "./tsconfig",
   "exclude": ["example"],
   "typedocOptions": {
-    "plugin": ["typedoc-plugin-markdown"],
     "entryPoints": ["./src/index.ts"],
     "exclude": ["./src/types.ts", "./src/__tests__/**/*"],
     "excludePrivate": true,
