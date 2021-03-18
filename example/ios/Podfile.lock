@@ -1,7 +1,7 @@
 PODS:
-  - Amplitude (7.2.0)
-  - amplitude-react-native (2.0.6):
-    - Amplitude (= 7.2.0)
+  - Amplitude (8.2.0)
+  - amplitude-react-native (2.0.7):
+    - Amplitude (= 8.2.0)
     - React-Core
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -354,8 +354,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Amplitude: c948c6f99c7f798c196523b2a5584367401d910f
-  amplitude-react-native: 5b55093d32b8677ed1ae422785fe365460c5258e
+  Amplitude: 263118b9e691e73a1c864b05bb08a3aff3636d16
+  amplitude-react-native: e6235eed208e739894712a208b9eb7b7fb6c29f4
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
@@ -386,6 +386,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: f717ddf68ecae4cc3dd73b42765c421acc931c6b
+PODFILE CHECKSUM: 6bddd71eea0a361e1bc99ca8b3fca38fd9e2abf5
 
 COCOAPODS: 1.10.1

@@ -356,18 +356,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ReactNativeExample/Pods-ReactNativeExample-resources.sh",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/AMPBubbleView.xib",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/AMPInfoViewController.xib",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/cancel.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/cancel@2x.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/cancel@3x.png",
 				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/ComodoRsaDomainValidationCA.der",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-banner.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-banner@2x.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-banner@3x.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-button.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-button@2x.png",
-				"${PODS_ROOT}/Amplitude/Sources/Amplitude/Resources/logo-button@3x.png",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -388,18 +377,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMPBubbleView.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMPInfoViewController.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/cancel.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/cancel@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/cancel@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ComodoRsaDomainValidationCA.der",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-banner.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-banner@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-banner@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-button.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-button@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo-button@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
