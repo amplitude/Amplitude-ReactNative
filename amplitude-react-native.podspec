@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React-Core"
-  s.dependency "Amplitude", "7.2.0"
+  s.dependency "Amplitude"
 end
