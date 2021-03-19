@@ -6,10 +6,8 @@
 
  2. Install @amplitude/react-native
 
- 3. If targeting iOS, Add the following to the top of your Podfile:
-    - `use_modular_headers!`
-    - `use_frameworks!` (We are currently working on finding a way to avoid this requirement to allow for Flipper Support, but as of now it is required.  Updates coming soon.)
-
+ 3. If targeting iOS, cd into `/ios` and run `pod install`
+ 
  4. Replace imports with one of the following:
     - `import { Amplitude } from '@amplitude/react-native'`
     - `import { Identify } from '@amplitude/react-native'`
