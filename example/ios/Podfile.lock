@@ -1,6 +1,6 @@
 PODS:
   - Amplitude (8.2.0)
-  - amplitude-react-native (2.0.9):
+  - amplitude-react-native (2.0.11):
     - Amplitude (= 8.2.0)
     - React-Core
   - boost-for-react-native (1.63.0)
@@ -355,7 +355,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplitude: 263118b9e691e73a1c864b05bb08a3aff3636d16
-  amplitude-react-native: d380b65edbf6a9f2eda3165b432b1f527d97979d
+  amplitude-react-native: 1a42c25056741716c54e54ecbb5f2019e5036382
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
