@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input, Button } from 'react-native-elements';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 import { StyleSheet } from 'react-native';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
@@ -8,7 +8,7 @@ import { SdkSectionLayout } from './SdkSectionLayout';
 export const EventSection = () => {
   const [eventName, setEventName] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Event'}>
@@ -23,7 +23,7 @@ export const EventSection = () => {
         title={'Send Event'}
         disabled={!eventName}
         onPress={() => {
-          amplitudeInstance?.logEvent(eventName);
+          amplitude.logEvent(eventName);
         }}
       />
     </SdkSectionLayout>

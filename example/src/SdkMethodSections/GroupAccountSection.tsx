@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 import { SdkSectionLayout } from './SdkSectionLayout';
 
 export const GroupAccountSection = () => {
   const [groupType, setGroupType] = React.useState<string>('');
   const [groupValue, setGroupValue] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Group / Account'}>
@@ -31,7 +31,7 @@ export const GroupAccountSection = () => {
         title={'Set Group'}
         disabled={!groupType || !groupValue}
         onPress={() => {
-          amplitudeInstance?.setGroup(groupType, groupValue);
+          amplitude.setGroup(groupType, groupValue);
         }}
       />
     </SdkSectionLayout>

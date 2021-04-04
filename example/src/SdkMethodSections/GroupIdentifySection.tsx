@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Identify } from '@amplitude/react-native';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 import { SdkSectionLayout } from './SdkSectionLayout';
 
 export const GroupIdentifySection = () => {
@@ -11,7 +11,7 @@ export const GroupIdentifySection = () => {
   const [userPropertyKey, setUserPropertyKey] = React.useState<string>('');
   const [userPropertyValue, setUserPropertyValue] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Group Identify'}>
@@ -52,7 +52,7 @@ export const GroupIdentifySection = () => {
         onPress={() => {
           const identify = new Identify();
           identify.set(userPropertyKey, userPropertyValue);
-          amplitudeInstance?.groupIdentify(groupType, groupValue, identify);
+          amplitude.groupIdentify(groupType, groupValue, identify);
         }}
       />
     </SdkSectionLayout>
