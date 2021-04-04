@@ -3,13 +3,13 @@ import { Input, Button } from 'react-native-elements';
 import { StyleSheet, View } from 'react-native';
 import { Identify } from '@amplitude/react-native';
 import { SdkSectionLayout } from './SdkSectionLayout';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 
 export const IdentifySection = () => {
   const [propertyKey, setPropertyKey] = React.useState<string>('');
   const [propertyValue, setPropertyValue] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Identify'}>
@@ -34,7 +34,7 @@ export const IdentifySection = () => {
         onPress={() => {
           const identify = new Identify();
           identify.set(propertyKey, propertyValue);
-          amplitudeInstance?.identify(identify);
+          amplitude.identify(identify);
         }}
       />
     </SdkSectionLayout>

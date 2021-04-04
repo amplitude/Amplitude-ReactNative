@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
 
 export const UserIDSection = () => {
   const [userId, setUserId] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'User ID'}>
@@ -23,7 +23,7 @@ export const UserIDSection = () => {
         style={styles.button}
         disabled={!userId}
         onPress={() => {
-          amplitudeInstance?.setUserId(userId);
+          amplitude.setUserId(userId);
         }}
       />
     </SdkSectionLayout>

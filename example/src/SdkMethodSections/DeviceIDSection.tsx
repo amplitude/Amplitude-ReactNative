@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Button } from 'react-native-elements';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
 
 export const DeviceIDSection = () => {
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Device ID'}>
       <Button
         title={'Regenerate Device ID'}
         onPress={() => {
-          amplitudeInstance?.regenerateDeviceId();
+          amplitude.regenerateDeviceId();
         }}
       />
     </SdkSectionLayout>

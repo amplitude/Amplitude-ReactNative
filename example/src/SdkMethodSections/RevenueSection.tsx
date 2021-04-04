@@ -3,7 +3,7 @@ import { Button, Input } from 'react-native-elements';
 import { StyleSheet, View } from 'react-native';
 
 import { SdkSectionLayout } from './SdkSectionLayout';
-import { useAmplitudeInstance } from '../utils/amplitude';
+import { useAmplitude } from '../utils/amplitude';
 
 const sanitizeNumericInput = (value: string): string =>
   value.replace(/[^0-9.]/g, '');
@@ -13,7 +13,7 @@ export const RevenueSection = () => {
   const [price, setPrice] = React.useState<string>('');
   const [quantity, setQuantity] = React.useState<string>('');
 
-  const amplitudeInstance = useAmplitudeInstance();
+  const amplitude = useAmplitude();
 
   return (
     <SdkSectionLayout heading={'Revenue'}>
@@ -44,7 +44,7 @@ export const RevenueSection = () => {
         title={'Send Revenue'}
         disabled={!productId || !price || !quantity}
         onPress={() => {
-          amplitudeInstance?.logRevenue({
+          amplitude.logRevenue({
             productId,
             price: Number(price),
             quantity: Number(quantity),

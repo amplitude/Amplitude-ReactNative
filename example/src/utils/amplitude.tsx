@@ -8,29 +8,26 @@ const initAmplitude = (): Amplitude => {
   return amplitudeInstance;
 };
 
-const AmplitudeInstanceContext = React.createContext<Amplitude | null>(null);
+const ampInstance = initAmplitude();
 
-export const useAmplitudeInstance = () =>
-  React.useContext(AmplitudeInstanceContext);
+const AmplitudeInstanceContext = React.createContext<Amplitude>(ampInstance);
 
-interface AmplitudeProviderProps {
-  children: React.ReactNode;
-}
+export const useAmplitude = (): Amplitude => {
+  const amplitude = React.useContext(AmplitudeInstanceContext);
+
+  if (!amplitude) {
+    throw new Error(
+      'The component must be wrapped in AmplitudeProvider to use useAmplitude',
+    );
+  }
+
+  return amplitude;
+};
 
 export const AmplitudeProvider = ({
   children,
-}: AmplitudeProviderProps): React.ReactElement => {
-  const [ampInstance, setAmpInstance] = React.useState<Amplitude | null>(null);
-
-  React.useEffect(() => {
-    if (!ampInstance) {
-      setAmpInstance(initAmplitude());
-    }
-  }, [ampInstance]);
-
-  return (
-    <AmplitudeInstanceContext.Provider value={ampInstance}>
-      {children}
-    </AmplitudeInstanceContext.Provider>
-  );
-};
+}: React.PropsWithChildren<{}>): React.ReactElement => (
+  <AmplitudeInstanceContext.Provider value={ampInstance}>
+    {children}
+  </AmplitudeInstanceContext.Provider>
+);
