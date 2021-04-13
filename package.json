@@ -21,7 +21,7 @@
     "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,json}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
-    "prepare": "bob build",
+    "prepare": "node scripts/write-constants.js && bob build",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
