@@ -37,7 +37,7 @@
     "docs:gen-docs": "rm -rf docs && yarn run docs:create-docs && git add docs",
     "docs:deploy": "gh-pages -d docs",
     "release": "yarn run write:constants && semantic-release",
-    "release-temp": "yarn run write:constants && release-it"
+    "release-temp": "release-it"
   },
   "keywords": [
     "react-native",
