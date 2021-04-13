@@ -12,14 +12,7 @@
     "lib",
     "android",
     "ios",
-    "cpp",
-    "amplitude-react-native.podspec",
-    "!lib/typescript/example",
-    "!android/build",
-    "!ios/build",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__"
+    "amplitude-react-native.podspec"
   ],
   "scripts": {
     "test": "jest",
@@ -28,15 +21,14 @@
     "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,json}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
-    "write:constants": "node scripts/write-constants.js",
-    "prepare": "yarn run write:constants && bob build",
+    "prepare": "node scripts/write-constants.js && bob build",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
     "docs:create-docs": "typedoc --tsconfig ./tsconfig.build.json --theme './node_modules/typedoc-neo-theme'",
     "docs:gen-docs": "rm -rf docs && yarn run docs:create-docs && git add docs",
     "docs:deploy": "gh-pages -d docs",
-    "release": "yarn run write:constants && semantic-release",
+    "release": "semantic-release",
     "release-temp": "release-it"
   },
   "keywords": [
