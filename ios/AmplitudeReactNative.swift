@@ -33,11 +33,18 @@ class ReactNative: NSObject {
     }
     
     @objc
-    func regenerateDeviceId(_ instanceName: String, 
+    func regenerateDeviceId(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).regenerateDeviceId()
         resolve(true)
+    }
+
+    @objc
+    func getDeviceId(_ instanceName: String,
+                            resolver resolve: RCTPromiseResolveBlock,
+                            rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve(Amplitude.instance(withName: instanceName).getDeviceId())
     }
 
     @objc

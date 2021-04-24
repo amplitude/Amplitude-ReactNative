@@ -88,6 +88,14 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void getDeviceId(String instanceName, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            promise.resolve(client.getDeviceId());
+        }
+    }
+
+    @ReactMethod
     public void setOptOut(String instanceName, boolean optOut, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
