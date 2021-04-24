@@ -3,7 +3,7 @@ import React from 'react';
 
 const initAmplitude = (): Amplitude => {
   const amplitudeInstance = Amplitude.getInstance();
-  amplitudeInstance.init('9c9566b48da3f559498fd70b164303b8');
+  amplitudeInstance.init('82b148f7211db7f9ccaff8048d0f7192');
 
   return amplitudeInstance;
 };
