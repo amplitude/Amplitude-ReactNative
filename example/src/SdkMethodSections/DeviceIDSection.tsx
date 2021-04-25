@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Button, Input } from 'react-native-elements';
+import { View } from 'react-native';
 import { SdkSectionLayout } from './SdkSectionLayout';
 import { useAmplitude } from '../utils/amplitude';
 
 export const DeviceIDSection = () => {
   const amplitude = useAmplitude();
   const [currentDeviceId, setCurrentDeviceId] = React.useState('');
-  const [loading, updateLoading] = React.useState(false);
+  const [loading, updateLoading] = React.useState(true);
 
-  const handleOnPress = () => {
+  const handleRegenerateDeviceId = () => {
     amplitude.regenerateDeviceId();
     updateLoading(true);
   };
@@ -20,13 +21,18 @@ export const DeviceIDSection = () => {
   }, [amplitude]);
 
   React.useEffect(() => {
-    getDeviceId();
+    if (loading) getDeviceId();
   }, [getDeviceId, loading]);
 
   return (
     <SdkSectionLayout heading={'Device ID'}>
-      <Input value={currentDeviceId} editable={false} />
-      <Button title={'Regenerate Device ID'} onPress={handleOnPress} />
+      <View pointerEvents="none">
+        <Input value={currentDeviceId} editable={false} />
+      </View>
+      <Button
+        title={'Regenerate Device ID'}
+        onPress={handleRegenerateDeviceId}
+      />
     </SdkSectionLayout>
   );
 };
