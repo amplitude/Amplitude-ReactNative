@@ -12,7 +12,14 @@
     "lib",
     "android",
     "ios",
-    "amplitude-react-native.podspec"
+    "cpp",
+    "amplitude-react-native.podspec",
+    "!lib/typescript/example",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
   ],
   "scripts": {
     "test": "jest",
