@@ -24,9 +24,30 @@ module.exports = {
     ],
     ['@semantic-release/github'],
     [
+      '@google/semantic-release-replace-plugin',
+      {
+        replacements: [
+          {
+            files: ['src/constants.ts'],
+            from: "packageVersion: '.*'",
+            to: "packageVersion: '${nextRelease.version}'",
+            results: [
+              {
+                file: 'src/constants.ts',
+                hasChanged: true,
+                numMatches: 1,
+                numReplacements: 1,
+              },
+            ],
+            countMatches: true,
+          },
+        ],
+      },
+    ],
+    [
       '@semantic-release/git',
       {
-        assets: ['docs', 'package.json'],
+        assets: ['docs', 'package.json', 'src/constants.ts'],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },

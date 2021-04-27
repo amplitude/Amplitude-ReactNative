@@ -47,6 +47,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@google/semantic-release-replace-plugin": "^1.0.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
