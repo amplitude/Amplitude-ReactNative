@@ -23,7 +23,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).enableCoppaControl()
         resolve(true)
     }
-    
+
     @objc
     func disableCoppaControl(_ instanceName: String,
                              resolver resolve: RCTPromiseResolveBlock,
@@ -31,12 +31,21 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).disableCoppaControl()
         resolve(true)
     }
-    
+
     @objc
     func regenerateDeviceId(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         Amplitude.instance(withName: instanceName).regenerateDeviceId()
+        resolve(true)
+    }
+
+    @objc
+    func setDeviceId(_ instanceName: String,
+                       deviceId: String,
+                       resolver resolve: RCTPromiseResolveBlock,
+                       rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).setDeviceId(deviceId)
         resolve(true)
     }
 

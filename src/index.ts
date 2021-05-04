@@ -85,6 +85,15 @@ export class Amplitude {
   }
 
   /**
+   * Sets a custom device id. <b>Note: only do this if you know what you are doing!</b>
+   *
+   * @param deviceId The device id.
+   */
+  setDeviceId(deviceId: string): Promise<boolean> {
+    return AmplitudeReactNative.setDeviceId(this.instanceName, deviceId);
+  }
+
+  /**
    * Fetches the deviceId, a unique identifier shared between multiple users using the same app on the same device.
    * @returns the deviceId.
    */

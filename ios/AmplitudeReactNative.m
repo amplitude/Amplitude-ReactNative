@@ -10,6 +10,8 @@ RCT_EXTERN_METHOD(disableCoppaControl:(NSString *)instanceName resolver:(RCTProm
 
 RCT_EXTERN_METHOD(regenerateDeviceId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setDeviceId:(NSString *)instanceName deviceId:(NSString *)deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(getDeviceId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(setOptOut:(NSString *)instanceName optOut:(BOOL)optOut resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
