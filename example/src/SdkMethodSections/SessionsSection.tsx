@@ -35,6 +35,7 @@ export const SessionsSection = () => {
         />
       </View>
       <Input
+        label={'New Min Time Between Sessions (ms)'}
         placeholder={'Enter Min Time Between Sessions in Milliseconds'}
         onChangeText={(text) => setMinTimeBetweenSessionsMillis(Number(text))}
         value={`${minTimeBetweenSessionsMillis}`}
