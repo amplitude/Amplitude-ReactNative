@@ -13,6 +13,11 @@ export const SessionsSection = () => {
     setMinTimeBetweenSessionsMillis,
   ] = React.useState<number>(DEFAULT_MIN_TIME_BETWEEN_MILLIS);
 
+  const [
+    savedMinTimeBetweenSessionsMillis,
+    setSavedMinTimeBetweenSessionsMillis,
+  ] = React.useState<number>(DEFAULT_MIN_TIME_BETWEEN_MILLIS);
+
   const amplitude = useAmplitude();
 
   return (
@@ -20,8 +25,9 @@ export const SessionsSection = () => {
       <View pointerEvents="none">
         <Input
           label={'Min Time Between Sessions (ms)'}
-          value={`${minTimeBetweenSessionsMillis}${
-            minTimeBetweenSessionsMillis === DEFAULT_MIN_TIME_BETWEEN_MILLIS
+          value={`${savedMinTimeBetweenSessionsMillis}${
+            savedMinTimeBetweenSessionsMillis ===
+            DEFAULT_MIN_TIME_BETWEEN_MILLIS
               ? ' (5 min default)'
               : ''
           }`}
@@ -39,9 +45,15 @@ export const SessionsSection = () => {
           minTimeBetweenSessionsMillis === DEFAULT_MIN_TIME_BETWEEN_MILLIS
         }
         onPress={() => {
-          amplitude.setMinTimeBetweenSessionsMillis(
-            minTimeBetweenSessionsMillis,
-          );
+          amplitude
+            .setMinTimeBetweenSessionsMillis(minTimeBetweenSessionsMillis)
+            .then((success) => {
+              if (success) {
+                setSavedMinTimeBetweenSessionsMillis(
+                  minTimeBetweenSessionsMillis,
+                );
+              }
+            });
         }}
       />
     </SdkSectionLayout>
