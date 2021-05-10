@@ -6,6 +6,7 @@ import { GroupAccountSection } from './GroupAccountSection';
 import { GroupIdentifySection } from './GroupIdentifySection';
 import { RevenueSection } from './RevenueSection';
 import { FlushEventsSection } from './FlushEventsSection';
+import { SessionsSection } from './SessionsSection';
 
 export {
   UserIDSection,
@@ -16,4 +17,5 @@ export {
   GroupIdentifySection,
   FlushEventsSection,
   RevenueSection,
+  SessionsSection,
 };
