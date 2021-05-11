@@ -254,6 +254,21 @@ export class Amplitude {
     return AmplitudeReactNative.uploadEvents(this.instanceName);
   }
 
+  /**
+   * Sets the minimum cutoff time in millisseconds for sessions to be considered distinct.
+   * The default time is 5 minutes.
+   *
+   * @param minTimeBetweenSessionsMillis
+   */
+  setMinTimeBetweenSessionsMillis(
+    minTimeBetweenSessionsMillis: number,
+  ): Promise<boolean> {
+    return AmplitudeReactNative.setMinTimeBetweenSessionsMillis(
+      this.instanceName,
+      minTimeBetweenSessionsMillis,
+    );
+  }
+
   // Private bridging calls
   private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);

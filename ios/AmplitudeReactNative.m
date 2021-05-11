@@ -46,4 +46,6 @@ RCT_EXTERN_METHOD(clearUserProperties:(NSString *)instanceName resolver:(RCTProm
 
 RCT_EXTERN_METHOD(uploadEvents:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setMinTimeBetweenSessionsMillis:(NSString *)instanceName minTimeBetweenSessionsMillis:(double)minTimeBetweenSessionsMillis resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 @end

@@ -13,6 +13,7 @@ import {
   GroupIdentifySection,
   FlushEventsSection,
   RevenueSection,
+  SessionsSection,
 } from './SdkMethodSections';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
             <GroupIdentifySection />
             <RevenueSection />
             <FlushEventsSection />
+            <SessionsSection />
           </AmplitudeProvider>
         </ScrollView>
       </SafeAreaView>

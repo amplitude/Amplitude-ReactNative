@@ -237,6 +237,15 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void setMinTimeBetweenSessionsMillis(String instanceName, double minTimeBetweenSessionsMillis, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setMinTimeBetweenSessionsMillis((long) minTimeBetweenSessionsMillis);
+            promise.resolve(true);
+        }
+    }
+
     private Revenue createRevenue(JSONObject properties) {
         Revenue revenue = new Revenue();
         try {

@@ -206,6 +206,15 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).uploadEvents()
         resolve(true)
     }
+
+    @objc
+    func setMinTimeBetweenSessionsMillis(_ instanceName: String,
+                   minTimeBetweenSessionsMillis: Int,
+                   resolver resolve: RCTPromiseResolveBlock,
+                   rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).minTimeBetweenSessionsMillis = minTimeBetweenSessionsMillis
+        resolve(true)
+    }
     
     private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()
