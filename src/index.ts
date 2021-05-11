@@ -256,6 +256,7 @@ export class Amplitude {
 
   /**
    * Sets the minimum cutoff time in millisseconds for sessions to be considered distinct.
+   * The default time is 5 minutes.
    *
    * @param minTimeBetweenSessionsMillis
    */
