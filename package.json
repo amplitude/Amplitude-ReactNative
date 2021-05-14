@@ -24,6 +24,7 @@
     "prepare": "bob build",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
+    "update-example-pod-lockfile": "yarn example install --frozen-lockfile && yarn pods",
     "bootstrap": "yarn example && yarn && yarn pods",
     "docs:create-docs": "typedoc --tsconfig ./tsconfig.build.json --theme './node_modules/typedoc-neo-theme'",
     "docs:gen-docs": "rm -rf docs && yarn run docs:create-docs && git add docs",
