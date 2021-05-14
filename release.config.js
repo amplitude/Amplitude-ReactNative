@@ -45,9 +45,21 @@ module.exports = {
       },
     ],
     [
+      '@semantic-release/exec',
+      {
+        prepareCmd:
+          'cd example &&  yarn install --frozen-lockfile && cd ios && pod install',
+      },
+    ],
+    [
       '@semantic-release/git',
       {
-        assets: ['docs', 'package.json', 'src/constants.ts'],
+        assets: [
+          'docs',
+          'package.json',
+          'src/constants.ts',
+          'example/ios/Podfile.lock',
+        ],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
