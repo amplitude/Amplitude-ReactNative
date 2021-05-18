@@ -135,7 +135,7 @@ export class Amplitude {
    *
    * @param userId
    */
-  setUserId(userId: string): Promise<boolean> {
+  setUserId(userId: string | null): Promise<boolean> {
     return AmplitudeReactNative.setUserId(this.instanceName, userId);
   }
 
