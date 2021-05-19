@@ -132,5 +132,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@semantic-release/exec": "^5.0.0"
   }
 }
