@@ -64,6 +64,7 @@ export interface AmplitudeReactNativeModule {
   ): Promise<boolean>;
   clearUserProperties(instanceName: string): Promise<boolean>;
   uploadEvents(instanceName: string): Promise<boolean>;
+  getSessionId(instanceName: string): Promise<number>;
   setMinTimeBetweenSessionsMillis(
     instanceName: string,
     minTimeBetweenSessionsMillis: number,

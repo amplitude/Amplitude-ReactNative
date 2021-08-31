@@ -18,10 +18,24 @@ export const SessionsSection = () => {
     setSavedMinTimeBetweenSessionsMillis,
   ] = React.useState<number>(DEFAULT_MIN_TIME_BETWEEN_MILLIS);
 
+  const [currentSessionId, setCurrentSessionId] = React.useState<number>(-1);
+
   const amplitude = useAmplitude();
+
+  const getSessionId = React.useCallback(async () => {
+    const sessionId = await amplitude.getSessionId();
+    setCurrentSessionId(sessionId);
+  }, [amplitude]);
+
+  React.useEffect(() => {
+    getSessionId();
+  }, [getSessionId]);
 
   return (
     <SdkSectionLayout heading={'Sessions'}>
+      <View pointerEvents="none">
+        <Input label={'Curret SessionId'} value={currentSessionId.toString()} />
+      </View>
       <View pointerEvents="none">
         <Input
           label={'Min Time Between Sessions (ms)'}
