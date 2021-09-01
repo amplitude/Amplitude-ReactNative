@@ -34,7 +34,10 @@ export const SessionsSection = () => {
   return (
     <SdkSectionLayout heading={'Sessions'}>
       <View pointerEvents="none">
-        <Input label={'Curret SessionId'} value={currentSessionId.toString()} />
+        <Input
+          label={'Current SessionId'}
+          value={currentSessionId.toString()}
+        />
       </View>
       <View pointerEvents="none">
         <Input
