@@ -208,6 +208,13 @@ class ReactNative: NSObject {
     }
 
     @objc
+    func getSessionId(_ instanceName: String,
+                            resolver resolve: RCTPromiseResolveBlock,
+                            rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve(Amplitude.instance(withName: instanceName).getSessionId())
+    }
+
+    @objc
     func setMinTimeBetweenSessionsMillis(_ instanceName: String,
                    minTimeBetweenSessionsMillis: Int,
                    resolver resolve: RCTPromiseResolveBlock,

@@ -255,6 +255,14 @@ export class Amplitude {
   }
 
   /**
+   * Fetches the sessionId, a timestamp used for log session event.
+   * @returns the sessionId.
+   */
+  getSessionId(): Promise<number> {
+    return AmplitudeReactNative.getSessionId(this.instanceName);
+  }
+
+  /**
    * Sets the minimum cutoff time in millisseconds for sessions to be considered distinct.
    * The default time is 5 minutes.
    *
