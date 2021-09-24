@@ -86,6 +86,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#advertisingidfordeviceid" class="tsd-kind-icon">advertising<wbr>IdFor<wbr>Device<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#appsetidfordeviceid" class="tsd-kind-icon">app<wbr>Set<wbr>IdFor<wbr>Device<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#disablecoppacontrol" class="tsd-kind-icon">disable<wbr>Coppa<wbr>Control</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#enablecoppacontrol" class="tsd-kind-icon">enable<wbr>Coppa<wbr>Control</a></li>
@@ -125,6 +127,46 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="advertisingidfordeviceid" class="tsd-anchor"></a>
+					<h3>advertising<wbr>IdFor<wbr>Device<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">advertising<wbr>IdFor<wbr>Device<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use the Advertising ID on Android if available from Google Play Services.
+									Must be called before init.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="appsetidfordeviceid" class="tsd-anchor"></a>
+					<h3>app<wbr>Set<wbr>IdFor<wbr>Device<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">app<wbr>Set<wbr>IdFor<wbr>Device<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use the App Set ID (fall back to this if <code>useAdvertisingIdForDeviceId</code> is used) for device ID.
+									Must be called before init.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="clearuserproperties" class="tsd-anchor"></a>
 					<h3>clear<wbr>User<wbr>Properties</h3>
@@ -724,6 +766,12 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="amplitude.html#instancename" class="tsd-kind-icon">instance<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#advertisingidfordeviceid" class="tsd-kind-icon">advertising<wbr>IdFor<wbr>Device<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#appsetidfordeviceid" class="tsd-kind-icon">app<wbr>Set<wbr>IdFor<wbr>Device<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a>
