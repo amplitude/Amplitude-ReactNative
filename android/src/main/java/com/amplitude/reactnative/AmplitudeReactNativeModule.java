@@ -105,7 +105,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void advertisingIdForDeviceId(String instanceName, Promise promise) {
+    public void setAdvertisingIdForDeviceId(String instanceName, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.useAdvertisingIdForDeviceId();
@@ -114,7 +114,7 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void appSetIdForDeviceId(String instanceName, Promise promise) {
+    public void setAppSetIdForDeviceId(String instanceName, Promise promise) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.useAppSetIdForDeviceId();

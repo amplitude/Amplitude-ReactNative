@@ -105,16 +105,16 @@ export class Amplitude {
    * Use the Advertising ID on Android if available from Google Play Services.
    * Must be called before init.
    */
-  advertisingIdForDeviceId(): Promise<boolean> {
-    return AmplitudeReactNative.advertisingIdForDeviceId(this.instanceName);
+  setAdvertisingIdForDeviceId(): Promise<boolean> {
+    return AmplitudeReactNative.setAdvertisingIdForDeviceId(this.instanceName);
   }
 
   /**
    * Use the App Set ID (fall back to this if `useAdvertisingIdForDeviceId` is used) for device ID.
    * Must be called before init.
    */
-  appSetIdForDeviceId(): Promise<boolean> {
-    return AmplitudeReactNative.appSetIdForDeviceId(this.instanceName);
+  setAppSetIdForDeviceId(): Promise<boolean> {
+    return AmplitudeReactNative.setAppSetIdForDeviceId(this.instanceName);
   }
 
   /**

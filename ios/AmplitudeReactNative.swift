@@ -57,14 +57,14 @@ class ReactNative: NSObject {
     }
 
     @objc
-    func advertisingIdForDeviceId(_ instanceName: String,
+    func setAdvertisingIdForDeviceId(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         resolve(false)
     }
 
     @objc
-    func appSetIdForDeviceId(_ instanceName: String,
+    func setAppSetIdForDeviceId(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
         resolve(false)

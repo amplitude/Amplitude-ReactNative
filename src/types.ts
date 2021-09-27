@@ -23,8 +23,8 @@ export interface AmplitudeReactNativeModule {
   regenerateDeviceId(instanceName: string): Promise<boolean>;
   setDeviceId(instanceName: string, deviceId: string): Promise<boolean>;
   getDeviceId(instanceName: string): Promise<string>;
-  advertisingIdForDeviceId(instanceName: string): Promise<boolean>;
-  appSetIdForDeviceId(instanceName: string): Promise<boolean>;
+  setAdvertisingIdForDeviceId(instanceName: string): Promise<boolean>;
+  setAppSetIdForDeviceId(instanceName: string): Promise<boolean>;
   setOptOut(instanceName: string, optOut: boolean): Promise<boolean>;
   setLibraryName(instanceName: string, libraryName: string): Promise<boolean>;
   setLibraryVersion(
