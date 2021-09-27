@@ -102,6 +102,22 @@ export class Amplitude {
   }
 
   /**
+   * Use the Advertising ID on Android if available from Google Play Services.
+   * Must be called before init.
+   */
+  setAdvertisingIdForDeviceId(): Promise<boolean> {
+    return AmplitudeReactNative.setAdvertisingIdForDeviceId(this.instanceName);
+  }
+
+  /**
+   * Use the App Set ID (fall back to this if `useAdvertisingIdForDeviceId` is used) for device ID.
+   * Must be called before init.
+   */
+  setAppSetIdForDeviceId(): Promise<boolean> {
+    return AmplitudeReactNative.setAppSetIdForDeviceId(this.instanceName);
+  }
+
+  /**
    * Enables tracking opt out.
    *
    * If the user wants to opt out of all tracking, use this method to enable

@@ -57,6 +57,20 @@ class ReactNative: NSObject {
     }
 
     @objc
+    func setAdvertisingIdForDeviceId(_ instanceName: String,
+                            resolver resolve: RCTPromiseResolveBlock,
+                            rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve(false)
+    }
+
+    @objc
+    func setAppSetIdForDeviceId(_ instanceName: String,
+                            resolver resolve: RCTPromiseResolveBlock,
+                            rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve(false)
+    }
+
+    @objc
     func setOptOut(_ instanceName: String,
                    optOut: Bool,
                    resolver resolve: RCTPromiseResolveBlock,

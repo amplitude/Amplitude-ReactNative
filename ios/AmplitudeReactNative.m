@@ -48,6 +48,10 @@ RCT_EXTERN_METHOD(uploadEvents:(NSString *)instanceName resolver:(RCTPromiseReso
 
 RCT_EXTERN_METHOD(getSessionId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setAdvertisingIdForDeviceId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(setAppSetIdForDeviceId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(setMinTimeBetweenSessionsMillis:(NSString *)instanceName minTimeBetweenSessionsMillis:(double)minTimeBetweenSessionsMillis resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 @end
