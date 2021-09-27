@@ -33,18 +33,6 @@ export const DeviceIDSection = () => {
         title={'Regenerate Device ID'}
         onPress={handleRegenerateDeviceId}
       />
-      <Button
-        title={'Ad ID for Device ID (Android only)'}
-        onPress={() => {
-          amplitude.setAdvertisingIdForDeviceId();
-        }}
-      />
-      <Button
-        title={'App Set ID for Device ID (Android only)'}
-        onPress={() => {
-          amplitude.setAppSetIdForDeviceId();
-        }}
-      />
     </SdkSectionLayout>
   );
 };
