@@ -236,6 +236,17 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).minTimeBetweenSessionsMillis = minTimeBetweenSessionsMillis
         resolve(true)
     }
+
+    @objc
+    func setServerZone(_ instanceName: String,
+                   serverZone: String,
+                   updateServerUrl: Bool,
+                   resolver resolve: RCTPromiseResolveBlock,
+                   rejecter reject: RCTPromiseRejectBlock) -> Void {
+        let ampServerZone = serverZone == "EU" ? AMPServerZone.EU : AMPServerZone.US
+        Amplitude.instance(withName: instanceName).setServerZone(ampServerZone, updateServerUrl: updateServerUrl)
+        resolve(true)
+    }
     
     private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()

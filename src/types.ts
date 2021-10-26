@@ -71,4 +71,9 @@ export interface AmplitudeReactNativeModule {
     instanceName: string,
     minTimeBetweenSessionsMillis: number,
   ): Promise<boolean>;
+  setServerZone(
+    instanceName: string,
+    serverZone: string,
+    updateServerUrl: boolean,
+  ): Promise<boolean>;
 }

@@ -27,7 +27,12 @@ jobs:
             [SDK - ReactNative] ${{ github.event.issue.title }}
           description: |
             ${{ github.event.issue.html_url }}
-          fields: '{"customfield_10006": 1127, "customfield_11481": {"value": "Data Connections 🚇"}, "customfield_11200": {"value": "SDK"}}' # sprint, pillar, pod
+          fields: '{
+            "customfield_10006": 1127,
+            "customfield_11481": {"value": "Data Connections 🚇"},
+            "customfield_11200": {"value": "SDK"},
+            "labels": ["react-native"]
+          }' # sprint, pillar, pod
 
       - name: Log created issue
         run: echo "Issue AMP-${{ steps.create.outputs.issue }} was created"

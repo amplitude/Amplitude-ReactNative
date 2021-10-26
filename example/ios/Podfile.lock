@@ -1,7 +1,7 @@
 PODS:
-  - Amplitude (8.2.0)
+  - Amplitude (8.5.0)
   - amplitude-react-native (2.5.0):
-    - Amplitude (= 8.2.0)
+    - Amplitude (= 8.5.0)
     - React-Core
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -354,8 +354,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Amplitude: 263118b9e691e73a1c864b05bb08a3aff3636d16
-  amplitude-react-native: 507a86ab87cc755ea18e9195f6db0dd378e7cac1
+  Amplitude: ef9ed339ddd33c9183edf63fa4bbaa86cf873321
+  amplitude-react-native: d2c6605425e240eb86f275f730d4b272a59dd6ab
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
