@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.AmplitudeClient;
+import com.amplitude.api.AmplitudeServerZone;
 import com.amplitude.api.Identify;
 import com.amplitude.api.Revenue;
 import com.facebook.react.bridge.Promise;
@@ -268,6 +269,16 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.setMinTimeBetweenSessionsMillis((long) minTimeBetweenSessionsMillis);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setServerZone(String instanceName, String serverZone, boolean updateServerUrl, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            AmplitudeServerZone amplitudeServerZone = serverZone.equals("EU") ? AmplitudeServerZone.EU : AmplitudeServerZone.US;
+            client.setServerZone(amplitudeServerZone, updateServerUrl);
             promise.resolve(true);
         }
     }

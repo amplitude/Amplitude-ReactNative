@@ -54,4 +54,6 @@ RCT_EXTERN_METHOD(setAppSetIdForDeviceId:(NSString *)instanceName resolver:(RCTP
 
 RCT_EXTERN_METHOD(setMinTimeBetweenSessionsMillis:(NSString *)instanceName minTimeBetweenSessionsMillis:(double)minTimeBetweenSessionsMillis resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setServerZone:(NSString *)instanceName serverZone:(NSString *)serverZone updateServerUrl:(BOOL)updateServerUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 @end

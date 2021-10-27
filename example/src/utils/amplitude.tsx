@@ -4,6 +4,7 @@ import React from 'react';
 const initAmplitude = (): Amplitude => {
   const amplitudeInstance = Amplitude.getInstance();
   amplitudeInstance.init('9c9566b48da3f559498fd70b164303b8');
+  amplitudeInstance.setServerZone('US');
 
   return amplitudeInstance;
 };

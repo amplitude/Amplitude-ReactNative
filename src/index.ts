@@ -293,6 +293,25 @@ export class Amplitude {
     );
   }
 
+  /**
+   * Set Amplitude Server Zone, switch to zone related configuration,
+   * including dynamic configuration. If updateServerUrl is true, including server url as well.
+   * Recommend to keep updateServerUrl to be true for alignment.
+   *
+   * @param serverZone amplitude serverZone, US or EU, default is US
+   * @param updateServerUrl if update server url when update server zone, recommend setting true
+   */
+  setServerZone(
+    serverZone: string,
+    updateServerUrl: boolean = true,
+  ): Promise<boolean> {
+    return AmplitudeReactNative.setServerZone(
+      this.instanceName,
+      serverZone,
+      updateServerUrl,
+    );
+  }
+
   // Private bridging calls
   private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);
