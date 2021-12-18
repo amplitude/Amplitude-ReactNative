@@ -100,6 +100,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setadvertisingidfordeviceid" class="tsd-kind-icon">set<wbr>Advertising<wbr>IdFor<wbr>Device<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setappsetidfordeviceid" class="tsd-kind-icon">set<wbr>App<wbr>Set<wbr>IdFor<wbr>Device<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setdeviceid" class="tsd-kind-icon">set<wbr>Device<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#seteventuploadmaxbatchsize" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Max<wbr>Batch<wbr>Size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#seteventuploadperiodmillis" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Period<wbr>Millis</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#seteventuploadthreshold" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Threshold</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setgroup" class="tsd-kind-icon">set<wbr>Group</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setmintimebetweensessionsmillis" class="tsd-kind-icon">set<wbr>Min<wbr>Time<wbr>Between<wbr>Sessions<wbr>Millis</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setoptout" class="tsd-kind-icon">set<wbr>Opt<wbr>Out</a></li>
@@ -483,6 +486,95 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="seteventuploadmaxbatchsize" class="tsd-anchor"></a>
+					<h3>set<wbr>Event<wbr>Upload<wbr>Max<wbr>Batch<wbr>Size</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Max<wbr>Batch<wbr>Size<span class="tsd-signature-symbol">(</span>eventUploadMaxBatchSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets event upload max batch size. This controls the maximum number of events sent with
+									each upload request.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventUploadMaxBatchSize: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the event upload max batch size</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="seteventuploadperiodmillis" class="tsd-anchor"></a>
+					<h3>set<wbr>Event<wbr>Upload<wbr>Period<wbr>Millis</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Period<wbr>Millis<span class="tsd-signature-symbol">(</span>eventUploadPeriodMillis<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets event upload period millis. The SDK will attempt to batch upload unsent events
+										every eventUploadPeriodMillis milliseconds, or if the unsent event count exceeds the
+									event upload threshold.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventUploadPeriodMillis: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the event upload period millis</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="seteventuploadthreshold" class="tsd-anchor"></a>
+					<h3>set<wbr>Event<wbr>Upload<wbr>Threshold</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Threshold<span class="tsd-signature-symbol">(</span>eventUploadThreshold<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets event upload threshold. The SDK will attempt to batch upload unsent events
+										every eventUploadPeriodMillis milliseconds, or if the unsent event count exceeds the
+									event upload threshold.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventUploadThreshold: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the event upload threshold</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="setgroup" class="tsd-anchor"></a>
 					<h3>set<wbr>Group</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -845,6 +937,15 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#setdeviceid" class="tsd-kind-icon">set<wbr>Device<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#seteventuploadmaxbatchsize" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Max<wbr>Batch<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#seteventuploadperiodmillis" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Period<wbr>Millis</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#seteventuploadthreshold" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Threshold</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#setgroup" class="tsd-kind-icon">set<wbr>Group</a>
