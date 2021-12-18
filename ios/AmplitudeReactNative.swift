@@ -262,7 +262,7 @@ class ReactNative: NSObject {
                     eventUploadPeriodMillis: Int32,
                     resolver resolve: RCTPromiseResolveBlock,
                     rejecter reject: RCTPromiseRejectBlock) -> Void {
-        Amplitude.instance(withName: instanceName).eventUploadPeriodSeconds = eventUploadPeriodMillis;
+        Amplitude.instance(withName: instanceName).eventUploadPeriodSeconds = eventUploadPeriodMillis / 1000;
         resolve(true)
     }
 
