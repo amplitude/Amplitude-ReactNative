@@ -56,4 +56,10 @@ RCT_EXTERN_METHOD(setMinTimeBetweenSessionsMillis:(NSString *)instanceName minTi
 
 RCT_EXTERN_METHOD(setServerZone:(NSString *)instanceName serverZone:(NSString *)serverZone updateServerUrl:(BOOL)updateServerUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setEventUploadMaxBatchSize:(NSString *)instanceName eventUploadMaxBatchSize:(int)eventUploadMaxBatchSize resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(setEventUploadPeriodMillis:(NSString *)instanceName eventUploadPeriodMillis:(int)eventUploadPeriodMillis resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(setEventUploadThreshold:(NSString *)instanceName eventUploadThreshold:(int)eventUploadThreshold resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 @end
