@@ -253,7 +253,7 @@ class ReactNative: NSObject {
                     eventUploadMaxBatchSize: Int32,
                     resolver resolve: RCTPromiseResolveBlock,
                     rejecter reject: RCTPromiseRejectBlock) -> Void {
-        Amplitude.instance(withName: instanceName).setEventUploadMaxBatchSize(eventUploadMaxBatchSize);
+        Amplitude.instance(withName: instanceName).updateEventUploadMaxBatchSize(eventUploadMaxBatchSize);
         resolve(true)
     }
 
