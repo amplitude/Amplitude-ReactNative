@@ -5,6 +5,9 @@ const initAmplitude = (): Amplitude => {
   const amplitudeInstance = Amplitude.getInstance();
   amplitudeInstance.init('9c9566b48da3f559498fd70b164303b8');
   amplitudeInstance.setServerZone('US');
+  amplitudeInstance.setEventUploadMaxBatchSize(200);
+  amplitudeInstance.setEventUploadThreshold(30);
+  amplitudeInstance.setEventUploadPeriodMillis(20000);
 
   return amplitudeInstance;
 };

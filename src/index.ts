@@ -312,6 +312,51 @@ export class Amplitude {
     );
   }
 
+  /**
+   * Sets event upload max batch size. This controls the maximum number of events sent with
+   * each upload request.
+   *
+   * @param eventUploadMaxBatchSize the event upload max batch size
+   */
+  setEventUploadMaxBatchSize(
+    eventUploadMaxBatchSize: number,
+  ): Promise<boolean> {
+    return AmplitudeReactNative.setEventUploadMaxBatchSize(
+      this.instanceName,
+      eventUploadMaxBatchSize,
+    );
+  }
+
+  /**
+   * Sets event upload period millis. The SDK will attempt to batch upload unsent events
+   * every eventUploadPeriodMillis milliseconds, or if the unsent event count exceeds the
+   * event upload threshold.
+   *
+   * @param eventUploadPeriodMillis the event upload period millis
+   */
+  setEventUploadPeriodMillis(
+    eventUploadPeriodMillis: number,
+  ): Promise<boolean> {
+    return AmplitudeReactNative.setEventUploadPeriodMillis(
+      this.instanceName,
+      eventUploadPeriodMillis,
+    );
+  }
+
+  /**
+   * Sets event upload threshold. The SDK will attempt to batch upload unsent events
+   * every eventUploadPeriodMillis milliseconds, or if the unsent event count exceeds the
+   * event upload threshold.
+   *
+   * @param eventUploadThreshold the event upload threshold
+   */
+  setEventUploadThreshold(eventUploadThreshold: number): Promise<boolean> {
+    return AmplitudeReactNative.setEventUploadThreshold(
+      this.instanceName,
+      eventUploadThreshold,
+    );
+  }
+
   // Private bridging calls
   private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);

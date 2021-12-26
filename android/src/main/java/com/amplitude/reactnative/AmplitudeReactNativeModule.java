@@ -283,6 +283,33 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void setEventUploadMaxBatchSize(String instanceName, int eventUploadMaxBatchSize, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setEventUploadMaxBatchSize(eventUploadMaxBatchSize);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setEventUploadPeriodMillis(String instanceName, int eventUploadPeriodMillis, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setEventUploadPeriodMillis(eventUploadPeriodMillis);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setEventUploadThreshold(String instanceName, int eventUploadThreshold, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setEventUploadThreshold(eventUploadThreshold);
+            promise.resolve(true);
+        }
+    }
+
     private Revenue createRevenue(JSONObject properties) {
         Revenue revenue = new Revenue();
         try {

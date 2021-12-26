@@ -247,12 +247,39 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).setServerZone(ampServerZone, updateServerUrl: updateServerUrl)
         resolve(true)
     }
-    
+
+    @objc
+    func setEventUploadMaxBatchSize(_ instanceName: String,
+                    eventUploadMaxBatchSize: Int32,
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).updateEventUploadMaxBatchSize(eventUploadMaxBatchSize);
+        resolve(true)
+    }
+
+    @objc
+    func setEventUploadPeriodMillis(_ instanceName: String,
+                    eventUploadPeriodMillis: Int32,
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).eventUploadPeriodSeconds = eventUploadPeriodMillis / 1000;
+        resolve(true)
+    }
+
+    @objc
+    func setEventUploadThreshold(_ instanceName: String,
+                    eventUploadThreshold: Int32,
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        Amplitude.instance(withName: instanceName).eventUploadThreshold = eventUploadThreshold;
+        resolve(true)
+    }
+
     private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()
         if userProperties["productId"] != nil {
             revenue.setProductIdentifier((userProperties["productId"] as! String))
-        } 
+        }
         if userProperties["price"] != nil {
             revenue.setPrice((userProperties["price"] as! NSNumber))
         }

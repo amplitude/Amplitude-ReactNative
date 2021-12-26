@@ -76,4 +76,16 @@ export interface AmplitudeReactNativeModule {
     serverZone: string,
     updateServerUrl: boolean,
   ): Promise<boolean>;
+  setEventUploadMaxBatchSize(
+    instanceName: string,
+    eventUploadMaxBatchSize: number,
+  ): Promise<boolean>;
+  setEventUploadPeriodMillis(
+    instanceName: string,
+    eventUploadPeriodMillis: number,
+  ): Promise<boolean>;
+  setEventUploadThreshold(
+    instanceName: string,
+    eventUploadThreshold: number,
+  ): Promise<boolean>;
 }
