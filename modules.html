@@ -62,12 +62,85 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum"><a href="enums/specialeventtype.html" class="tsd-kind-icon">Special<wbr>Event<wbr>Type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/amplitude.html" class="tsd-kind-icon">Amplitude</a></li>
 								<li class="tsd-kind-class"><a href="classes/identify.html" class="tsd-kind-icon">Identify</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="modules.html#event" class="tsd-kind-icon">Event</a></li>
+								<li class="tsd-kind-type-alias"><a href="modules.html#middleware" class="tsd-kind-icon">Middleware</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="event" class="tsd-anchor"></a>
+					<h3>Event</h3>
+					<div class="tsd-signature tsd-kind-icon">Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BaseEvent</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">IdentifyEvent</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">GroupIdentifyEvent</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="middleware" class="tsd-anchor"></a>
+					<h3>Middleware</h3>
+					<div class="tsd-signature tsd-kind-icon">Middleware<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MiddlewarePayload</span>, next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MiddlewareNext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A function to run on the Event stream (each logEvent call)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The event and extra data being sent</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Function to run the next middleware in the chain, not calling next will end the middleware chain</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MiddlewarePayload</span>, next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MiddlewareNext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>payload: <span class="tsd-signature-type">MiddlewarePayload</span></h5>
+											</li>
+											<li>
+												<h5>next: <span class="tsd-signature-type">MiddlewareNext</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -82,11 +155,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/specialeventtype.html" class="tsd-kind-icon">Special<wbr>Event<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/amplitude.html" class="tsd-kind-icon">Amplitude</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/identify.html" class="tsd-kind-icon">Identify</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#event" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#middleware" class="tsd-kind-icon">Middleware</a>
 					</li>
 				</ul>
 			</nav>

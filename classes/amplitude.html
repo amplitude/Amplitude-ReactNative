@@ -86,6 +86,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#addeventmiddleware" class="tsd-kind-icon">add<wbr>Event<wbr>Middleware</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#disablecoppacontrol" class="tsd-kind-icon">disable<wbr>Coppa<wbr>Control</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#enablecoppacontrol" class="tsd-kind-icon">enable<wbr>Coppa<wbr>Control</a></li>
@@ -131,6 +132,26 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addeventmiddleware" class="tsd-anchor"></a>
+					<h3>add<wbr>Event<wbr>Middleware</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Event<wbr>Middleware<span class="tsd-signature-symbol">(</span>middleware<span class="tsd-signature-symbol">: </span><a href="../modules.html#middleware" class="tsd-signature-type" data-tsd-kind="Type alias">Middleware</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="amplitude.html" class="tsd-signature-type" data-tsd-kind="Class">Amplitude</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>middleware: <a href="../modules.html#middleware" class="tsd-signature-type" data-tsd-kind="Type alias">Middleware</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="amplitude.html" class="tsd-signature-type" data-tsd-kind="Class">Amplitude</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="clearuserproperties" class="tsd-anchor"></a>
 					<h3>clear<wbr>User<wbr>Properties</h3>
@@ -237,7 +258,7 @@
 					<a name="groupidentify" class="tsd-anchor"></a>
 					<h3>group<wbr>Identify</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">group<wbr>Identify<span class="tsd-signature-symbol">(</span>groupType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, identifyInstance<span class="tsd-signature-symbol">: </span><a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">group<wbr>Identify<span class="tsd-signature-symbol">(</span>groupType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, identifyInstance<span class="tsd-signature-symbol">: </span><a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a>, extra<span class="tsd-signature-symbol">?: </span><a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -258,6 +279,9 @@
 								</li>
 								<li>
 									<h5>identifyInstance: <a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> extra: <a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -270,7 +294,7 @@
 					<a name="identify" class="tsd-anchor"></a>
 					<h3>identify</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">identify<span class="tsd-signature-symbol">(</span>identifyInstance<span class="tsd-signature-symbol">: </span><a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">identify<span class="tsd-signature-symbol">(</span>identifyInstance<span class="tsd-signature-symbol">: </span><a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a>, extra<span class="tsd-signature-symbol">?: </span><a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -285,6 +309,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>identifyInstance: <a href="identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> extra: <a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -317,7 +344,7 @@
 					<a name="logevent" class="tsd-anchor"></a>
 					<h3>log<wbr>Event</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Event<span class="tsd-signature-symbol">(</span>eventType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, eventProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Event<span class="tsd-signature-symbol">(</span>eventType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, eventProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span>, extra<span class="tsd-signature-symbol">?: </span><a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -340,6 +367,15 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> eventProperties: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event&#39;s properties.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> extra: <a href="../interfaces/middlewareextra.html" class="tsd-signature-type" data-tsd-kind="Interface">MiddlewareExtra</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Extra untyped parameters for use in middleware.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -888,6 +924,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/specialeventtype.html" class="tsd-kind-icon">Special<wbr>Event<wbr>Type</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -895,6 +934,9 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="amplitude.html#instancename" class="tsd-kind-icon">instance<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#addeventmiddleware" class="tsd-kind-icon">add<wbr>Event<wbr>Middleware</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a>
@@ -986,6 +1028,15 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="identify.html" class="tsd-kind-icon">Identify</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#event" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#middleware" class="tsd-kind-icon">Middleware</a>
 					</li>
 				</ul>
 			</nav>
