@@ -1,3 +1,5 @@
+import { Identify } from './identify';
+
 type PropertiesObject = Record<string, any>;
 
 type RevenueProperties = {
@@ -89,3 +91,60 @@ export interface AmplitudeReactNativeModule {
     eventUploadThreshold: number,
   ): Promise<boolean>;
 }
+
+/**
+ * Strings that have special meaning when used as an event's type
+ * and have different specifications.
+ */
+export enum SpecialEventType {
+  IDENTIFY = '$identify',
+  GROUP_IDENTIFY = '$groupidentify',
+}
+
+export interface BaseEvent {
+  event_type: Exclude<string, SpecialEventType>;
+  event_properties?: PropertiesObject;
+}
+
+export interface IdentifyEvent extends BaseEvent {
+  event_type: SpecialEventType.IDENTIFY;
+  user_properties: Identify;
+}
+
+export interface GroupIdentifyEvent extends BaseEvent {
+  event_type: SpecialEventType.GROUP_IDENTIFY;
+  group_properties: Identify;
+}
+
+export type Event = BaseEvent | IdentifyEvent | GroupIdentifyEvent;
+
+/**
+ * Unstructured object to let users pass extra data to middleware
+ */
+export interface MiddlewareExtra {
+  [name: string]: any;
+}
+
+/**
+ * Data to be processed by middleware
+ */
+export interface MiddlewarePayload {
+  event: Event;
+  extra?: MiddlewareExtra;
+}
+
+/**
+ * Function called at the end of each Middleware to run the next middleware in the chain
+ */
+export type MiddlewareNext = (payload: MiddlewarePayload) => void;
+
+/**
+ * A function to run on the Event stream (each logEvent call)
+ *
+ * @param payload The event and extra data being sent
+ * @param next Function to run the next middleware in the chain, not calling next will end the middleware chain
+ */
+export type Middleware = (
+  payload: MiddlewarePayload,
+  next: MiddlewareNext,
+) => void;
