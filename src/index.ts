@@ -5,6 +5,9 @@ import { Identify } from './identify';
 import {
   AmplitudeReactNativeModule,
   Event,
+  BaseEvent,
+  IdentifyEvent,
+  GroupIdentifyEvent,
   Middleware,
   MiddlewareExtra,
   SpecialEventType,
@@ -14,7 +17,16 @@ import { MiddlewareRunner } from './middlewareRunner';
 const AmplitudeReactNative: AmplitudeReactNativeModule =
   NativeModules.AmplitudeReactNative;
 
-export { Identify, Event, Middleware, MiddlewareExtra, SpecialEventType };
+export {
+  Identify,
+  Event,
+  BaseEvent,
+  IdentifyEvent,
+  GroupIdentifyEvent,
+  Middleware,
+  MiddlewareExtra,
+  SpecialEventType,
+};
 
 export class Amplitude {
   private static _instances: Record<string, Amplitude>;
