@@ -98,17 +98,23 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="baseevent" class="tsd-anchor"></a>
 					<h3>Base<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Base<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>event_properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span><span class="tsd-signature-symbol">; </span>event_type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Base<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>device_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>event_properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span><span class="tsd-signature-symbol">; </span>event_type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>user_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> event_<wbr>properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> device_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>event_<wbr>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> event_<wbr>properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> event_<wbr>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> user_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -123,17 +129,29 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="groupidentifyevent" class="tsd-anchor"></a>
 					<h3>Group<wbr>Identify<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Group<wbr>Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>event_type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a><span class="tsd-signature-symbol">; </span>group_properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Group<wbr>Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>device_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>event_type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a><span class="tsd-signature-symbol">; </span>group_name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>group_properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol">; </span>group_type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>user_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5>event_<wbr>type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> device_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>group_<wbr>properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> event_<wbr>type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> group_<wbr>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> group_<wbr>properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> group_<wbr>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> user_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -141,17 +159,23 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="identifyevent" class="tsd-anchor"></a>
 					<h3>Identify<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>event_type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a><span class="tsd-signature-symbol">; </span>user_properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>device_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>event_type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a><span class="tsd-signature-symbol">; </span>user_id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>user_properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5>event_<wbr>type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> device_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>user_<wbr>properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> event_<wbr>type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> user_<wbr>id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> user_<wbr>properties<span class="tsd-signature-symbol">: </span><a href="classes/identify.html" class="tsd-signature-type" data-tsd-kind="Class">Identify</a></h5>
 							</li>
 						</ul>
 					</div>
