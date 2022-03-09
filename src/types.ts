@@ -42,6 +42,7 @@ export interface AmplitudeReactNativeModule {
     useDynamicConfig: boolean,
   ): Promise<boolean>;
   setUserId(instanceName: string, userId: string | null): Promise<boolean>;
+  getUserId(instanceName: string): Promise<string>;
   setServerUrl(instanceName: string, serverUrl: string): Promise<boolean>;
   logRevenueV2(
     instanceName: string,
@@ -102,18 +103,26 @@ export enum SpecialEventType {
 }
 
 export type BaseEvent = {
-  event_type: Exclude<string, SpecialEventType>;
-  event_properties?: PropertiesObject;
+  readonly event_type: Exclude<string, SpecialEventType>;
+  readonly user_id?: string;
+  readonly device_id?: string;
+  readonly event_properties?: PropertiesObject;
 };
 
 export type IdentifyEvent = {
-  event_type: SpecialEventType.IDENTIFY;
-  user_properties: Identify;
+  readonly event_type: SpecialEventType.IDENTIFY;
+  readonly user_id?: string;
+  readonly device_id?: string;
+  readonly user_properties: Identify;
 };
 
 export type GroupIdentifyEvent = {
-  event_type: SpecialEventType.GROUP_IDENTIFY;
-  group_properties: Identify;
+  readonly event_type: SpecialEventType.GROUP_IDENTIFY;
+  readonly user_id?: string;
+  readonly device_id?: string;
+  readonly group_type: string;
+  readonly group_name: string | string[];
+  readonly group_properties: Identify;
 };
 
 export type Event = BaseEvent | IdentifyEvent | GroupIdentifyEvent;

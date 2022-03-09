@@ -72,22 +72,29 @@ export class Amplitude {
     eventProperties?: Record<string, unknown>,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    const event = {
-      event_type: eventType,
-      event_properties: eventProperties,
-    };
-    if (!this._runMiddlewares(event, extra)) {
-      return Promise.resolve(false);
-    }
+    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
+      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
+        const properties = eventProperties ?? {};
+        const event = {
+          event_type: eventType,
+          user_id: userId,
+          device_id: deviceId,
+          event_properties: properties,
+        };
+        if (!this._runMiddlewares(event, extra)) {
+          return Promise.resolve(false);
+        }
 
-    if (eventProperties && Object.keys(eventProperties).length > 0) {
-      return AmplitudeReactNative.logEventWithProperties(
-        this.instanceName,
-        eventType,
-        eventProperties,
-      );
-    }
-    return AmplitudeReactNative.logEvent(this.instanceName, eventType);
+        if (Object.keys(properties).length > 0) {
+          return AmplitudeReactNative.logEventWithProperties(
+            this.instanceName,
+            eventType,
+            properties,
+          );
+        }
+        return AmplitudeReactNative.logEvent(this.instanceName, eventType);
+      }),
+    );
   }
 
   /**
@@ -188,6 +195,14 @@ export class Amplitude {
   }
 
   /**
+   * Fetches user id.
+   * @returns user id.
+   */
+  getUserId(): Promise<string> {
+    return AmplitudeReactNative.getUserId(this.instanceName);
+  }
+
+  /**
    * Customize the destination for server url.
    *
    * @param serverUrl
@@ -238,17 +253,23 @@ export class Amplitude {
     identifyInstance: Identify,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    const event = {
-      event_type: SpecialEventType.IDENTIFY,
-      user_properties: identifyInstance,
-    };
-    if (!this._runMiddlewares(event, extra)) {
-      return Promise.resolve(false);
-    }
+    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
+      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
+        const event = {
+          event_type: SpecialEventType.IDENTIFY,
+          user_id: userId,
+          device_id: deviceId,
+          user_properties: identifyInstance,
+        };
+        if (!this._runMiddlewares(event, extra)) {
+          return Promise.resolve(false);
+        }
 
-    return AmplitudeReactNative.identify(
-      this.instanceName,
-      identifyInstance.payload,
+        return AmplitudeReactNative.identify(
+          this.instanceName,
+          identifyInstance.payload,
+        );
+      }),
     );
   }
 
@@ -279,19 +300,27 @@ export class Amplitude {
     identifyInstance: Identify,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    const event = {
-      event_type: SpecialEventType.GROUP_IDENTIFY,
-      group_properties: identifyInstance,
-    };
-    if (!this._runMiddlewares(event, extra)) {
-      return Promise.resolve(false);
-    }
+    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
+      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
+        const event = {
+          event_type: SpecialEventType.GROUP_IDENTIFY,
+          user_id: userId,
+          device_id: deviceId,
+          group_type: groupType,
+          group_name: groupName,
+          group_properties: identifyInstance,
+        };
+        if (!this._runMiddlewares(event, extra)) {
+          return Promise.resolve(false);
+        }
 
-    return AmplitudeReactNative.groupIdentify(
-      this.instanceName,
-      groupType,
-      groupName,
-      identifyInstance.payload,
+        return AmplitudeReactNative.groupIdentify(
+          this.instanceName,
+          groupType,
+          groupName,
+          identifyInstance.payload,
+        );
+      }),
     );
   }
 
