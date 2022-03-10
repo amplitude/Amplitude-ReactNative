@@ -1,18 +1,32 @@
-export class Identify {
-  payload: Record<string, Record<string, unknown>>;
+export enum IdentifyOperation {
+  SET = '$set',
+  SET_ONCE = '$setOnce',
+  ADD = '$add',
+  APPEND = '$append',
+  UNSET = '$unset',
+}
 
-  private static OP_SET = '$set';
-  private static OP_SET_ONCE = '$setOnce';
-  private static OP_ADD = '$add';
-  private static OP_APPEND = '$append';
-  private static OP_UNSET = '$unset';
+export interface IdentifyPayload {
+  // Add operations can only take numbers
+  [IdentifyOperation.ADD]?: Record<string, number>;
+
+  // This reads the keys of the passed object, but the values are not used
+  [IdentifyOperation.UNSET]?: Record<string, unknown>;
+
+  [IdentifyOperation.SET]?: Record<string, unknown>;
+  [IdentifyOperation.SET_ONCE]?: Record<string, unknown>;
+  [IdentifyOperation.APPEND]?: Record<string, unknown>;
+}
+
+export class Identify {
+  payload: IdentifyPayload;
 
   private static ALL_OPS = [
-    Identify.OP_SET,
-    Identify.OP_SET_ONCE,
-    Identify.OP_ADD,
-    Identify.OP_APPEND,
-    Identify.OP_UNSET,
+    IdentifyOperation.SET,
+    IdentifyOperation.SET_ONCE,
+    IdentifyOperation.ADD,
+    IdentifyOperation.APPEND,
+    IdentifyOperation.UNSET,
   ];
 
   constructor() {
@@ -20,26 +34,26 @@ export class Identify {
   }
 
   set(key: string, value: unknown): void {
-    this.addOp(Identify.OP_SET, key, value);
+    this.addOp(IdentifyOperation.SET, key, value);
   }
 
   setOnce(key: string, value: unknown): void {
-    this.addOp(Identify.OP_SET_ONCE, key, value);
+    this.addOp(IdentifyOperation.SET_ONCE, key, value);
   }
 
   add(key: string, value: number): void {
-    this.addOp(Identify.OP_ADD, key, value);
+    this.addOp(IdentifyOperation.ADD, key, value);
   }
 
   unset(key: string): void {
-    this.addOp(Identify.OP_UNSET, key, '-');
+    this.addOp(IdentifyOperation.UNSET, key, '-');
   }
 
   append(key: string, value: unknown): void {
-    this.addOp(Identify.OP_APPEND, key, value);
+    this.addOp(IdentifyOperation.APPEND, key, value);
   }
 
-  private addOp(op: string, key: string, value: unknown): void {
+  private addOp(op: IdentifyOperation, key: string, value: unknown): void {
     if (!Identify.ALL_OPS.includes(op)) {
       throw new Error(
         `Unknown Identify operation: ${op} called with key: ${key} value: ${String(
@@ -50,10 +64,14 @@ export class Identify {
     this.opMap(op)[key] = value;
   }
 
-  private opMap(key: string): Record<string, unknown> {
-    if (!Object.prototype.hasOwnProperty.call(this.payload, key)) {
-      this.payload[key] = {};
+  private opMap(op: IdentifyOperation): Record<string, unknown> {
+    if (!Object.prototype.hasOwnProperty.call(this.payload, op)) {
+      this.payload[op] = {};
     }
-    return this.payload[key];
+    return this.payload[op]!;
   }
+}
+
+export function deepClonePayload(payload: IdentifyPayload): IdentifyPayload {
+  return JSON.parse(JSON.stringify(payload));
 }

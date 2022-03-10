@@ -1,7 +1,12 @@
 import { NativeModules } from 'react-native';
 
 import { Constants } from './constants';
-import { Identify } from './identify';
+import {
+  deepClonePayload,
+  Identify,
+  IdentifyPayload,
+  IdentifyOperation,
+} from './identify';
 import {
   AmplitudeReactNativeModule,
   Event,
@@ -26,6 +31,8 @@ export {
   Middleware,
   MiddlewareExtra,
   SpecialEventType,
+  IdentifyPayload,
+  IdentifyOperation,
 };
 
 export class Amplitude {
@@ -74,25 +81,30 @@ export class Amplitude {
   ): Promise<boolean> {
     return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
       AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const properties = eventProperties ?? {};
-        const event = {
-          event_type: eventType,
-          user_id: userId,
-          device_id: deviceId,
-          event_properties: properties,
+        const event: BaseEvent = {
+          eventType,
+          userId,
+          deviceId,
+          eventProperties,
         };
         if (!this._runMiddlewares(event, extra)) {
           return Promise.resolve(false);
         }
 
-        if (Object.keys(properties).length > 0) {
+        if (
+          event.eventProperties &&
+          Object.keys(event.eventProperties).length > 0
+        ) {
           return AmplitudeReactNative.logEventWithProperties(
             this.instanceName,
-            eventType,
-            properties,
+            event.eventType,
+            event.eventProperties,
           );
         }
-        return AmplitudeReactNative.logEvent(this.instanceName, eventType);
+        return AmplitudeReactNative.logEvent(
+          this.instanceName,
+          event.eventType,
+        );
       }),
     );
   }
@@ -255,11 +267,11 @@ export class Amplitude {
   ): Promise<boolean> {
     return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
       AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const event = {
-          event_type: SpecialEventType.IDENTIFY,
-          user_id: userId,
-          device_id: deviceId,
-          user_properties: identifyInstance,
+        const event: IdentifyEvent = {
+          eventType: SpecialEventType.IDENTIFY,
+          userId,
+          deviceId,
+          userProperties: deepClonePayload(identifyInstance.payload),
         };
         if (!this._runMiddlewares(event, extra)) {
           return Promise.resolve(false);
@@ -267,7 +279,7 @@ export class Amplitude {
 
         return AmplitudeReactNative.identify(
           this.instanceName,
-          identifyInstance.payload,
+          event.userProperties,
         );
       }),
     );
@@ -302,13 +314,13 @@ export class Amplitude {
   ): Promise<boolean> {
     return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
       AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const event = {
-          event_type: SpecialEventType.GROUP_IDENTIFY,
-          user_id: userId,
-          device_id: deviceId,
-          group_type: groupType,
-          group_name: groupName,
-          group_properties: identifyInstance,
+        const event: GroupIdentifyEvent = {
+          eventType: SpecialEventType.GROUP_IDENTIFY,
+          userId,
+          deviceId,
+          groupType,
+          groupName,
+          groupProperties: deepClonePayload(identifyInstance.payload),
         };
         if (!this._runMiddlewares(event, extra)) {
           return Promise.resolve(false);
@@ -316,9 +328,9 @@ export class Amplitude {
 
         return AmplitudeReactNative.groupIdentify(
           this.instanceName,
-          groupType,
-          groupName,
-          identifyInstance.payload,
+          event.groupType,
+          event.groupName,
+          event.groupProperties,
         );
       }),
     );

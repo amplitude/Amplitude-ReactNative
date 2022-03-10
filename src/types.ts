@@ -1,4 +1,4 @@
-import { Identify } from './identify';
+import { IdentifyPayload } from './identify';
 
 type PropertiesObject = Record<string, any>;
 
@@ -103,26 +103,26 @@ export enum SpecialEventType {
 }
 
 export type BaseEvent = {
-  readonly event_type: Exclude<string, SpecialEventType>;
-  readonly user_id?: string;
-  readonly device_id?: string;
-  readonly event_properties?: PropertiesObject;
+  eventType: Exclude<string, SpecialEventType>;
+  userId?: string;
+  deviceId?: string;
+  eventProperties?: PropertiesObject;
 };
 
 export type IdentifyEvent = {
-  readonly event_type: SpecialEventType.IDENTIFY;
-  readonly user_id?: string;
-  readonly device_id?: string;
-  readonly user_properties: Identify;
+  eventType: SpecialEventType.IDENTIFY;
+  userId?: string;
+  deviceId?: string;
+  userProperties: IdentifyPayload;
 };
 
 export type GroupIdentifyEvent = {
-  readonly event_type: SpecialEventType.GROUP_IDENTIFY;
-  readonly user_id?: string;
-  readonly device_id?: string;
-  readonly group_type: string;
-  readonly group_name: string | string[];
-  readonly group_properties: Identify;
+  eventType: SpecialEventType.GROUP_IDENTIFY;
+  userId?: string;
+  deviceId?: string;
+  groupType: string;
+  groupName: string | string[];
+  groupProperties: IdentifyPayload;
 };
 
 export type Event = BaseEvent | IdentifyEvent | GroupIdentifyEvent;

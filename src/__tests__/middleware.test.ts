@@ -1,7 +1,7 @@
 import { MiddlewareRunner } from '../middlewareRunner';
 import { MiddlewarePayload } from '../types';
 
-const PAYLOAD_EVENT_ONLY = { event: { event_type: 'Test ' } };
+const PAYLOAD_EVENT_ONLY = { event: { eventType: 'Test ' } };
 
 describe('middleware behavior', () => {
   let next: jest.Mock;
@@ -51,7 +51,7 @@ describe('middleware behavior', () => {
     const middlewareCount = 10;
     const middleware = [];
     const getPayloadWithCount = (count: number): MiddlewarePayload => ({
-      event: { event_type: 'Test' },
+      event: { eventType: 'Test' },
       extra: { count },
     });
 
