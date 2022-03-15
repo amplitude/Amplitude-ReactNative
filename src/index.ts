@@ -74,39 +74,38 @@ export class Amplitude {
    * @param eventProperties The event's properties.
    * @param extra Extra untyped parameters for use in middleware.
    */
-  logEvent(
+  async logEvent(
     eventType: string,
     eventProperties?: Record<string, unknown>,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
-      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const event: BaseEvent = {
-          eventType,
-          userId,
-          deviceId,
-          eventProperties,
-        };
-        if (!this._runMiddlewares(event, extra)) {
-          return Promise.resolve(false);
-        }
+    const event: BaseEvent = {
+      eventType,
+      eventProperties,
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
 
-        if (
-          event.eventProperties &&
-          Object.keys(event.eventProperties).length > 0
-        ) {
-          return AmplitudeReactNative.logEventWithProperties(
-            this.instanceName,
-            event.eventType,
-            event.eventProperties,
-          );
-        }
-        return AmplitudeReactNative.logEvent(
-          this.instanceName,
-          event.eventType,
-        );
-      }),
-    );
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
+    if (
+      event.eventProperties &&
+      Object.keys(event.eventProperties).length > 0
+    ) {
+      return AmplitudeReactNative.logEventWithProperties(
+        this.instanceName,
+        event.eventType,
+        event.eventProperties,
+      );
+    }
+    return AmplitudeReactNative.logEvent(this.instanceName, event.eventType);
   }
 
   /**
@@ -261,27 +260,29 @@ export class Amplitude {
    * @param identifyInstance
    * @param extra
    */
-  identify(
+  async identify(
     identifyInstance: Identify,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
-      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const event: IdentifyEvent = {
-          eventType: SpecialEventType.IDENTIFY,
-          userId,
-          deviceId,
-          userProperties: deepClonePayload(identifyInstance.payload),
-        };
-        if (!this._runMiddlewares(event, extra)) {
-          return Promise.resolve(false);
-        }
+    const event: IdentifyEvent = {
+      eventType: SpecialEventType.IDENTIFY,
+      userProperties: deepClonePayload(identifyInstance.payload),
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
 
-        return AmplitudeReactNative.identify(
-          this.instanceName,
-          event.userProperties,
-        );
-      }),
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
+    return AmplitudeReactNative.identify(
+      this.instanceName,
+      event.userProperties,
     );
   }
 
@@ -306,33 +307,35 @@ export class Amplitude {
    * @param identifyInstance
    * @param extra
    */
-  groupIdentify(
+  async groupIdentify(
     groupType: string,
     groupName: string | string[],
     identifyInstance: Identify,
     extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    return AmplitudeReactNative.getUserId(this.instanceName).then((userId) =>
-      AmplitudeReactNative.getDeviceId(this.instanceName).then((deviceId) => {
-        const event: GroupIdentifyEvent = {
-          eventType: SpecialEventType.GROUP_IDENTIFY,
-          userId,
-          deviceId,
-          groupType,
-          groupName,
-          groupProperties: deepClonePayload(identifyInstance.payload),
-        };
-        if (!this._runMiddlewares(event, extra)) {
-          return Promise.resolve(false);
-        }
+    const event: GroupIdentifyEvent = {
+      eventType: SpecialEventType.GROUP_IDENTIFY,
+      groupType,
+      groupName,
+      groupProperties: deepClonePayload(identifyInstance.payload),
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
 
-        return AmplitudeReactNative.groupIdentify(
-          this.instanceName,
-          event.groupType,
-          event.groupName,
-          event.groupProperties,
-        );
-      }),
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
+    return AmplitudeReactNative.groupIdentify(
+      this.instanceName,
+      event.groupType,
+      event.groupName,
+      event.groupProperties,
     );
   }
 
