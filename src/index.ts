@@ -1,12 +1,7 @@
 import { NativeModules } from 'react-native';
 
 import { Constants } from './constants';
-import {
-  deepClonePayload,
-  Identify,
-  IdentifyPayload,
-  IdentifyOperation,
-} from './identify';
+import { Identify, IdentifyPayload, IdentifyOperation } from './identify';
 import {
   AmplitudeReactNativeModule,
   Event,
@@ -266,7 +261,7 @@ export class Amplitude {
   ): Promise<boolean> {
     const event: IdentifyEvent = {
       eventType: SpecialEventType.IDENTIFY,
-      userProperties: deepClonePayload(identifyInstance.payload),
+      userProperties: { ...identifyInstance.payload },
     };
     if (!this._runMiddlewares(event, extra)) {
       return Promise.resolve(false);
@@ -317,7 +312,7 @@ export class Amplitude {
       eventType: SpecialEventType.GROUP_IDENTIFY,
       groupType,
       groupName,
-      groupProperties: deepClonePayload(identifyInstance.payload),
+      groupProperties: { ...identifyInstance.payload },
     };
     if (!this._runMiddlewares(event, extra)) {
       return Promise.resolve(false);

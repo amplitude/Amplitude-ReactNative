@@ -71,7 +71,3 @@ export class Identify {
     return this.payload[op]!;
   }
 }
-
-export function deepClonePayload(payload: IdentifyPayload): IdentifyPayload {
-  return JSON.parse(JSON.stringify(payload));
-}
