@@ -78,6 +78,9 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/baseevent.html" class="tsd-kind-icon">Base<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/groupidentifyevent.html" class="tsd-kind-icon">Group<wbr>Identify<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/identifyevent.html" class="tsd-kind-icon">Identify<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/identifypayload.html" class="tsd-kind-icon">Identify<wbr>Payload</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a></li>
 							</ul>
@@ -85,10 +88,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias"><a href="modules.html#baseevent" class="tsd-kind-icon">Base<wbr>Event</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#event" class="tsd-kind-icon">Event</a></li>
-								<li class="tsd-kind-type-alias"><a href="modules.html#groupidentifyevent" class="tsd-kind-icon">Group<wbr>Identify<wbr>Event</a></li>
-								<li class="tsd-kind-type-alias"><a href="modules.html#identifyevent" class="tsd-kind-icon">Identify<wbr>Event</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#middleware" class="tsd-kind-icon">Middleware</a></li>
 							</ul>
 						</section>
@@ -98,89 +98,11 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="baseevent" class="tsd-anchor"></a>
-					<h3>Base<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Base<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>deviceId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>eventProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span><span class="tsd-signature-symbol">; </span>eventType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>userId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
-					<aside class="tsd-sources">
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> device<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> event<wbr>Properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PropertiesObject</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>event<wbr>Type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="enums/specialeventtype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SpecialEventType</a><span class="tsd-signature-symbol">&gt;</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="event" class="tsd-anchor"></a>
 					<h3>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Event<span class="tsd-signature-symbol">:</span> <a href="modules.html#baseevent" class="tsd-signature-type" data-tsd-kind="Type alias">BaseEvent</a><span class="tsd-signature-symbol"> | </span><a href="modules.html#identifyevent" class="tsd-signature-type" data-tsd-kind="Type alias">IdentifyEvent</a><span class="tsd-signature-symbol"> | </span><a href="modules.html#groupidentifyevent" class="tsd-signature-type" data-tsd-kind="Type alias">GroupIdentifyEvent</a></div>
+					<div class="tsd-signature tsd-kind-icon">Event<span class="tsd-signature-symbol">:</span> <a href="interfaces/baseevent.html" class="tsd-signature-type" data-tsd-kind="Interface">BaseEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/identifyevent.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/groupidentifyevent.html" class="tsd-signature-type" data-tsd-kind="Interface">GroupIdentifyEvent</a></div>
 					<aside class="tsd-sources">
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="groupidentifyevent" class="tsd-anchor"></a>
-					<h3>Group<wbr>Identify<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Group<wbr>Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>deviceId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>eventType<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a><span class="tsd-signature-symbol">; </span>groupName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>groupProperties<span class="tsd-signature-symbol">: </span><a href="interfaces/identifypayload.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyPayload</a><span class="tsd-signature-symbol">; </span>groupType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>userId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
-					<aside class="tsd-sources">
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> device<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>event<wbr>Type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#group_identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">GROUP_IDENTIFY</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>group<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>group<wbr>Properties<span class="tsd-signature-symbol">: </span><a href="interfaces/identifypayload.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyPayload</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>group<wbr>Type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="identifyevent" class="tsd-anchor"></a>
-					<h3>Identify<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Identify<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>deviceId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>eventType<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a><span class="tsd-signature-symbol">; </span>userId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>userProperties<span class="tsd-signature-symbol">: </span><a href="interfaces/identifypayload.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyPayload</a><span class="tsd-signature-symbol"> }</span></div>
-					<aside class="tsd-sources">
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> device<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>event<wbr>Type<span class="tsd-signature-symbol">: </span><a href="enums/specialeventtype.html#identify" class="tsd-signature-type" data-tsd-kind="Enumeration member">IDENTIFY</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>user<wbr>Properties<span class="tsd-signature-symbol">: </span><a href="interfaces/identifypayload.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyPayload</a></h5>
-							</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="middleware" class="tsd-anchor"></a>
@@ -251,22 +173,22 @@
 						<a href="classes/identify.html" class="tsd-kind-icon">Identify</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/baseevent.html" class="tsd-kind-icon">Base<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/groupidentifyevent.html" class="tsd-kind-icon">Group<wbr>Identify<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/identifyevent.html" class="tsd-kind-icon">Identify<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/identifypayload.html" class="tsd-kind-icon">Identify<wbr>Payload</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#baseevent" class="tsd-kind-icon">Base<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#event" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#groupidentifyevent" class="tsd-kind-icon">Group<wbr>Identify<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#identifyevent" class="tsd-kind-icon">Identify<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#middleware" class="tsd-kind-icon">Middleware</a>

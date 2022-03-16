@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IdentifyPayload | @amplitude/react-native</title>
+	<title>BaseEvent | @amplitude/react-native</title>
 	<meta name="description" content="Documentation for @amplitude/react-native">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@amplitude/react-native</a>
 				</li>
 				<li>
-					<a href="identifypayload.html">IdentifyPayload</a>
+					<a href="baseevent.html">BaseEvent</a>
 				</li>
 			</ul>
-			<h1>Interface IdentifyPayload</h1>
+			<h1>Interface BaseEvent</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,15 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IdentifyPayload</span>
+						<span class="target">BaseEvent</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="identifyevent.html" class="tsd-signature-type" data-tsd-kind="Interface">IdentifyEvent</a>
+							</li>
+							<li>
+								<a href="groupidentifyevent.html" class="tsd-signature-type" data-tsd-kind="Interface">GroupIdentifyEvent</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -80,11 +88,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="identifypayload.html#_add" class="tsd-kind-icon">$add</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="identifypayload.html#_append" class="tsd-kind-icon">$append</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="identifypayload.html#_set" class="tsd-kind-icon">$set</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="identifypayload.html#_setonce" class="tsd-kind-icon">$set<wbr>Once</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="identifypayload.html#_unset" class="tsd-kind-icon">$unset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baseevent.html#deviceid" class="tsd-kind-icon">device<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baseevent.html#eventproperties" class="tsd-kind-icon">event<wbr>Properties</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baseevent.html#eventtype" class="tsd-kind-icon">event<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baseevent.html#userid" class="tsd-kind-icon">user<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,37 +100,30 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_add" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $add</h3>
-					<div class="tsd-signature tsd-kind-icon">$add<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="deviceid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> device<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">device<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_append" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $append</h3>
-					<div class="tsd-signature tsd-kind-icon">$append<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="eventproperties" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> event<wbr>Properties</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Properties<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_set" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $set</h3>
-					<div class="tsd-signature tsd-kind-icon">$set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="eventtype" class="tsd-anchor"></a>
+					<h3>event<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_setonce" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $set<wbr>Once</h3>
-					<div class="tsd-signature tsd-kind-icon">$set<wbr>Once<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="_unset" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> $unset</h3>
-					<div class="tsd-signature tsd-kind-icon">$unset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="userid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
@@ -151,39 +151,36 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/identify.html" class="tsd-kind-icon">Identify</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="baseevent.html" class="tsd-kind-icon">Base<wbr>Event</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baseevent.html#deviceid" class="tsd-kind-icon">device<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baseevent.html#eventproperties" class="tsd-kind-icon">event<wbr>Properties</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baseevent.html#eventtype" class="tsd-kind-icon">event<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baseevent.html#userid" class="tsd-kind-icon">user<wbr>Id</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="groupidentifyevent.html" class="tsd-kind-icon">Group<wbr>Identify<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="identifyevent.html" class="tsd-kind-icon">Identify<wbr>Event</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="identifypayload.html" class="tsd-kind-icon">Identify<wbr>Payload</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="identifypayload.html#_add" class="tsd-kind-icon">$add</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="identifypayload.html#_append" class="tsd-kind-icon">$append</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="identifypayload.html#_set" class="tsd-kind-icon">$set</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="identifypayload.html#_setonce" class="tsd-kind-icon">$set<wbr>Once</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="identifypayload.html#_unset" class="tsd-kind-icon">$unset</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="middlewareextra.html" class="tsd-kind-icon">Middleware<wbr>Extra</a>
 					</li>
