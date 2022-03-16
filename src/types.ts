@@ -102,28 +102,24 @@ export enum SpecialEventType {
   GROUP_IDENTIFY = '$groupidentify',
 }
 
-export type BaseEvent = {
+export interface BaseEvent {
   eventType: Exclude<string, SpecialEventType>;
   userId?: string;
   deviceId?: string;
   eventProperties?: PropertiesObject;
-};
+}
 
-export type IdentifyEvent = {
+export interface IdentifyEvent extends BaseEvent {
   eventType: SpecialEventType.IDENTIFY;
-  userId?: string;
-  deviceId?: string;
   userProperties: IdentifyPayload;
-};
+}
 
-export type GroupIdentifyEvent = {
+export interface GroupIdentifyEvent extends BaseEvent {
   eventType: SpecialEventType.GROUP_IDENTIFY;
-  userId?: string;
-  deviceId?: string;
   groupType: string;
   groupName: string | string[];
   groupProperties: IdentifyPayload;
-};
+}
 
 export type Event = BaseEvent | IdentifyEvent | GroupIdentifyEvent;
 
