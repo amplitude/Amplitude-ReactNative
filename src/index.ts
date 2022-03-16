@@ -1,21 +1,44 @@
 import { NativeModules } from 'react-native';
 
 import { Constants } from './constants';
-import { Identify } from './identify';
-import { AmplitudeReactNativeModule } from './types';
+import { Identify, IdentifyPayload, IdentifyOperation } from './identify';
+import {
+  AmplitudeReactNativeModule,
+  Event,
+  BaseEvent,
+  IdentifyEvent,
+  GroupIdentifyEvent,
+  Middleware,
+  MiddlewareExtra,
+  SpecialEventType,
+} from './types';
+import { MiddlewareRunner } from './middlewareRunner';
 
 const AmplitudeReactNative: AmplitudeReactNativeModule =
   NativeModules.AmplitudeReactNative;
 
-export { Identify };
+export {
+  Identify,
+  Event,
+  BaseEvent,
+  IdentifyEvent,
+  GroupIdentifyEvent,
+  Middleware,
+  MiddlewareExtra,
+  SpecialEventType,
+  IdentifyPayload,
+  IdentifyOperation,
+};
 
 export class Amplitude {
   private static _instances: Record<string, Amplitude>;
   private static _defaultInstanceName = '$default_instance';
   instanceName: string;
+  private readonly _middlewareRunner: MiddlewareRunner;
 
   private constructor(instanceName: string) {
     this.instanceName = instanceName;
+    this._middlewareRunner = new MiddlewareRunner();
     this._setLibraryName(Constants.packageSourceName);
     this._setLibraryVersion(Constants.packageVersion);
   }
@@ -43,19 +66,41 @@ export class Amplitude {
    * (whichever comes first), as well as on app close.
    *
    * @param eventType The name of the event you wish to track.
+   * @param eventProperties The event's properties.
+   * @param extra Extra untyped parameters for use in middleware.
    */
-  logEvent(
+  async logEvent(
     eventType: string,
     eventProperties?: Record<string, unknown>,
+    extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    if (eventProperties && Object.keys(eventProperties).length > 0) {
+    const event: BaseEvent = {
+      eventType,
+      eventProperties,
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
+
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
+    if (
+      event.eventProperties &&
+      Object.keys(event.eventProperties).length > 0
+    ) {
       return AmplitudeReactNative.logEventWithProperties(
         this.instanceName,
-        eventType,
-        eventProperties,
+        event.eventType,
+        event.eventProperties,
       );
     }
-    return AmplitudeReactNative.logEvent(this.instanceName, eventType);
+    return AmplitudeReactNative.logEvent(this.instanceName, event.eventType);
   }
 
   /**
@@ -156,6 +201,14 @@ export class Amplitude {
   }
 
   /**
+   * Fetches user id.
+   * @returns user id.
+   */
+  getUserId(): Promise<string> {
+    return AmplitudeReactNative.getUserId(this.instanceName);
+  }
+
+  /**
    * Customize the destination for server url.
    *
    * @param serverUrl
@@ -200,11 +253,31 @@ export class Amplitude {
    * Send an identify call containing user property operations to Amplitude servers.
    *
    * @param identifyInstance
+   * @param extra
    */
-  identify(identifyInstance: Identify): Promise<boolean> {
+  async identify(
+    identifyInstance: Identify,
+    extra?: MiddlewareExtra,
+  ): Promise<boolean> {
+    const event: IdentifyEvent = {
+      eventType: SpecialEventType.IDENTIFY,
+      userProperties: { ...identifyInstance.payload },
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
+
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
     return AmplitudeReactNative.identify(
       this.instanceName,
-      identifyInstance.payload,
+      event.userProperties,
     );
   }
 
@@ -227,17 +300,37 @@ export class Amplitude {
    * @param groupType
    * @param groupName
    * @param identifyInstance
+   * @param extra
    */
-  groupIdentify(
+  async groupIdentify(
     groupType: string,
     groupName: string | string[],
     identifyInstance: Identify,
+    extra?: MiddlewareExtra,
   ): Promise<boolean> {
-    return AmplitudeReactNative.groupIdentify(
-      this.instanceName,
+    const event: GroupIdentifyEvent = {
+      eventType: SpecialEventType.GROUP_IDENTIFY,
       groupType,
       groupName,
-      identifyInstance.payload,
+      groupProperties: { ...identifyInstance.payload },
+    };
+    if (!this._runMiddlewares(event, extra)) {
+      return Promise.resolve(false);
+    }
+
+    if (event.userId) {
+      await AmplitudeReactNative.setUserId(this.instanceName, event.userId);
+    }
+
+    if (event.deviceId) {
+      await AmplitudeReactNative.setDeviceId(this.instanceName, event.deviceId);
+    }
+
+    return AmplitudeReactNative.groupIdentify(
+      this.instanceName,
+      event.groupType,
+      event.groupName,
+      event.groupProperties,
     );
   }
 
@@ -357,6 +450,11 @@ export class Amplitude {
     );
   }
 
+  addEventMiddleware(middleware: Middleware): Amplitude {
+    this._middlewareRunner.add(middleware);
+    return this;
+  }
+
   // Private bridging calls
   private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);
@@ -367,5 +465,17 @@ export class Amplitude {
       this.instanceName,
       libraryVersion,
     );
+  }
+
+  private _runMiddlewares(
+    event: Event,
+    extra: MiddlewareExtra | undefined,
+  ): boolean {
+    let middlewareCompleted = false;
+    this._middlewareRunner.run({ event, extra }, () => {
+      middlewareCompleted = true;
+    });
+
+    return middlewareCompleted;
   }
 }

@@ -78,7 +78,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).optOut = optOut
         resolve(true)
     }
-    
+
     @objc
     func setLibraryName(_ instanceName: String,
                         libraryName: String,
@@ -87,7 +87,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).libraryName = libraryName
         resolve(true)
     }
-    
+
     @objc
     func setLibraryVersion(_ instanceName: String,
                            libraryVersion: String,
@@ -96,7 +96,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).libraryVersion = libraryVersion
         resolve(true)
     }
-    
+
     @objc
     func trackingSessionEvents(_ instanceName: String,
                                trackingSessionEvents: Bool,
@@ -105,7 +105,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).trackingSessionEvents = trackingSessionEvents
         resolve(true)
     }
-    
+
     @objc
     func setUseDynamicConfig(_ instanceName: String,
                              useDynamicConfig: Bool,
@@ -114,7 +114,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).useDynamicConfig = useDynamicConfig
         resolve(true)
     }
-    
+
     @objc
     func setUserId(_ instanceName: String,
                    userId: String,
@@ -123,7 +123,14 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).setUserId(userId)
         resolve(true)
     }
-    
+
+    @objc
+    func getUserId(_ instanceName: String,
+                   resolver resolve: RCTPromiseResolveBlock,
+                   rejecter reject: RCTPromiseRejectBlock) -> Void {
+        resolve(Amplitude.instance(withName: instanceName).getUserId())
+    }
+
     @objc
     func setServerUrl(_ instanceName: String,
                       serverUrl: String,
@@ -132,7 +139,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).setServerUrl(serverUrl)
         resolve(true)
     }
-    
+
     @objc
     func logEvent(_ instanceName: String,
                   eventType: String,
@@ -141,7 +148,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).logEvent(eventType)
         resolve(true)
     }
-    
+
     @objc
     func logEventWithProperties(_ instanceName: String,
                                 eventType: String,
@@ -151,7 +158,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).logEvent(eventType, withEventProperties: eventProperties)
         resolve(true)
     }
-    
+
     @objc
     func logRevenueV2(_ instanceName: String,
                       userProperties: [String: Any],
@@ -171,7 +178,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).identify(identify)
         resolve(true)
     }
-    
+
     @objc
     func groupIdentify(_ instanceName: String,
                        groupType: String,
@@ -185,7 +192,7 @@ class ReactNative: NSObject {
                                                                  groupIdentify: identify)
         resolve(true)
     }
-    
+
     @objc
     func setGroup(_ instanceName: String,
                   groupType: String,
@@ -195,7 +202,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).setGroup(groupType, groupName: groupName)
         resolve(true)
     }
-    
+
     @objc
     func setUserProperties(_ instanceName: String,
                            userProperties: [String: Any],
@@ -204,7 +211,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).setUserProperties(userProperties)
         resolve(true)
     }
-    
+
     @objc
     func clearUserProperties(_ instanceName: String,
                              resolver resolve: RCTPromiseResolveBlock,
@@ -212,7 +219,7 @@ class ReactNative: NSObject {
         Amplitude.instance(withName: instanceName).clearUserProperties()
         resolve(true)
     }
-    
+
     @objc
     func uploadEvents(_ instanceName: String,
                       resolver resolve: RCTPromiseResolveBlock,

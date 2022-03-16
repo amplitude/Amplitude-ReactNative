@@ -9,6 +9,14 @@ const initAmplitude = (): Amplitude => {
   amplitudeInstance.setEventUploadThreshold(30);
   amplitudeInstance.setEventUploadPeriodMillis(20000);
 
+  amplitudeInstance.addEventMiddleware((payload, next) => {
+    const { event, extra } = payload;
+    console.log(
+      `$event=${event.eventType} properties=${event.eventProperties} extra=${extra}`,
+    );
+    next(payload);
+  });
+
   return amplitudeInstance;
 };
 
