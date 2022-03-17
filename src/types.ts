@@ -42,7 +42,6 @@ export interface AmplitudeReactNativeModule {
     useDynamicConfig: boolean,
   ): Promise<boolean>;
   setUserId(instanceName: string, userId: string | null): Promise<boolean>;
-  getUserId(instanceName: string): Promise<string>;
   setServerUrl(instanceName: string, serverUrl: string): Promise<boolean>;
   logRevenueV2(
     instanceName: string,

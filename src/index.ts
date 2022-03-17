@@ -201,14 +201,6 @@ export class Amplitude {
   }
 
   /**
-   * Fetches user id.
-   * @returns user id.
-   */
-  getUserId(): Promise<string> {
-    return AmplitudeReactNative.getUserId(this.instanceName);
-  }
-
-  /**
    * Customize the destination for server url.
    *
    * @param serverUrl

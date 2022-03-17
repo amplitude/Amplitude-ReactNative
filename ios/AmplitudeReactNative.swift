@@ -125,13 +125,6 @@ class ReactNative: NSObject {
     }
 
     @objc
-    func getUserId(_ instanceName: String,
-                   resolver resolve: RCTPromiseResolveBlock,
-                   rejecter reject: RCTPromiseRejectBlock) -> Void {
-        resolve(Amplitude.instance(withName: instanceName).getUserId())
-    }
-
-    @objc
     func setServerUrl(_ instanceName: String,
                       serverUrl: String,
                       resolver resolve: RCTPromiseResolveBlock,

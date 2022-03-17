@@ -26,8 +26,6 @@ RCT_EXTERN_METHOD(setUseDynamicConfig:(NSString *)instanceName useDynamicConfig:
 
 RCT_EXTERN_METHOD(setUserId:(NSString *)instanceName userId:(NSString *)userId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(getUserId:(NSString *)instanceName resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
-
 RCT_EXTERN_METHOD(setServerUrl:(NSString *)instanceName serverUrl:(NSString *)serverUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(logEvent:(NSString *)instanceName eventType:(NSString *)eventType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
