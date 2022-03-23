@@ -6,6 +6,7 @@ import com.amplitude.api.Amplitude;
 import com.amplitude.api.AmplitudeClient;
 import com.amplitude.api.AmplitudeServerZone;
 import com.amplitude.api.Identify;
+import com.amplitude.api.Plan;
 import com.amplitude.api.Revenue;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -306,6 +307,26 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.setEventUploadThreshold(eventUploadThreshold);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setPlan(String instanceName, ReadableMap planProperties, Promise promise) {
+        Plan plan = new Plan();
+        if (planProperties.hasKey("branch")) {
+            plan.setBranch(planProperties.getString("branch"));
+        }
+        if (planProperties.hasKey("source")) {
+            plan.setSource(planProperties.getString("source"));
+        }
+        if (planProperties.hasKey("version")) {
+            plan.setVersion(planProperties.getString("version"));
+        }
+
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setPlan(plan);
             promise.resolve(true);
         }
     }

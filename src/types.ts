@@ -90,6 +90,7 @@ export interface AmplitudeReactNativeModule {
     instanceName: string,
     eventUploadThreshold: number,
   ): Promise<boolean>;
+  setPlan(instanceName: string, plan: Plan): Promise<boolean>;
 }
 
 /**
@@ -152,3 +153,15 @@ export type Middleware = (
   payload: MiddlewarePayload,
   next: MiddlewareNext,
 ) => void;
+
+/**
+ * Tracking plan
+ */
+export type Plan = {
+  /** The tracking plan branch name e.g. "main" */
+  branch?: string;
+  /** The tracking plan source e.g. "web", "mobile" */
+  source?: string;
+  /** The tracking plan version e.g. "1", "15" */
+  version?: string;
+};
