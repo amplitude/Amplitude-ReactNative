@@ -8,6 +8,11 @@ const initAmplitude = (): Amplitude => {
   amplitudeInstance.setEventUploadMaxBatchSize(200);
   amplitudeInstance.setEventUploadThreshold(30);
   amplitudeInstance.setEventUploadPeriodMillis(20000);
+  amplitudeInstance.setPlan({
+    branch: 'example-branch',
+    source: 'example-source',
+    version: '1.2.3',
+  });
 
   amplitudeInstance.addEventMiddleware((payload, next) => {
     const { event, extra } = payload;
