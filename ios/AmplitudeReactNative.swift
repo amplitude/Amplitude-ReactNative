@@ -275,6 +275,25 @@ class ReactNative: NSObject {
         resolve(true)
     }
 
+    @objc
+    func setPlan(_ instanceName: String,
+                    planProperties: [String: Any],
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        let plan = AMPPlan()
+        if (planProperties["branch"] != nil) {
+            plan.setBranch(planProperties["branch"] as! String)
+        }
+        if (planProperties["source"] != nil) {
+            plan.setSource(planProperties["source"] as! String)
+        }
+        if (planProperties["version"] != nil) {
+            plan.setVersion(planProperties["version"] as! String)
+        }
+        Amplitude.instance(withName: instanceName).setPlan(plan)
+        resolve(true)
+    }
+
     private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()
         if userProperties["productId"] != nil {

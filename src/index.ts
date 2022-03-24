@@ -11,6 +11,7 @@ import {
   Middleware,
   MiddlewareExtra,
   SpecialEventType,
+  Plan,
 } from './types';
 import { MiddlewareRunner } from './middlewareRunner';
 
@@ -28,6 +29,7 @@ export {
   SpecialEventType,
   IdentifyPayload,
   IdentifyOperation,
+  Plan,
 };
 
 export class Amplitude {
@@ -440,6 +442,15 @@ export class Amplitude {
       this.instanceName,
       eventUploadThreshold,
     );
+  }
+
+  /**
+   * Sets tracking plan information.
+   *
+   * @param plan Plan object
+   */
+  setPlan(plan: Plan): Promise<boolean> {
+    return AmplitudeReactNative.setPlan(this.instanceName, plan);
   }
 
   addEventMiddleware(middleware: Middleware): Amplitude {

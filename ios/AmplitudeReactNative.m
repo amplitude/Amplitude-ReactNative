@@ -62,4 +62,6 @@ RCT_EXTERN_METHOD(setEventUploadPeriodMillis:(NSString *)instanceName eventUploa
 
 RCT_EXTERN_METHOD(setEventUploadThreshold:(NSString *)instanceName eventUploadThreshold:(int)eventUploadThreshold resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(setPlan:(NSString *)instanceName planProperties:(NSDictionary *)planProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 @end
