@@ -323,6 +323,9 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         if (planProperties.hasKey("version")) {
             plan.setVersion(planProperties.getString("version"));
         }
+        if (planProperties.hasKey("versionId")) {
+            plan.setVersionId(planProperties.getString("versionId"));
+        }
 
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
