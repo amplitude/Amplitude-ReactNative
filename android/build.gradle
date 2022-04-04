@@ -55,5 +55,5 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation "com.amplitude:android-sdk:2.36.1"
+    implementation "com.amplitude:android-sdk:2.37.0"
 }

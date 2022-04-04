@@ -12,6 +12,7 @@ const initAmplitude = (): Amplitude => {
     branch: 'example-branch',
     source: 'example-source',
     version: '1.2.3',
+    versionId: 'example-version-id',
   });
 
   amplitudeInstance.addEventMiddleware((payload, next) => {

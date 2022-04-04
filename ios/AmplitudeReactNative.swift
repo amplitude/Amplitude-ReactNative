@@ -290,6 +290,9 @@ class ReactNative: NSObject {
         if (planProperties["version"] != nil) {
             plan.setVersion(planProperties["version"] as! String)
         }
+        if (planProperties["versionId"] != nil) {
+            plan.setVersionId(planProperties["versionId"] as! String)
+        }
         Amplitude.instance(withName: instanceName).setPlan(plan)
         resolve(true)
     }
