@@ -60,7 +60,7 @@ class ReactNative: NSObject {
     func setAdvertisingIdForDeviceId(_ instanceName: String,
                             resolver resolve: RCTPromiseResolveBlock,
                             rejecter reject: RCTPromiseRejectBlock) -> Void {
-        resolve(false)
+        resolve(Amplitude.instance(withName: instanceName).useAdvertisingIdForDeviceId())
     }
 
     @objc
