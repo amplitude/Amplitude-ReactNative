@@ -6,7 +6,9 @@ import { useAmplitude } from '../utils/amplitude';
 
 export const DeviceIDSection = () => {
   const amplitude = useAmplitude();
-  const [currentDeviceId, setCurrentDeviceId] = React.useState('');
+  const [currentDeviceId, setCurrentDeviceId] = React.useState<string | null>(
+    '',
+  );
   const [loading, updateLoading] = React.useState(true);
 
   const handleRegenerateDeviceId = () => {
@@ -27,7 +29,7 @@ export const DeviceIDSection = () => {
   return (
     <SdkSectionLayout heading={'Device ID'}>
       <View pointerEvents="none">
-        <Input value={currentDeviceId} editable={false} />
+        <Input value={currentDeviceId ?? ''} editable={false} />
       </View>
       <Button
         title={'Regenerate Device ID'}
