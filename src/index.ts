@@ -144,7 +144,7 @@ export class Amplitude {
    * Fetches the deviceId, a unique identifier shared between multiple users using the same app on the same device.
    * @returns the deviceId.
    */
-  getDeviceId(): Promise<string> {
+  getDeviceId(): Promise<string | null> {
     return AmplitudeReactNative.getDeviceId(this.instanceName);
   }
 

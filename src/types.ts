@@ -24,7 +24,7 @@ export interface AmplitudeReactNativeModule {
   disableCoppaControl(instanceName: string): Promise<boolean>;
   regenerateDeviceId(instanceName: string): Promise<boolean>;
   setDeviceId(instanceName: string, deviceId: string): Promise<boolean>;
-  getDeviceId(instanceName: string): Promise<string>;
+  getDeviceId(instanceName: string): Promise<string | null>;
   setAdvertisingIdForDeviceId(instanceName: string): Promise<boolean>;
   setAppSetIdForDeviceId(instanceName: string): Promise<boolean>;
   setOptOut(instanceName: string, optOut: boolean): Promise<boolean>;
