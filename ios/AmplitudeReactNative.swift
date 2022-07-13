@@ -303,7 +303,6 @@ class ReactNative: NSObject {
                     resolver resolve: RCTPromiseResolveBlock,
                     rejecter reject: RCTPromiseRejectBlock) -> Void {
         // TODO: add the set log callback logic after iOS log enable logging implementation
-        resolve(false)
     }
 
     @objc

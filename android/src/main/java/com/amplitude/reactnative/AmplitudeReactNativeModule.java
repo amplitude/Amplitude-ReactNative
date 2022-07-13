@@ -348,14 +348,12 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setLogCallback(String instanceName, Callback logCallback) {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
-        class AmplitudeErrorCallback implements AmplitudeLogCallback {
-        @Override
-        public void onError(String tag, String message) {
-          logCallback.invoke(tag, message);
-          }
-        }
-        AmplitudeErrorCallback callback = new AmplitudeErrorCallback();
-        client.setLogCallback(callback);
+        client.setLogCallback(new AmplitudeLogCallback() {
+            @Override
+            public void onError(String tag, String message) {
+              logCallback.invoke(tag, message);
+              }
+        });
     }
 
     @ReactMethod
