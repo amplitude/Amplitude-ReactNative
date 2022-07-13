@@ -64,4 +64,10 @@ RCT_EXTERN_METHOD(setEventUploadThreshold:(NSString *)instanceName eventUploadTh
 
 RCT_EXTERN_METHOD(setPlan:(NSString *)instanceName planProperties:(NSDictionary *)planProperties resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(enableLogging:(NSString *)instanceName enableLogging:(BOOL *)enableLogging resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(setLogCallback:(NSString *)instanceName callback:(RCTResponseSenderBlock)callback)
+
+RCT_EXTERN_METHOD(setLogLevel:(NSString *)instanceName logLevel:(NSInteger *)logLevel resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+
 @end

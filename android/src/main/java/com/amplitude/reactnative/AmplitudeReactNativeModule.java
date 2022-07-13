@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.AmplitudeClient;
+import com.amplitude.api.AmplitudeLogCallback;
 import com.amplitude.api.AmplitudeServerZone;
 import com.amplitude.api.Identify;
 import com.amplitude.api.Plan;
@@ -14,6 +15,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.Callback;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -330,6 +332,37 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.setPlan(plan);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void enableLogging(String instanceName, Boolean enableLogging, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.enableLogging(enableLogging);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setLogCallback(String instanceName, Callback logCallback) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        class AmplitudeErrorCallback implements AmplitudeLogCallback {
+        @Override
+        public void onError(String tag, String message) {
+          logCallback.invoke(tag, message);
+          }
+        }
+        AmplitudeErrorCallback callback = new AmplitudeErrorCallback();
+        client.setLogCallback(callback);
+    }
+
+    @ReactMethod
+    public void setLogLevel(String instanceName, Integer logLevel, Promise promise) {
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setLogLevel(logLevel);
             promise.resolve(true);
         }
     }
