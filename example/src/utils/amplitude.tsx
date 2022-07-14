@@ -14,7 +14,11 @@ const initAmplitude = (): Amplitude => {
     version: '1.2.3',
     versionId: 'example-version-id',
   });
-
+  amplitudeInstance.enableLogging(true);
+  amplitudeInstance.setLogCallback((tag: string, message: string) => {
+    console.log(`${tag}: ${message}`);
+  });
+  amplitudeInstance.setLogLevel(2);
   amplitudeInstance.addEventMiddleware((payload, next) => {
     const { event, extra } = payload;
     console.log(

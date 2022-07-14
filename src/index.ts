@@ -458,6 +458,38 @@ export class Amplitude {
     return this;
   }
 
+  /**
+   * Enable/disable message logging by the SDK.
+   *
+   * @param enableLogging whether to enable message logging by the SDK.
+   */
+  enableLogging(enableLogging: boolean): Promise<boolean> {
+    return AmplitudeReactNative.enableLogging(this.instanceName, enableLogging);
+  }
+
+  /**
+   * Set log callback, it can help read and collect error message from sdk. The call back function like the following format
+   * (tag: string, message: string) => {
+   *  //implement your own logic
+   * }
+   *
+   * @param callback
+   */
+
+  setLogCallback(callback: Function): void {
+    AmplitudeReactNative.setLogCallback(this.instanceName, callback);
+  }
+
+  /**
+   * Sets the logging level. Logging messages will only appear if they are the same severity
+   * level or higher than the set log level.
+   *
+   * @param logLevel the log level
+   */
+  setLogLevel(logLevel: number): Promise<boolean> {
+    return AmplitudeReactNative.setLogLevel(this.instanceName, logLevel);
+  }
+
   // Private bridging calls
   private _setLibraryName(libraryName: string): Promise<boolean> {
     return AmplitudeReactNative.setLibraryName(this.instanceName, libraryName);

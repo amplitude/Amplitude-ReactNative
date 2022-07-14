@@ -91,6 +91,9 @@ export interface AmplitudeReactNativeModule {
     eventUploadThreshold: number,
   ): Promise<boolean>;
   setPlan(instanceName: string, plan: Plan): Promise<boolean>;
+  enableLogging(instanceName: string, enableLogging: boolean): Promise<boolean>;
+  setLogCallback(instanceName: string, callback: Function): void;
+  setLogLevel(instanceName: string, logLevel: number): Promise<boolean>;
 }
 
 /**

@@ -297,6 +297,29 @@ class ReactNative: NSObject {
         resolve(true)
     }
 
+    @objc
+    func enableLogging(_ instanceName: String,
+                    enableLogging: Bool,
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        // TODO: add the set log callback logic after iOS log enable logging implementation
+    }
+
+    @objc
+    func setLogCallback(_ instanceName: String,
+                    callback: RCTResponseSenderBlock) -> Void {
+        // TODO: add the set log callback logic after iOS log callback implementation
+    }
+
+    @objc
+    func setLogLevel(_ instanceName: String,
+                    logLevel: Int,
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+         // TODO: add the set log callback logic after iOS log level implementation
+        resolve(false)
+    }
+
     private func createRevenue(_ userProperties: [String: Any]) -> AMPRevenue {
         let revenue = AMPRevenue()
         if userProperties["productId"] != nil {
