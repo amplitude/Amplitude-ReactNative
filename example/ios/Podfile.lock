@@ -1,7 +1,7 @@
 PODS:
   - Amplitude (8.10.0):
     - AnalyticsConnector (~> 1.0.0)
-  - amplitude-react-native (2.12.1):
+  - amplitude-react-native (2.13.0):
     - Amplitude (= 8.10.0)
     - React-Core
   - AnalyticsConnector (1.0.0)
@@ -358,7 +358,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplitude: 2904f346250510b9e19a4e2262017bcf1d4368f9
-  amplitude-react-native: 20f37edeceb5966927dc28fb6c229a812a58c010
+  amplitude-react-native: 985b13211d36cf03131289fb10e0e23bed98a409
   AnalyticsConnector: 4c386d5972ac9da86e22d668564dbbac97558754
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
