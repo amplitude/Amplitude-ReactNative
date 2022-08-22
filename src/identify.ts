@@ -3,6 +3,8 @@ export enum IdentifyOperation {
   SET_ONCE = '$setOnce',
   ADD = '$add',
   APPEND = '$append',
+  PREINSERT = '$preInsert',
+  POSTINSERT = '$postInsert',
   UNSET = '$unset',
 }
 
@@ -16,6 +18,8 @@ export interface IdentifyPayload {
   [IdentifyOperation.SET]?: Record<string, unknown>;
   [IdentifyOperation.SET_ONCE]?: Record<string, unknown>;
   [IdentifyOperation.APPEND]?: Record<string, unknown>;
+  [IdentifyOperation.PREINSERT]?: Record<string, unknown>;
+  [IdentifyOperation.POSTINSERT]?: Record<string, unknown>;
 }
 
 export class Identify {
@@ -26,6 +30,8 @@ export class Identify {
     IdentifyOperation.SET_ONCE,
     IdentifyOperation.ADD,
     IdentifyOperation.APPEND,
+    IdentifyOperation.PREINSERT,
+    IdentifyOperation.POSTINSERT,
     IdentifyOperation.UNSET,
   ];
 
@@ -51,6 +57,14 @@ export class Identify {
 
   append(key: string, value: unknown): void {
     this.addOp(IdentifyOperation.APPEND, key, value);
+  }
+
+  preInsert(key: string, value: unknown): void {
+    this.addOp(IdentifyOperation.PREINSERT, key, value);
+  }
+
+  postInsert(key: string, value: unknown): void {
+    this.addOp(IdentifyOperation.POSTINSERT, key, value);
   }
 
   private addOp(op: IdentifyOperation, key: string, value: unknown): void {

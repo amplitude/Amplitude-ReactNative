@@ -447,6 +447,34 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.prepend(key, userPropertiesObj.getJSONArray(key));
                             }
+                        case "$preInsert":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.preInsert(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.preInsert(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.preInsert(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.preInsert(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.preInsert(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.preInsert(key, userPropertiesObj.getJSONArray(key));
+                            }
+                        case "$postInsert":
+                            if ((Object)userPropertiesObj.get(key) instanceof Double){
+                                identify.postInsert(key, userPropertiesObj.getDouble(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Integer){
+                                identify.postInsert(key, userPropertiesObj.getInt(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Long) {
+                                identify.postInsert(key, userPropertiesObj.getLong(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof String) {
+                                identify.postInsert(key, userPropertiesObj.getString(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONObject) {
+                                identify.postInsert(key, userPropertiesObj.getJSONObject(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
+                                identify.postInsert(key, userPropertiesObj.getJSONArray(key));
+                            }
                         case "$set":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
                                 identify.set(key, userPropertiesObj.getDouble(key));
