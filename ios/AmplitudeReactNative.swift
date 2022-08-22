@@ -357,9 +357,9 @@ class ReactNative: NSObject {
                 case "$prepend":
                     identify.prepend(key, value: value)
                 case "$preInsert":
-                   identify.preInsert(key, value: value)
+                    identify.preInsert(key, value: value)
                 case "$postInsert":
-                  identify.postInsert(key, value: value)
+                    identify.postInsert(key, value: value)
                 case "$set":
                     identify.set(key, value: value)
                 case "$setOnce":
