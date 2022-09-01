@@ -91,6 +91,7 @@ export interface AmplitudeReactNativeModule {
     eventUploadThreshold: number,
   ): Promise<boolean>;
   setPlan(instanceName: string, plan: Plan): Promise<boolean>;
+  setIngestionMetadata(instanceName: string, ingestionMetadata: IngestionMetadata): Promise<boolean>;
   enableLogging(instanceName: string, enableLogging: boolean): Promise<boolean>;
   setLogCallback(instanceName: string, callback: Function): void;
   setLogLevel(instanceName: string, logLevel: number): Promise<boolean>;
@@ -169,4 +170,14 @@ export type Plan = {
   version?: string;
   /** The tracking plan version Id e.g. "9ec23ba0-275f-468f-80d1-66b88bff9529" */
   versionId?: string;
+};
+
+/**
+ * Ingestion metadata
+ */
+export type IngestionMetadata = {
+  /** The source name of ingestion metadata e.g. "ampli" */
+  sourceName?: string;
+  /** The source version of ingestion metadata e.g. "2.0.0" */
+  sourceVersion?: string;
 };

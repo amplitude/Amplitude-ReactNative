@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency "Amplitude", "8.10.0"
+  s.dependency "Amplitude", "8.10.0" # TODO(marvin): need to update after iOS SDK change is merged and released
 end
