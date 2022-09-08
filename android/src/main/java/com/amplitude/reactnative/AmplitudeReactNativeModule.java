@@ -336,14 +336,14 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
             promise.resolve(true);
         }
     }
-    
+
     @ReactMethod
     public void setIngestionMetadata(String instanceName, ReadableMap ingestionMetadataProperties, Promise promise) {
         IngestionMetadata ingestionMetadata = new IngestionMetadata();
-        if (properties.hasKey("sourceName")) {
+        if (ingestionMetadataProperties.hasKey("sourceName")) {
             ingestionMetadata.setSourceName(ingestionMetadataProperties.getString("sourceName"));
         }
-        if (properties.hasKey("sourceVersion")) {
+        if (ingestionMetadataProperties.hasKey("sourceVersion")) {
             ingestionMetadata.setSourceVersion(ingestionMetadataProperties.getString("sourceVersion"));
         }
 
