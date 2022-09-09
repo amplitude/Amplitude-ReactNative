@@ -12,6 +12,7 @@ import {
   MiddlewareExtra,
   SpecialEventType,
   Plan,
+  IngestionMetadata,
 } from './types';
 import { MiddlewareRunner } from './middlewareRunner';
 
@@ -30,6 +31,7 @@ export {
   IdentifyPayload,
   IdentifyOperation,
   Plan,
+  IngestionMetadata,
 };
 
 export class Amplitude {
@@ -451,6 +453,15 @@ export class Amplitude {
    */
   setPlan(plan: Plan): Promise<boolean> {
     return AmplitudeReactNative.setPlan(this.instanceName, plan);
+  }
+
+  /**
+   * Sets ingestion metadata information.
+   *
+   * @param ingestionMetadata IngestionMetadata object
+   */
+  setIngestionMetadata(ingestionMetadata: IngestionMetadata): Promise<boolean> {
+    return AmplitudeReactNative.setIngestionMetadata(this.instanceName, ingestionMetadata);
   }
 
   addEventMiddleware(middleware: Middleware): Amplitude {

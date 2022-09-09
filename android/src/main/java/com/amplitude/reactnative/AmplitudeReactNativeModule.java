@@ -8,6 +8,7 @@ import com.amplitude.api.AmplitudeLogCallback;
 import com.amplitude.api.AmplitudeServerZone;
 import com.amplitude.api.Identify;
 import com.amplitude.api.Plan;
+import com.amplitude.api.IngestionMetadata;
 import com.amplitude.api.Revenue;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -332,6 +333,23 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
         AmplitudeClient client = Amplitude.getInstance(instanceName);
         synchronized (client) {
             client.setPlan(plan);
+            promise.resolve(true);
+        }
+    }
+
+    @ReactMethod
+    public void setIngestionMetadata(String instanceName, ReadableMap ingestionMetadataProperties, Promise promise) {
+        IngestionMetadata ingestionMetadata = new IngestionMetadata();
+        if (ingestionMetadataProperties.hasKey("sourceName")) {
+            ingestionMetadata.setSourceName(ingestionMetadataProperties.getString("sourceName"));
+        }
+        if (ingestionMetadataProperties.hasKey("sourceVersion")) {
+            ingestionMetadata.setSourceVersion(ingestionMetadataProperties.getString("sourceVersion"));
+        }
+
+        AmplitudeClient client = Amplitude.getInstance(instanceName);
+        synchronized (client) {
+            client.setIngestionMetadata(ingestionMetadata);
             promise.resolve(true);
         }
     }

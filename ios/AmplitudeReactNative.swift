@@ -298,6 +298,22 @@ class ReactNative: NSObject {
     }
 
     @objc
+    func setIngestionMetadata(_ instanceName: String,
+                    ingestionMetadataProperties: [String: Any],
+                    resolver resolve: RCTPromiseResolveBlock,
+                    rejecter reject: RCTPromiseRejectBlock) -> Void {
+        let ingestionMetadata = AMPIngestionMetadata()
+        if (ingestionMetadataProperties["sourceName"] != nil) {
+            ingestionMetadata.setSourceName(ingestionMetadataProperties["sourceName"] as! String)
+        }
+        if (ingestionMetadataProperties["sourceVersion"] != nil) {
+            ingestionMetadata.setSourceVersion(ingestionMetadataProperties["sourceVersion"] as! String)
+        }
+        Amplitude.instance(withName: instanceName).setIngestionMetadata(ingestionMetadata)
+        resolve(true)
+    }
+
+    @objc
     func enableLogging(_ instanceName: String,
                     enableLogging: Bool,
                     resolver resolve: RCTPromiseResolveBlock,
