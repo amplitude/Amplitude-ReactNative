@@ -1,6 +1,6 @@
 {
   "name": "@amplitude/react-native",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "description": "Official React Native SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
