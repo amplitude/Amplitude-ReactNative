@@ -483,15 +483,15 @@ export class Amplitude {
   }
 
   /**
-   * Set log callback, it can help read and collect error message from sdk. The call back function like the following format
-   * (tag: string, message: string) => {
+   * Add log callback, it can help read and collect error message from sdk. The call back function like the following format
+   * ({ tag, message }: { tag: string, message: string }) => {
    *  //implement your own logic
    * }
    *
    * @param callback
    */
 
-  setLogCallback(callback: (error: AmplitudeLogError) => void): EmitterSubscription {
+  addLogCallback(callback: (error: AmplitudeLogError) => void): EmitterSubscription {
     return this._nativeEventEmitter.addListener("AmplitudeLogError", callback);
   }
 
