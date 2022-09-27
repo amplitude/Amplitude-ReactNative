@@ -1,3 +1,4 @@
+import type { EmitterSubscription } from 'react-native';
 import { IdentifyPayload } from './identify';
 
 type PropertiesObject = Record<string, any>;
@@ -11,6 +12,8 @@ type RevenueProperties = {
   receiptSignature?: string;
   eventProperties?: PropertiesObject;
 };
+
+export type AmplitudeLogError = { tag: string; message: string };
 
 export interface AmplitudeReactNativeModule {
   initialize(instanceName: string, apiKey: string): Promise<boolean>;
@@ -93,7 +96,7 @@ export interface AmplitudeReactNativeModule {
   setPlan(instanceName: string, plan: Plan): Promise<boolean>;
   setIngestionMetadata(instanceName: string, ingestionMetadata: IngestionMetadata): Promise<boolean>;
   enableLogging(instanceName: string, enableLogging: boolean): Promise<boolean>;
-  setLogCallback(instanceName: string, callback: Function): void;
+  addLogCallback(instanceName: string, callback: (error: AmplitudeLogError) => void): EmitterSubscription;
   setLogLevel(instanceName: string, logLevel: number): Promise<boolean>;
 }
 

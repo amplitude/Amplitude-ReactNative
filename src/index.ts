@@ -1,4 +1,4 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, NativeEventEmitter, EmitterSubscription } from 'react-native';
 
 import { Constants } from './constants';
 import { Identify, IdentifyPayload, IdentifyOperation } from './identify';
@@ -13,6 +13,7 @@ import {
   SpecialEventType,
   Plan,
   IngestionMetadata,
+  AmplitudeLogError
 } from './types';
 import { MiddlewareRunner } from './middlewareRunner';
 
@@ -39,12 +40,15 @@ export class Amplitude {
   private static _defaultInstanceName = '$default_instance';
   instanceName: string;
   private readonly _middlewareRunner: MiddlewareRunner;
+  private readonly _nativeEventEmitter: NativeEventEmitter;
 
   private constructor(instanceName: string) {
     this.instanceName = instanceName;
     this._middlewareRunner = new MiddlewareRunner();
     this._setLibraryName(Constants.packageSourceName);
     this._setLibraryVersion(Constants.packageVersion);
+
+    this._nativeEventEmitter = new NativeEventEmitter(NativeModules.AmplitudeReactNative);
   }
 
   static getInstance(
@@ -479,16 +483,16 @@ export class Amplitude {
   }
 
   /**
-   * Set log callback, it can help read and collect error message from sdk. The call back function like the following format
-   * (tag: string, message: string) => {
+   * Add log callback, it can help read and collect error message from sdk. The call back function like the following format
+   * ({ tag, message }: { tag: string, message: string }) => {
    *  //implement your own logic
    * }
    *
    * @param callback
    */
 
-  setLogCallback(callback: Function): void {
-    AmplitudeReactNative.setLogCallback(this.instanceName, callback);
+  addLogCallback(callback: (error: AmplitudeLogError) => void): EmitterSubscription {
+    return this._nativeEventEmitter.addListener("AmplitudeLogError", callback);
   }
 
   /**
