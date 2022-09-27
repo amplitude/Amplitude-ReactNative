@@ -87,6 +87,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#addeventmiddleware" class="tsd-kind-icon">add<wbr>Event<wbr>Middleware</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#addlogcallback" class="tsd-kind-icon">add<wbr>Log<wbr>Callback</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#disablecoppacontrol" class="tsd-kind-icon">disable<wbr>Coppa<wbr>Control</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#enablecoppacontrol" class="tsd-kind-icon">enable<wbr>Coppa<wbr>Control</a></li>
@@ -107,7 +108,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#seteventuploadthreshold" class="tsd-kind-icon">set<wbr>Event<wbr>Upload<wbr>Threshold</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setgroup" class="tsd-kind-icon">set<wbr>Group</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setingestionmetadata" class="tsd-kind-icon">set<wbr>Ingestion<wbr>Metadata</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setlogcallback" class="tsd-kind-icon">set<wbr>Log<wbr>Callback</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setloglevel" class="tsd-kind-icon">set<wbr>Log<wbr>Level</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setmintimebetweensessionsmillis" class="tsd-kind-icon">set<wbr>Min<wbr>Time<wbr>Between<wbr>Sessions<wbr>Millis</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="amplitude.html#setoptout" class="tsd-kind-icon">set<wbr>Opt<wbr>Out</a></li>
@@ -154,6 +154,54 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="amplitude.html" class="tsd-signature-type" data-tsd-kind="Class">Amplitude</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addlogcallback" class="tsd-anchor"></a>
+					<h3>add<wbr>Log<wbr>Callback</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Log<wbr>Callback<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AmplitudeLogError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EmitterSubscription</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add log callback, it can help read and collect error message from sdk. The call back function like the following format
+										({ tag, message }: { tag: string, message: string }) =&gt; {
+										//implement your own logic
+									}</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>callback: <span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AmplitudeLogError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AmplitudeLogError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>error: <span class="tsd-signature-type">AmplitudeLogError</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">EmitterSubscription</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -702,36 +750,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setlogcallback" class="tsd-anchor"></a>
-					<h3>set<wbr>Log<wbr>Callback</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Log<wbr>Callback<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Set log callback, it can help read and collect error message from sdk. The call back function like the following format
-										(tag: string, message: string) =&gt; {
-										//implement your own logic
-									}</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>callback: <span class="tsd-signature-type">Function</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="setloglevel" class="tsd-anchor"></a>
 					<h3>set<wbr>Log<wbr>Level</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1090,6 +1108,9 @@
 								<a href="amplitude.html#addeventmiddleware" class="tsd-kind-icon">add<wbr>Event<wbr>Middleware</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="amplitude.html#addlogcallback" class="tsd-kind-icon">add<wbr>Log<wbr>Callback</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#clearuserproperties" class="tsd-kind-icon">clear<wbr>User<wbr>Properties</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1148,9 +1169,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#setingestionmetadata" class="tsd-kind-icon">set<wbr>Ingestion<wbr>Metadata</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="amplitude.html#setlogcallback" class="tsd-kind-icon">set<wbr>Log<wbr>Callback</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="amplitude.html#setloglevel" class="tsd-kind-icon">set<wbr>Log<wbr>Level</a>
