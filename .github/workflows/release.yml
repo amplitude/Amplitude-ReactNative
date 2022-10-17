@@ -14,11 +14,12 @@ jobs:
     runs-on: macos-10.15 
     steps:
       - name: ${{ github.actor }} permission check to do a release
-        uses: octokit/request-action@v2.0.0
+        uses: "lannonbr/repo-permission-check-action@2.0.2"
         with:
-          route: GET /repos/${{ github.repository }}/collaborators/${{ github.actor }}
+          permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   release:
     name: Release
