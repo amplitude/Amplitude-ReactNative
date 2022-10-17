@@ -29,8 +29,7 @@
     "docs:create-docs": "typedoc --tsconfig ./tsconfig.build.json --theme './node_modules/typedoc-neo-theme'",
     "docs:gen-docs": "rm -rf docs && yarn run docs:create-docs && git add docs",
     "docs:deploy": "gh-pages -d docs",
-    "release": "semantic-release",
-    "release-temp": "release-it"
+    "release": "semantic-release"
   },
   "keywords": [
     "react-native",
@@ -50,7 +49,6 @@
   "devDependencies": {
     "@google/semantic-release-replace-plugin": "^1.0.2",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
@@ -72,7 +70,6 @@
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-builder-bob": "^0.17.1",
-    "release-it": "^14.5.1",
     "semantic-release": "^17.4.1",
     "typedoc": "^0.20.28",
     "typedoc-neo-theme": "^1.1.0",
@@ -102,23 +99,6 @@
     "**/*.{json}": [
       "prettier --write"
     ]
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
   },
   "react-native-builder-bob": {
     "source": "src",
