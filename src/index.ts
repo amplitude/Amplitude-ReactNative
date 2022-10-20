@@ -1,4 +1,8 @@
-import { NativeModules, NativeEventEmitter, EmitterSubscription } from 'react-native';
+import {
+  NativeModules,
+  NativeEventEmitter,
+  EmitterSubscription,
+} from 'react-native';
 
 import { Constants } from './constants';
 import { Identify, IdentifyPayload, IdentifyOperation } from './identify';
@@ -13,7 +17,7 @@ import {
   SpecialEventType,
   Plan,
   IngestionMetadata,
-  AmplitudeLogError
+  AmplitudeLogError,
 } from './types';
 import { MiddlewareRunner } from './middlewareRunner';
 
@@ -48,7 +52,9 @@ export class Amplitude {
     this._setLibraryName(Constants.packageSourceName);
     this._setLibraryVersion(Constants.packageVersion);
 
-    this._nativeEventEmitter = new NativeEventEmitter(NativeModules.AmplitudeReactNative);
+    this._nativeEventEmitter = new NativeEventEmitter(
+      NativeModules.AmplitudeReactNative,
+    );
   }
 
   static getInstance(
@@ -465,7 +471,10 @@ export class Amplitude {
    * @param ingestionMetadata IngestionMetadata object
    */
   setIngestionMetadata(ingestionMetadata: IngestionMetadata): Promise<boolean> {
-    return AmplitudeReactNative.setIngestionMetadata(this.instanceName, ingestionMetadata);
+    return AmplitudeReactNative.setIngestionMetadata(
+      this.instanceName,
+      ingestionMetadata,
+    );
   }
 
   addEventMiddleware(middleware: Middleware): Amplitude {
@@ -491,8 +500,10 @@ export class Amplitude {
    * @param callback
    */
 
-  addLogCallback(callback: (error: AmplitudeLogError) => void): EmitterSubscription {
-    return this._nativeEventEmitter.addListener("AmplitudeLogError", callback);
+  addLogCallback(
+    callback: (error: AmplitudeLogError) => void,
+  ): EmitterSubscription {
+    return this._nativeEventEmitter.addListener('AmplitudeLogError', callback);
   }
 
   /**
