@@ -72,4 +72,12 @@ RCT_EXTERN_METHOD(setLogCallback:(NSString *)instanceName callback:(RCTResponseS
 
 RCT_EXTERN_METHOD(setLogLevel:(NSString *)instanceName logLevel:(NSInteger *)logLevel resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXPORT_METHOD(addListener:(NSString *)eventName) {
+  // Keep: Required for RN built in Event Emitter Calls.
+}
+
+RCT_EXPORT_METHOD(removeListeners:(NSInteger)count) {
+  // Keep: Required for RN built in Event Emitter Calls.
+}
+
 @end
