@@ -471,6 +471,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.append(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.append(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.append(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$prepend":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
@@ -485,6 +487,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.prepend(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.prepend(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.prepend(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$preInsert":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
@@ -499,6 +503,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.preInsert(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.preInsert(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.preInsert(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$postInsert":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
@@ -513,6 +519,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.postInsert(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.postInsert(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.postInsert(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$set":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
@@ -527,6 +535,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.set(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.set(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.set(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$setOnce":
                             if ((Object)userPropertiesObj.get(key) instanceof Double){
@@ -541,6 +551,8 @@ public class AmplitudeReactNativeModule extends ReactContextBaseJavaModule {
                                 identify.setOnce(key, userPropertiesObj.getJSONObject(key));
                             } else if ((Object)userPropertiesObj.get(key) instanceof JSONArray) {
                                 identify.setOnce(key, userPropertiesObj.getJSONArray(key));
+                            } else if ((Object)userPropertiesObj.get(key) instanceof Boolean) {
+                                identify.setOnce(key, userPropertiesObj.getBoolean(key));
                             }
                         case "$unset":
                             identify.unset(key); // value is default to `-`
