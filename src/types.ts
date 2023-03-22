@@ -94,9 +94,15 @@ export interface AmplitudeReactNativeModule {
     eventUploadThreshold: number,
   ): Promise<boolean>;
   setPlan(instanceName: string, plan: Plan): Promise<boolean>;
-  setIngestionMetadata(instanceName: string, ingestionMetadata: IngestionMetadata): Promise<boolean>;
+  setIngestionMetadata(
+    instanceName: string,
+    ingestionMetadata: IngestionMetadata,
+  ): Promise<boolean>;
   enableLogging(instanceName: string, enableLogging: boolean): Promise<boolean>;
-  addLogCallback(instanceName: string, callback: (error: AmplitudeLogError) => void): EmitterSubscription;
+  addLogCallback(
+    instanceName: string,
+    callback: (error: AmplitudeLogError) => void,
+  ): EmitterSubscription;
   setLogLevel(instanceName: string, logLevel: number): Promise<boolean>;
 }
 

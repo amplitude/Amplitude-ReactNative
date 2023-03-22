@@ -20,8 +20,8 @@ describe('middleware behavior', () => {
   });
 
   it('should call next() with single middleware', () => {
-    const middleware = jest.fn((payload, next) => {
-      next(payload);
+    const middleware = jest.fn((payload, nxt) => {
+      nxt(payload);
     });
 
     runner.add(middleware);
@@ -57,10 +57,10 @@ describe('middleware behavior', () => {
 
     // Create a number of middleware, each one increments the extra.count
     for (let i = 0; i < middlewareCount; i += 1) {
-      middleware[i] = jest.fn((payload, next) => {
+      middleware[i] = jest.fn((payload, nxt) => {
         let { count = 0 } = { ...payload.extra };
         count = +count + 1;
-        next({ ...payload, extra: { count } });
+        nxt({ ...payload, extra: { count } });
       });
 
       runner.add(middleware[i]);
