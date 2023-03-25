@@ -8,10 +8,8 @@ import { SdkSectionLayout } from './SdkSectionLayout';
 const DEFAULT_MIN_TIME_BETWEEN_MILLIS = 5 * 60 * 1000;
 
 export const SessionsSection = () => {
-  const [
-    minTimeBetweenSessionsMillis,
-    setMinTimeBetweenSessionsMillis,
-  ] = React.useState<number>(DEFAULT_MIN_TIME_BETWEEN_MILLIS);
+  const [minTimeBetweenSessionsMillis, setMinTimeBetweenSessionsMillis] =
+    React.useState<number>(DEFAULT_MIN_TIME_BETWEEN_MILLIS);
 
   const [
     savedMinTimeBetweenSessionsMillis,

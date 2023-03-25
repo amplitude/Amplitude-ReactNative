@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       dryRun:
-        description: 'Do a dry run to preview instead of a real release'     
+        description: 'Do a dry run to preview instead of a real release'
         required: true
         default: 'true'
-        
+
 jobs:
-  authorize: 
+  authorize:
     name: Authorize
-    runs-on: macos-10.15 
+    runs-on: macos-10.15
     steps:
       - name: ${{ github.actor }} permission check to do a release
         uses: "lannonbr/repo-permission-check-action@2.0.2"
@@ -46,7 +46,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
+          node-version: 16.x
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -102,13 +102,13 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
         # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 12.x
+          node-version: 16.x
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Generate website assets
-        run:  yarn docs:gen-docs 
+        run:  yarn docs:gen-docs
 
       - name: Add key to allow access to repository
         env:
