@@ -1,8 +1,8 @@
 PODS:
-  - Amplitude (8.13.0):
+  - Amplitude (8.16.3):
     - AnalyticsConnector (~> 1.0.0)
   - amplitude-react-native (2.17.0):
-    - Amplitude (= 8.13.0)
+    - Amplitude (= 8.16.3)
     - React-Core
   - AnalyticsConnector (1.0.0)
   - boost (1.76.0)
@@ -593,8 +593,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Amplitude: 0a239d682bc9ec1eb7a7b318af2541130ecd4bd3
-  amplitude-react-native: 1c2f788c0441a59517d2ce7243aa1f8e23650e3b
+  Amplitude: 10f20d4436fdcd38ddd5be1da7033fcc21f4143e
+  amplitude-react-native: a82e0f2bfad93f77a44c847978071457f6a55294
   AnalyticsConnector: 4c386d5972ac9da86e22d668564dbbac97558754
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99

@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency "Amplitude", "8.13.0"
+  s.dependency "Amplitude", "8.16.3"
 end
