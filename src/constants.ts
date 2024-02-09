@@ -3,5 +3,5 @@ export const Constants: {
   packageVersion: string;
 } = {
   packageSourceName: 'amplitude-react-native',
-  packageVersion: '2.17.2',
+  packageVersion: '2.17.3',
 };
