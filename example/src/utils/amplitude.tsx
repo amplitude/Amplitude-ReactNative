@@ -4,6 +4,13 @@ import React from 'react';
 const initAmplitude = (): Amplitude => {
   const amplitudeInstance = Amplitude.getInstance();
   amplitudeInstance.init('9c9566b48da3f559498fd70b164303b8');
+  // Manually opt in to event property attribution tracking by using
+  // advertising identifiers (IDFA on iOS, ADID on Android) as the device ID.
+  // Requires the host app to obtain user consent and link the relevant
+  // advertising identifier framework. See:
+  // https://amplitude.com/docs/sdks/analytics/react-native/react-native-sdk#advertising-identifiers
+  amplitudeInstance.setAdvertisingIdForDeviceId();
+  amplitudeInstance.setAppSetIdForDeviceId();
   amplitudeInstance.setServerZone('US');
   amplitudeInstance.setEventUploadMaxBatchSize(200);
   amplitudeInstance.setEventUploadThreshold(30);
