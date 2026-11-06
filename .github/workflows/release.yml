@@ -72,6 +72,9 @@ jobs:
     name: Publish to GitHub Pages
     runs-on: ubuntu-latest
     needs: [authorize]
+    # Deliberately skipped on dry runs: this job deploys the live GitHub Pages
+    # site and has no dry-run mode of its own.
+    if: ${{ github.event.inputs.dryRun == 'false' }}
     steps:
       #This step checks out a copy of your repository. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
