@@ -14,6 +14,9 @@
 # Official Amplitude React Native SDK
 A React Native SDK for tracking events and revenue to [Amplitude](https://www.amplitude.com).
 
+> [!NOTE]
+> This is the maintenance React Native SDK. For new projects, use the latest React Native SDK, [`@amplitude/analytics-react-native`](https://amplitude.com/docs/sdks/analytics/react-native/react-native-sdk) ([source](https://github.com/amplitude/Amplitude-TypeScript/tree/main/packages/analytics-react-native)). To move an existing app, follow the [migration guide](https://amplitude.com/docs/sdks/analytics/react-native/migrate-to-the-latest-react-native-sdk).
+
 ## **NOTE for iOS Targets**:
 As of the v2.09 release we no longer require any modifications to the Podfile.  `use_modular_headers!` and `use_frameworks!` are no longer needed and can be removed upon updating to >= v.2.0.9.  If you run into any issues during installation it is likely caused by your pod cache and there are a few options to resolve this, see [here](https://github.com/amplitude/Amplitude-ReactNative/issues/46#issuecomment-802933175) for suggestions on how to resolve any caching issues.
 
