@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x, 18.x]
-        os: [macOS-latest, ubuntu-latest]
+        node-version: [24.22.1]
+        os: [macos-15, ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -22,9 +22,17 @@ jobs:
         uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build library and example app
-        run: yarn
+      # Same steps as `yarn bootstrap`, but installs fail if package.json and
+      # yarn.lock disagree instead of resolving new versions.
+      - name: Install example app dependencies
+        run: yarn example install --frozen-lockfile
+
+      - name: Install library dependencies and build library
+        run: yarn install --frozen-lockfile
+
+      - name: Install example app pods
+        run: yarn pods
