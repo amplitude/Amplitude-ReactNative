@@ -26,5 +26,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build library and example app
-        run: yarn
+      # Same steps as `yarn bootstrap`, but installs fail if package.json and
+      # yarn.lock disagree instead of resolving new versions.
+      - name: Install example app dependencies
+        run: yarn example install --frozen-lockfile
+
+      - name: Install library dependencies and build library
+        run: yarn install --frozen-lockfile
+
+      - name: Install example app pods
+        run: yarn pods
