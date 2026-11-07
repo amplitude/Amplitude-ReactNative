@@ -54,7 +54,6 @@ module.exports = {
       '@semantic-release/git',
       {
         assets: [
-          'docs',
           'package.json',
           'src/constants.ts',
           'example/ios/Podfile.lock',
