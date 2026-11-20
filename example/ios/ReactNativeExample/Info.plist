@@ -26,7 +26,8 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
+		<!-- Metro uses a local connection when running the example in Debug. -->
+		<key>NSAllowsLocalNetworking</key>
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
