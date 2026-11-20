@@ -44,14 +44,14 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@google/semantic-release-replace-plugin": "^1.2.0",
+    "@google/semantic-release-replace-plugin": "^1.2.7",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@semantic-release/commit-analyzer": "^8.0.1",
-    "@semantic-release/exec": "^5.0.0",
-    "@semantic-release/git": "^9.0.1",
-    "@semantic-release/github": "^7.2.3",
-    "@semantic-release/npm": "^9.0.2",
-    "@semantic-release/release-notes-generator": "^9.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "@types/jest": "^29.5.14",
     "@types/react": "~18.0.28",
     "eslint": "^7.32.0",
@@ -66,8 +66,11 @@
     "react": "18.2.0",
     "react-native": "0.71.19",
     "react-native-builder-bob": "^0.20.4",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^24.2.9",
     "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "fast-xml-parser": "5.12.1"
   },
   "peerDependencies": {
     "react": "*",
